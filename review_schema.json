@@ -1,0 +1,110 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "decision",
+    "reason",
+    "questions",
+    "capacity",
+    "alternatives",
+    "deployable_config"
+  ],
+  "properties": {
+    "case_id": {
+      "enum": [
+        "UC-11",
+        "UC-12"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "needs_clarification",
+        "infeasible",
+        "ready"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 10
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "category",
+          "question"
+        ],
+        "properties": {
+          "category": {
+            "enum": [
+              "hosts",
+              "addressing",
+              "uplink",
+              "security"
+            ]
+          },
+          "question": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      }
+    },
+    "capacity": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pool",
+            "departments",
+            "requested_prefix",
+            "available_addresses",
+            "addresses_per_department",
+            "total_requested",
+            "feasible"
+          ],
+          "properties": {
+            "pool": {
+              "type": "string"
+            },
+            "departments": {
+              "type": "integer"
+            },
+            "requested_prefix": {
+              "type": "integer"
+            },
+            "available_addresses": {
+              "type": "integer"
+            },
+            "addresses_per_department": {
+              "type": "integer"
+            },
+            "total_requested": {
+              "type": "integer"
+            },
+            "feasible": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    },
+    "alternatives": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "deployable_config": {
+      "type": "null"
+    }
+  }
+}
