@@ -1,0 +1,386 @@
+[
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/01_topology.json",
+    "sha256": "2011778beab00b6f49ebf90d4ade9413f188dcd86fa10afae385c6c6cb335485"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/01_topology.txt",
+    "sha256": "1b362b72e761cd03f6fa6b5dc83c5dcca892eb1779cd8eb9c8f3cea1ed8b498a"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/02_Router0_enable.json",
+    "sha256": "5d2904dd9c171e84ae327af066cef65f4c58b4b32a933422e8c8a405dc07002a"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/02_Router0_enable.txt",
+    "sha256": "9b8b86722c8cb131950990cd709db46360c21fdc885aacb09d029cbac2a53323"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/03_Router0_interfaces.json",
+    "sha256": "5f7b1748ccdf60626d84a2d0122537835a00651234871f72a5b14c6148ad81a6"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/03_Router0_interfaces.txt",
+    "sha256": "a6b3385d46977c1e5edf8436feda7b4ef07a8ad37adea81440faa73e090f9e7e"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/03_Router0_interfaces_parsed.txt",
+    "sha256": "5696194736f90edd9ea8e38425cb4294568ce8d0b5714682a9835bf10bc13716"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/04_Router0_protocols.json",
+    "sha256": "9e6dd1c156677fef1b4f1b786c04e8dbd0554a73ced206e5505d49c2c25f8aa0"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/04_Router0_protocols.txt",
+    "sha256": "13e02baffd76b5a29ebf8d42683ae819e913b29f63337d9e7e55f14642367511"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/04_Router0_protocols_parsed.txt",
+    "sha256": "7b61c632d57ba5bb234b4d5a6a71d057a9a9ba9f3ac17692ae978bd7c8918133"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/05_Router0_routes.json",
+    "sha256": "339e2cec6a139640e2ac994ead81d52b87968df564d7f2a598c82578260c29ee"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/05_Router0_routes.txt",
+    "sha256": "3f4c8b795ee5bd87e7e568edb2badccb9aaf00ec56ce835c5694c10f50111fa1"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/05_Router0_routes_parsed.txt",
+    "sha256": "eb0039c89ca8dc6697faa21771c1559660cdcc554b4f453c2ac55c2db13c331b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/06_Router1_enable.json",
+    "sha256": "fdcfd2f429ee3f95199ab893d0302b755ae911f127642f1aa9334e0275a2f3a7"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/06_Router1_enable.txt",
+    "sha256": "ad4d2def31a8a9b1dfb5a3315919371406dca0e5dd72e8be13a2c1a91a3776a5"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/07_Router1_interfaces.json",
+    "sha256": "20aaee6aa910d28a2112d277257db18ca582ff0ccd6ed70ce2b26617eab9bddc"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/07_Router1_interfaces.txt",
+    "sha256": "07ab53747233cd0f1119d41fa9a8fc4edaef759f128fe61a37d14207caf545ee"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/07_Router1_interfaces_parsed.txt",
+    "sha256": "b5bade161f77151b163cbf99df1f56b134d46d86024e6c8c28a26e9d72e3276d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/08_Router1_protocols.json",
+    "sha256": "03d8206eb8b210ea30e848f6b705a0af60a85d83752a7ccea3977e00907e8f6b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/08_Router1_protocols.txt",
+    "sha256": "c40fe60c59a2de432cb73d582b2bde8aa7511c0e1fa348a19e1e13a10c93991d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/08_Router1_protocols_parsed.txt",
+    "sha256": "8a1d948cf30589be21d1dde6fc1d6bc28fa6fc32ad40269d63807ea4c1bad813"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/09_Router1_routes.json",
+    "sha256": "ce8a92b42c19ce44aae0d02dc4f8b3d211d15513e8459b71d3ec251761311121"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/09_Router1_routes.txt",
+    "sha256": "da96368baf065602c60cebdae1eaf912416a18b86c8ac1bece24f2a83204c0ff"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/09_Router1_routes_parsed.txt",
+    "sha256": "e2c57e0e65994994d13cb07a2ecc2d179537c3515d38c1ea08284b8f479fcff1"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/10_Router2_enable.json",
+    "sha256": "22046ee086e8895f1b6501498fd785588c956d4fe9551d8b30e631586fa9fcd2"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/10_Router2_enable.txt",
+    "sha256": "ace7cf8ff8f627dcc98aac02e4f9215efbb42becfcb47a39e2b5678294dfcfca"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/11_Router2_interfaces.json",
+    "sha256": "123204666641f5f4629e1f5bf5eb2ad005d78db2676cc25410696925e6ff823b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/11_Router2_interfaces.txt",
+    "sha256": "f39c0b5af23b2872b7ec77378bc434a166ec89c171825297d616d8a9a3a3842b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/11_Router2_interfaces_parsed.txt",
+    "sha256": "b7fadddbe7106f5ad9fbd986480c781345ba1de258afd3d5933219b75fc80568"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/12_Router2_protocols.json",
+    "sha256": "20832ccb4b0b36775b61d01af128f371393f4c3591661ad5bf2864a500874a2a"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/12_Router2_protocols.txt",
+    "sha256": "358b3c57ec59baf46af8789ebfe70428860b24782739cab7bd3a1311766b033e"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/12_Router2_protocols_parsed.txt",
+    "sha256": "30258961bb8ca410ad271e0e0353b4158bf00b93706fe548aebb389b5dab22a5"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/13_Router2_routes.json",
+    "sha256": "d9b7f2ed41602e1d68dd9c475ad0317b2d9d0df250b006cb37d5d9aa02754c59"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/13_Router2_routes.txt",
+    "sha256": "a9f639cbdde066e8caab466237070d9ff84ea2506353d31f7108ef28af464061"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/13_Router2_routes_parsed.txt",
+    "sha256": "ee31ffa3c66290a7d431d7bbfde1f2f88c789aac8e0a1122e95b096c1362e9e1"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/14_PC0_warmup.json",
+    "sha256": "fba0450d39155a9cde72d3185a7f58eef16736ede2ff9534e8d9a1a294bc61d4"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/14_PC0_warmup.txt",
+    "sha256": "76975922513f0e92ee1fafaf4dab5c8660f7712b715188c2018d650fb009944f"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/14_PC0_warmup_parsed.txt",
+    "sha256": "8c06deabd1be4a4dd0704f842fa81d351eb4b8edf3dd0ad5371dbae9f4e8febf"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/15_PC0_ping.json",
+    "sha256": "6a798de3191fe925ff0d1cd0c31d254e8e5faef23e8b8acf02df07ceedc10e0d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/15_PC0_ping.txt",
+    "sha256": "c2a819581568b52950e395d2c968b7a7ab0eca97d0f3f7721f0b3341b17dab08"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/15_PC0_ping_parsed.txt",
+    "sha256": "956641d91263d7bce2e2c9b37b72e06492e49801bab77cdce4801e606ced2117"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/16_PC1_warmup.json",
+    "sha256": "7820689718c44fed3ae3f8689a391102582f5f6bc8c03094f596b9e14f46f4f7"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/16_PC1_warmup.txt",
+    "sha256": "28d1efeedb822e6d1c63fcc3b68c90475755034059a6491c53a0e7180cd683dc"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/16_PC1_warmup_parsed.txt",
+    "sha256": "57ef64ae6a047e02a04e48f0c043bec4e7e3807c138466ea78fa7e4c7387791e"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/17_PC1_ping.json",
+    "sha256": "f301bab1f009a7f39c36cdb27970d28956212018289ab7437566c848729bb9a3"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/17_PC1_ping.txt",
+    "sha256": "1bf4a34f8b09946dafa09fe187a17df7133a065c0c477d12e90da783b4c4c514"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/17_PC1_ping_parsed.txt",
+    "sha256": "33dfbbecd28f13b223395a85b27b20bcf3e4d40e329ef35984ef7e88cce1f5e1"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv1_20261115_172434_084467/comparison_report.json",
+    "sha256": "1b3af0c2ee85fc7446b4c350d425ec554a1772ba0a6257d8c77999d643b129f1"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/01_topology.json",
+    "sha256": "2011778beab00b6f49ebf90d4ade9413f188dcd86fa10afae385c6c6cb335485"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/01_topology.txt",
+    "sha256": "1b362b72e761cd03f6fa6b5dc83c5dcca892eb1779cd8eb9c8f3cea1ed8b498a"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/02_Router0_enable.json",
+    "sha256": "a21af99a3a5da4ae455158b3c7d49b6939d55a5b09eecf91c0a7e563daa65122"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/02_Router0_enable.txt",
+    "sha256": "1d2705cadc36bbace3381211b832e29d760abf83934434fcbcedeaca950b160d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/03_Router0_interfaces.json",
+    "sha256": "5f7b1748ccdf60626d84a2d0122537835a00651234871f72a5b14c6148ad81a6"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/03_Router0_interfaces.txt",
+    "sha256": "a6b3385d46977c1e5edf8436feda7b4ef07a8ad37adea81440faa73e090f9e7e"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/03_Router0_interfaces_parsed.txt",
+    "sha256": "5696194736f90edd9ea8e38425cb4294568ce8d0b5714682a9835bf10bc13716"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/04_Router0_protocols.json",
+    "sha256": "7f7782c5fe9899e025f4e5805281334ec19b814cfda2252e382c1bbe2d010abc"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/04_Router0_protocols.txt",
+    "sha256": "616711315999bf127b135df233d5d5b4e0348add30711cc11f069e8767f3d9b1"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/04_Router0_protocols_parsed.txt",
+    "sha256": "93e65c32b8cfccbf86e43fface6801604b8fddda66faf9c78b0583bfb0a9239e"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/05_Router0_routes.json",
+    "sha256": "ceea02d3dfac3017582de5af0f8e2f0ea3f0338a657aba53232d7d2927d3c29d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/05_Router0_routes.txt",
+    "sha256": "55b31c8c7185fd1ca358ce586460030f8613ca3ae6fe732652557fb49e6c6926"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/05_Router0_routes_parsed.txt",
+    "sha256": "e9f879cd6d0e49169660c558e8cee7892cbc0af6bb5c4a5706ceff53b2716a2a"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/06_Router1_enable.json",
+    "sha256": "fbebd2fef899545d813f6b894076032bdd857c516e95bf5221af0c446cde8c79"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/06_Router1_enable.txt",
+    "sha256": "7d6ab513b8304187aa542b9d86d8b321768e4c4a98ae2eaef443f5b82c1e286d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/07_Router1_interfaces.json",
+    "sha256": "20aaee6aa910d28a2112d277257db18ca582ff0ccd6ed70ce2b26617eab9bddc"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/07_Router1_interfaces.txt",
+    "sha256": "07ab53747233cd0f1119d41fa9a8fc4edaef759f128fe61a37d14207caf545ee"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/07_Router1_interfaces_parsed.txt",
+    "sha256": "b5bade161f77151b163cbf99df1f56b134d46d86024e6c8c28a26e9d72e3276d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/08_Router1_protocols.json",
+    "sha256": "c206fb993a558dea30a0602af152f1651fcd592c2bbcbabcd52480ee79f3707a"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/08_Router1_protocols.txt",
+    "sha256": "1b41c0274eead6823f86eb1c5ef5258c1e280dd17a641c0e290cdce7cbc26599"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/08_Router1_protocols_parsed.txt",
+    "sha256": "224a2b258f13317a2132bc7039cb85fc7745e598fb86d2fa7dc8892baf0b364e"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/09_Router1_routes.json",
+    "sha256": "6364400a4c454841b4a35bf84d82c32d7942fee7cd5dd696ad4f1346bd340da2"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/09_Router1_routes.txt",
+    "sha256": "995b84adc72b013353dac753392197089a3cf3fc060ed26e888cab8697f87452"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/09_Router1_routes_parsed.txt",
+    "sha256": "7efad144dd58ec9dcf6afe8875076af5e17c1df10b308bef4a262724951e0110"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/10_Router2_enable.json",
+    "sha256": "add4b186b6503e281874368b4e5ab6aec22a1c5940686f8e267ac979cefaaa95"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/10_Router2_enable.txt",
+    "sha256": "26d2709c30da2649127839e6d89d6d23ada535095532be8d11202d82dcdc1d15"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/11_Router2_interfaces.json",
+    "sha256": "123204666641f5f4629e1f5bf5eb2ad005d78db2676cc25410696925e6ff823b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/11_Router2_interfaces.txt",
+    "sha256": "f39c0b5af23b2872b7ec77378bc434a166ec89c171825297d616d8a9a3a3842b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/11_Router2_interfaces_parsed.txt",
+    "sha256": "b7fadddbe7106f5ad9fbd986480c781345ba1de258afd3d5933219b75fc80568"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/12_Router2_protocols.json",
+    "sha256": "29366ba51000358b188c37cde87ac190f8bc21aa9a1eff210923f53a98488072"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/12_Router2_protocols.txt",
+    "sha256": "ae9ea6b5edefe95e01ab326a9388d4be802308c93782237dad4b13da860f7fe6"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/12_Router2_protocols_parsed.txt",
+    "sha256": "6800f21d7b44e1db9ff73c4ec161c5c16989ea2a6fe741a31900aab853c809e6"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/13_Router2_routes.json",
+    "sha256": "c015f0f87a6302fa3411bcf6b63a1ed3d85d892ae29db62cab5ebc888fba14a7"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/13_Router2_routes.txt",
+    "sha256": "02f06d4c5e15bb9ce336b41cc4d862cabf60ab9386f3790c9575100de753d8cc"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/13_Router2_routes_parsed.txt",
+    "sha256": "3851bcf4ea2cebce6ac726a99a8878da96440485c0c073dfe8f128221fe3a79b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/14_PC0_warmup.json",
+    "sha256": "85b87782cc17f1f7292c0f05d94787f2544e4e3c79488c0f3049d8fd97eec93d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/14_PC0_warmup.txt",
+    "sha256": "c1769cd5f6ce6379af67441a9af7963421f300cf9c47ea369d74adfbdd80b9de"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/14_PC0_warmup_parsed.txt",
+    "sha256": "dc83606ff57322405843f0db824c7bbf94fa016518b2b1fdf9c5e2e9789e6142"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/15_PC0_ping.json",
+    "sha256": "01f0ec415a581d3b72c522aaac9404ea6268c98530ef71602a7e897f02226b48"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/15_PC0_ping.txt",
+    "sha256": "381c7760fd33cf66c1f8fcae14b765638b3bff0818a56e63b84616a5c2c09bd6"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/15_PC0_ping_parsed.txt",
+    "sha256": "7ae0beaad7aa3dd71b9fb338013dd3510a18fee28f28d0afddc866833fdac53d"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/16_PC1_warmup.json",
+    "sha256": "12caef73896d01845451eb4e9afd575fd06d2efb4b224209ecc9fcbdec474d3f"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/16_PC1_warmup.txt",
+    "sha256": "38f363ed69ec6db9f595dda20c75546370daced183f8f8723d6f825b2a2c6d2b"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/16_PC1_warmup_parsed.txt",
+    "sha256": "a5e345a0244547a42bc11b84b155807a663d5376d07abf0a3f4c078fbebcb2bb"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/17_PC1_ping.json",
+    "sha256": "5866454b69dfb560a401c0770bbe5b0a07d36fcdf9c8a74d1533d16b2b508558"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/17_PC1_ping.txt",
+    "sha256": "aef45ff327392ac00abb3b48b8a0cfec095e18292f5398a313d44c18d681e06f"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/17_PC1_ping_parsed.txt",
+    "sha256": "e36ad729c264e8968f394429ace4289a27e073bf0ac4d24cd143e13c3d1a2272"
+  },
+  {
+    "path": "runs/course_batch_20261115_125404_810573/COURSE-4-10/rip_compare_ripv2_20261115_172040_619402/comparison_report.json",
+    "sha256": "68dfe6a5f26d91fab31d36ae97b2732812d8903ef54af5ab94793ef8321816b1"
+  }
+]

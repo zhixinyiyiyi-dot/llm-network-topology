@@ -1,0 +1,147 @@
+{
+  "scope": "补充受控部署与HTTP、RIP对比证据汇总；历史失败未删除。未据此重新认证全部评分项。",
+  "supplemental_deployment": {
+    "passed": 3,
+    "total": 3,
+    "scope": "固定既有配置，新建网络设备，人工粘贴，沿用并核对PC参数；非模型原始输出首次部署率。"
+  },
+  "http_report": "runs/course_batch_20261115_125404_810573/COURSE-6-6/runtime_http_20261115_170726_644351/runtime_report.json",
+  "rip_comparison": "submission/RIP_comparison.md",
+  "acceptance_report_index": [
+    {
+      "path": "runs/20261114_172847_213246/acceptance_20261114_184246_153422/acceptance_report.json",
+      "case_id": "UC-01",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261114_172847_213246/repair_20261114_195217_798717/baseline/acceptance_20261114_195218_588085/acceptance_report.json",
+      "case_id": "UC-01",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261114_172847_213246/repair_20261114_200803_767412/round_1/verification/acceptance_20261114_201004_778930/acceptance_report.json",
+      "case_id": "UC-01",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261114_172847_213246/repair_20261115_143231_746270/baseline/acceptance_20261115_143232_467522/acceptance_report.json",
+      "case_id": "UC-01",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261114_172847_213246/repair_20261115_143231_746270/round_1/verification/acceptance_20261115_143620_373957/acceptance_report.json",
+      "case_id": "UC-01",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261114_225933_109486/acceptance_20261114_231312_459657/acceptance_report.json",
+      "case_id": "UC-02",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261114_234539_984080/acceptance_20261114_235041_793477/acceptance_report.json",
+      "case_id": "UC-03",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_000729_684716/acceptance_after_20261115_001641_951287/acceptance_report.json",
+      "case_id": "UC-04",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261115_000729_684716/acceptance_after_20261115_002002_211200/acceptance_report.json",
+      "case_id": "UC-04",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_000729_684716/acceptance_before_20261115_001250_845127/acceptance_report.json",
+      "case_id": "UC-04",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_004629_787997/acceptance_router_on_a_stick_20261115_005633_144803/acceptance_report.json",
+      "case_id": "UC-05",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261115_004629_787997/acceptance_router_on_a_stick_20261115_011054_908795/acceptance_report.json",
+      "case_id": "UC-05",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_012046_658886/acceptance_svi_20261115_012500_708670/acceptance_report.json",
+      "case_id": "UC-05",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_013524_555588/acceptance_20261115_013850_590225/acceptance_report.json",
+      "case_id": "UC-06",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_015120_817454/acceptance_20261115_015716_208963/acceptance_report.json",
+      "case_id": "UC-07",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_021732_515686/acceptance_backup_20261115_023100_442260/acceptance_report.json",
+      "case_id": "UC-08",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_021732_515686/acceptance_primary_20261115_022837_613051/acceptance_report.json",
+      "case_id": "UC-08",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_021732_515686/acceptance_restored_20261115_023321_610871/acceptance_report.json",
+      "case_id": "UC-08",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_030022_989365/acceptance_20261115_030222_526080/acceptance_report.json",
+      "case_id": "UC-09",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261115_030022_989365/acceptance_20261115_030538_623467/acceptance_report.json",
+      "case_id": "UC-09",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/20261115_031856_966766/acceptance_20261115_032314_567565/acceptance_report.json",
+      "case_id": "UC-10",
+      "status": "RUNNING"
+    },
+    {
+      "path": "runs/20261115_031856_966766/acceptance_20261115_033201_822200/acceptance_report.json",
+      "case_id": "UC-10",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261115_031856_966766/acceptance_20261115_114839_057377/acceptance_report.json",
+      "case_id": "UC-10",
+      "status": "FAIL"
+    },
+    {
+      "path": "runs/20261115_031856_966766/acceptance_20261115_115346_905506/acceptance_report.json",
+      "case_id": "UC-10",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/fresh_UC01_20261115_163441/acceptance_20261115_163633_923062/acceptance_report.json",
+      "case_id": "UC-01",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/fresh_UC03_20261115_164219/acceptance_20261115_164417_136608/acceptance_report.json",
+      "case_id": "UC-03",
+      "status": "PASS"
+    },
+    {
+      "path": "runs/fresh_UC06_20261115_164737/acceptance_20261115_164818_663293/acceptance_report.json",
+      "case_id": "UC-06",
+      "status": "PASS"
+    }
+  ]
+}

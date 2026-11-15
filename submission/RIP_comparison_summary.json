@@ -1,0 +1,99 @@
+{
+  "case_id": "COURSE-4-10",
+  "review_status": "VERIFIED_AGAINST_ARCHIVED_OUTPUT",
+  "phases": {
+    "ripv2": {
+      "status": "EVIDENCE_COLLECTED",
+      "protocols": {
+        "Router0": {
+          "rip_present": true,
+          "send_version": "2",
+          "receive": "2",
+          "phase_matches": true
+        },
+        "Router1": {
+          "rip_present": true,
+          "send_version": "2",
+          "receive": "2",
+          "phase_matches": true
+        },
+        "Router2": {
+          "rip_present": true,
+          "send_version": "2",
+          "receive": "2",
+          "phase_matches": true
+        }
+      },
+      "pings": [
+        {
+          "source": "PC0",
+          "destination": "192.168.16.130",
+          "sent": 4,
+          "received": 4,
+          "lost": 0,
+          "echo_replies": 4,
+          "passed": true
+        },
+        {
+          "source": "PC1",
+          "destination": "192.168.16.10",
+          "sent": 4,
+          "received": 4,
+          "lost": 0,
+          "echo_replies": 4,
+          "passed": true
+        }
+      ]
+    },
+    "ripv1": {
+      "status": "EVIDENCE_COLLECTED",
+      "protocols": {
+        "Router0": {
+          "rip_present": true,
+          "send_version": "1",
+          "receive": "1",
+          "phase_matches": true
+        },
+        "Router1": {
+          "rip_present": true,
+          "send_version": "1",
+          "receive": "1",
+          "phase_matches": true
+        },
+        "Router2": {
+          "rip_present": true,
+          "send_version": "1",
+          "receive": "1",
+          "phase_matches": true
+        }
+      },
+      "pings": [
+        {
+          "source": "PC0",
+          "destination": "192.168.16.130",
+          "sent": 4,
+          "received": 0,
+          "lost": 4,
+          "echo_replies": 0,
+          "passed": false
+        },
+        {
+          "source": "PC1",
+          "destination": "192.168.16.10",
+          "sent": 4,
+          "received": 0,
+          "lost": 4,
+          "echo_replies": 0,
+          "passed": false
+        }
+      ]
+    }
+  },
+  "checks": {
+    "ripv2_exact_lan_routes_on_R1": true,
+    "ripv1_classful_lan_route_on_R1": true,
+    "ripv2_two_way_ping_4_of_4": true,
+    "ripv1_two_way_ping_0_of_4": true
+  },
+  "scope": "Observational comparison of RIPv2/no-auto-summary versus RIPv1/auto-summary; not a claim that RIPv1 fails on all networks."
+}
