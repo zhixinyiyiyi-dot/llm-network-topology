@@ -1,0 +1,523 @@
+{
+  "type": "object",
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "ready",
+        "needs_clarification"
+      ]
+    },
+    "questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "router",
+              "pc",
+              "switch",
+              "server"
+            ]
+          },
+          "interfaces": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "ipv4": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "ipv4"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 1
+          },
+          "default_gateway": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "routing": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "protocol": {
+                      "const": "rip"
+                    },
+                    "version": {
+                      "const": 2
+                    },
+                    "auto_summary": {
+                      "const": false
+                    },
+                    "networks": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "minItems": 1,
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "protocol",
+                    "version",
+                    "auto_summary",
+                    "networks"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "protocol",
+                    "process_id",
+                    "networks"
+                  ],
+                  "properties": {
+                    "protocol": {
+                      "const": "ospf"
+                    },
+                    "process_id": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 65535
+                    },
+                    "networks": {
+                      "type": "array",
+                      "minItems": 1,
+                      "uniqueItems": true,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "network",
+                          "wildcard",
+                          "area"
+                        ],
+                        "properties": {
+                          "network": {
+                            "type": "string"
+                          },
+                          "wildcard": {
+                            "type": "string"
+                          },
+                          "area": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 4294967295
+                          }
+                        }
+                      }
+                    },
+                    "passive_interfaces": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "uniqueItems": true
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "protocol": {
+                      "const": "static"
+                    },
+                    "routes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "prefix": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "next_hop": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "distance": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "maximum": 254
+                          },
+                          "recursive": {
+                            "const": true
+                          }
+                        },
+                        "required": [
+                          "prefix",
+                          "next_hop"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "protocol",
+                    "routes"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "maxItems": 2
+          },
+          "acls": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "interface",
+                "direction",
+                "rules"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+                },
+                "interface": {
+                  "type": "string"
+                },
+                "direction": {
+                  "enum": [
+                    "in",
+                    "out"
+                  ]
+                },
+                "rules": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "action",
+                      "protocol",
+                      "source",
+                      "destination"
+                    ],
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "permit",
+                          "deny"
+                        ]
+                      },
+                      "protocol": {
+                        "enum": [
+                          "ip",
+                          "icmp",
+                          "tcp"
+                        ]
+                      },
+                      "source": {
+                        "type": "string"
+                      },
+                      "destination": {
+                        "type": "string"
+                      },
+                      "icmp_type": {
+                        "const": "echo-reply"
+                      },
+                      "established": {
+                        "const": true
+                      },
+                      "destination_port": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 65535
+                      }
+                    }
+                  },
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          "services": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "http",
+              "ftp",
+              "pages"
+            ],
+            "properties": {
+              "http": {
+                "type": "boolean"
+              },
+              "ftp": {
+                "type": "boolean"
+              },
+              "pages": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "filename",
+                    "content"
+                  ],
+                  "properties": {
+                    "filename": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z][A-Za-z0-9_]*\\.html$"
+                    },
+                    "content": {
+                      "type": "string",
+                      "minLength": 10,
+                      "maxLength": 2048
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "interfaces",
+          "default_gateway",
+          "routing"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "router",
+                    "pc",
+                    "switch"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "services": false
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "server"
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "services"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "enum": [
+                    "pc",
+                    "switch",
+                    "server"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "acls": false
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "a": {
+            "type": "object",
+            "properties": {
+              "device": {
+                "type": "string",
+                "minLength": 1
+              },
+              "interface": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "device",
+              "interface"
+            ],
+            "additionalProperties": false
+          },
+          "b": {
+            "type": "object",
+            "properties": {
+              "device": {
+                "type": "string",
+                "minLength": 1
+              },
+              "interface": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "device",
+              "interface"
+            ],
+            "additionalProperties": false
+          },
+          "dce": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "device": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "interface": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "device",
+                  "interface"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "a",
+          "b",
+          "dce"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "vlans": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4094
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "ping"
+          },
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "destination": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expect": {
+            "enum": [
+              "allow",
+              "deny"
+            ]
+          }
+        },
+        "required": [
+          "type",
+          "source",
+          "destination"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "case_id",
+    "status",
+    "questions",
+    "devices",
+    "links",
+    "vlans",
+    "checks"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ipv4-rip-v1.schema.json",
+  "title": "IPv4 RIP/OSPF DSL v2 (VLAN not yet supported)"
+}

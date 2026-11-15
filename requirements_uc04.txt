@@ -1,0 +1,13 @@
+用例：UC-04 私有网络访问模拟公网
+全部设备仅存在于本地Packet Tracer，不连接真实校园网或公网。
+设备：R0、R1（router），Switch0（switch），PC0、PC1（pc），Server0（server）。
+接线：PC0 FastEthernet0—Switch0 FastEthernet0/1；PC1 FastEthernet0—Switch0 FastEthernet0/2；Switch0 FastEthernet0/24—R0 GigabitEthernet0/0；R0 GigabitEthernet0/1—R1 GigabitEthernet0/0；R1 GigabitEthernet0/1—Server0 FastEthernet0。
+R0内口GigabitEthernet0/0使用192.168.0.254/24，外口GigabitEthernet0/1使用218.75.230.253/30。
+R1作为模拟ISP，GigabitEthernet0/0使用218.75.230.254/30，GigabitEthernet0/1使用218.75.230.126/25。
+PC0使用192.168.0.1/24，PC1使用192.168.0.2/24，默认网关均为192.168.0.254。
+Server0使用218.75.230.1/25，网关218.75.230.126。
+Switch0的3个指定端口均不配置IP，默认网关null，无VLAN划分。
+R0只配置一条静态默认路由0.0.0.0/0，下一跳218.75.230.254。R1不配置任何静态或动态路由，仅使用直连路由，不得增加到192.168.0.0/24的返回路由。
+目标R0的nat：inside_interface为GigabitEthernet0/0，outside_interface为GigabitEthernet0/1，source_network为192.168.0.0/24，acl_id为1，pool_name为UC04，pool_start和pool_end均为218.75.230.253，netmask为255.255.255.252，overload=true。
+其他设备不配置nat。先部署无NAT基线，记录PC0到Server0结果；再启用单公网地址NAPT，使两台PC均可访问Server0并展示转换表。分阶段测试由后续程序执行，YAML描述最终目标。
+checks必须是PC0到218.75.230.1和PC1到218.75.230.1两个ping目标。vlans=[]，所有links的dce=null。

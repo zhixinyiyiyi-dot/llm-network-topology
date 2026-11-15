@@ -1,0 +1,17 @@
+用例：UC-07 咖啡馆网络
+仅在本地Packet Tracer仿真中运行，复用UC04的6台设备及物理接线。
+设备仅R0、R1（router）、Switch0（switch）、PC0、PC1（pc）、Server0（server）。
+PC0 FastEthernet0连接Switch0 FastEthernet0/1；PC1 FastEthernet0连接Switch0 FastEthernet0/2；Switch0 FastEthernet0/24连接R0 GigabitEthernet0/0；R0 GigabitEthernet0/1连接R1 GigabitEthernet0/0；R1 GigabitEthernet0/1连接Server0 FastEthernet0。所有dce=null。
+VLAN30名GUEST，VLAN40名CASHIER。Switch0 Fa0/1为access_vlan30，Fa0/2为access_vlan40，Fa0/24为trunk、allowed_vlans=[30,40]；3个接口ipv4:null。
+R0父接口GigabitEthernet0/0 ipv4:null；子接口GigabitEthernet0/0.30为192.168.30.254/24、encapsulation_vlan30；GigabitEthernet0/0.40为192.168.40.254/24、encapsulation_vlan40。
+PC0为192.168.30.10/24、网关192.168.30.254；PC1为192.168.40.10/24、网关192.168.40.254。
+R0外口GigabitEthernet0/1保持218.75.230.253/30，R1 GigabitEthernet0/0为218.75.230.254/30、GigabitEthernet0/1为218.75.230.126/25；Server0为218.75.230.1/25、网关218.75.230.126。
+R0 routing只有protocol:static、routes:[{prefix:0.0.0.0/0,next_hop:218.75.230.254}]；R1 routing为[{protocol:static,routes:[]}]。其他设备routing=[]，default_gateway:null（PC和Server按上述网关）。
+R0 nat必须为inside_interfaces按顺序[GigabitEthernet0/0.30,GigabitEthernet0/0.40]、outside_interface:GigabitEthernet0/1、source_networks按顺序[192.168.30.0/24,192.168.40.0/24]、acl_id:1、pool_name:UC07、pool_start和pool_end均218.75.230.253、netmask:255.255.255.252、overload:true。其他设备没有nat。
+R0 acls只有一项：name:GUEST_IN，interface:GigabitEthernet0/0.30，direction:in。rules顺序严格为：
+1 action:permit、protocol:icmp、source:192.168.30.0/24、destination:192.168.40.0/24、icmp_type:echo-reply。
+2 action:permit、protocol:tcp、source:192.168.30.0/24、destination:192.168.40.0/24、established:true。
+3 action:deny、protocol:ip、source:192.168.30.0/24、destination:192.168.40.0/24。
+4 action:permit、protocol:ip、source:any、destination:any。
+不适用的规则字段不要输出；其他设备不配置acls。策略阻止客人主动访问收银，允许收银发起ICMP及TCP访问时的对应返回流量，不对收银入口额外施加ACL。普通ACL不等于完整状态防火墙，不宣称支持任意UDP会话回流。
+checks精确为4项：PC0→192.168.40.10 expect:deny；PC1→192.168.30.10 expect:allow；PC0→218.75.230.1 expect:allow；PC1→218.75.230.1 expect:allow。type均ping。destination绝不能填设备名。

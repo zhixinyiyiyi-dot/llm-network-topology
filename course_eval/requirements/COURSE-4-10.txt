@@ -1,0 +1,14 @@
+课内来源：实验4-10 RIPv1与RIPv2对比
+范围说明：复用已验证的三Serial三角形和PC .10/.130，区别于课件混合链路/.1/.129；保留该差异。课程核心协议对比/代价/ECMP已有人工证据，但本轮模型输出部署仍需核对。与UC01/02重复基础场景不双计独立需求。
+请生成最终目标DSL，case_id=COURSE-4-10，status=ready、questions=[]、vlans=[]。
+按以下明确接口/接线与业务策略规划。不要自行增加默认路由、NAT、VLAN或其他服务。
+设备R0，类型router；接口：GigabitEthernet0/0=192.168.16.126/25，Serial0/0/0=10.0.0.1/30，Serial0/0/1=30.0.0.1/30；终端网关：None。
+运行RIPv2，关闭自动汇总，仅启用直连有类主网络：192.168.16.0,10.0.0.0,30.0.0.0。RIPv1对比阶段由配置编译器派生。
+设备R1，类型router；接口：Serial0/0/0=10.0.0.2/30，Serial0/0/1=20.0.0.1/30；终端网关：None。
+运行RIPv2，关闭自动汇总，仅启用直连有类主网络：10.0.0.0,20.0.0.0。RIPv1对比阶段由配置编译器派生。
+设备R2，类型router；接口：Serial0/0/0=20.0.0.2/30，Serial0/0/1=30.0.0.2/30，GigabitEthernet0/0=192.168.16.190/26；终端网关：None。
+运行RIPv2，关闭自动汇总，仅启用直连有类主网络：192.168.16.0,20.0.0.0,30.0.0.0。RIPv1对比阶段由配置编译器派生。
+设备PC0，类型pc；接口：FastEthernet0=192.168.16.10/25；终端网关：192.168.16.126。
+设备PC1，类型pc；接口：FastEthernet0=192.168.16.130/26；终端网关：192.168.16.190。
+物理接线：PC0 FastEthernet0—R0 GigabitEthernet0/0；DCE=None；R0 Serial0/0/0—R1 Serial0/0/0；DCE={'device': 'R0', 'interface': 'Serial0/0/0'}；R1 Serial0/0/1—R2 Serial0/0/0；DCE={'device': 'R1', 'interface': 'Serial0/0/1'}；R0 Serial0/0/1—R2 Serial0/0/1；DCE={'device': 'R0', 'interface': 'Serial0/0/1'}；R2 GigabitEthernet0/0—PC1 FastEthernet0；DCE=None
+验证条目精确如下（type=ping，destination填IP）：PC0 到 192.168.16.130，预期allow；PC1 到 192.168.16.10，预期allow

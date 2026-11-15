@@ -1,0 +1,1228 @@
+{
+  "COURSE-4-5": {
+    "source": "实验4-5 IPv4地址无分类编址",
+    "adaptation": "采用原CIDR划分与四LAN拓扑；接口/PC分组明确如下。第二编址方案与重测尚需后续，单次通过不声称原实验全部步骤完成。",
+    "expected": {
+      "case_id": "COURSE-4-5",
+      "status": "ready",
+      "questions": [],
+      "devices": [
+        {
+          "name": "R0",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "218.75.230.46/28"
+            },
+            {
+              "name": "GigabitEthernet0/1",
+              "ipv4": "218.75.230.30/27"
+            },
+            {
+              "name": "GigabitEthernet0/2",
+              "ipv4": "218.75.230.81/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "static",
+              "routes": [
+                {
+                  "prefix": "218.75.230.64/28",
+                  "next_hop": "218.75.230.82"
+                },
+                {
+                  "prefix": "218.75.230.48/28",
+                  "next_hop": "218.75.230.82"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "R1",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "218.75.230.78/28"
+            },
+            {
+              "name": "GigabitEthernet0/1",
+              "ipv4": "218.75.230.62/28"
+            },
+            {
+              "name": "GigabitEthernet0/2",
+              "ipv4": "218.75.230.82/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "static",
+              "routes": [
+                {
+                  "prefix": "218.75.230.32/28",
+                  "next_hop": "218.75.230.81"
+                },
+                {
+                  "prefix": "218.75.230.0/27",
+                  "next_hop": "218.75.230.81"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Switch0",
+          "type": "switch",
+          "interfaces": [
+            {
+              "name": "FastEthernet0/1",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/2",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/3",
+              "ipv4": null
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "PC0",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.33/28"
+            }
+          ],
+          "default_gateway": "218.75.230.46",
+          "routing": []
+        },
+        {
+          "name": "PC1",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.34/28"
+            }
+          ],
+          "default_gateway": "218.75.230.46",
+          "routing": []
+        },
+        {
+          "name": "Switch1",
+          "type": "switch",
+          "interfaces": [
+            {
+              "name": "FastEthernet0/1",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/2",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/3",
+              "ipv4": null
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "PC2",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.1/27"
+            }
+          ],
+          "default_gateway": "218.75.230.30",
+          "routing": []
+        },
+        {
+          "name": "PC3",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.2/27"
+            }
+          ],
+          "default_gateway": "218.75.230.30",
+          "routing": []
+        },
+        {
+          "name": "Switch2",
+          "type": "switch",
+          "interfaces": [
+            {
+              "name": "FastEthernet0/1",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/2",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/3",
+              "ipv4": null
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "PC4",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.65/28"
+            }
+          ],
+          "default_gateway": "218.75.230.78",
+          "routing": []
+        },
+        {
+          "name": "PC5",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.66/28"
+            }
+          ],
+          "default_gateway": "218.75.230.78",
+          "routing": []
+        },
+        {
+          "name": "Switch3",
+          "type": "switch",
+          "interfaces": [
+            {
+              "name": "FastEthernet0/1",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/2",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/3",
+              "ipv4": null
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "PC6",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.49/28"
+            }
+          ],
+          "default_gateway": "218.75.230.62",
+          "routing": []
+        },
+        {
+          "name": "PC7",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "218.75.230.50/28"
+            }
+          ],
+          "default_gateway": "218.75.230.62",
+          "routing": []
+        }
+      ],
+      "links": [
+        {
+          "a": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/2"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "GigabitEthernet0/2"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Switch0",
+            "interface": "FastEthernet0/3"
+          },
+          "b": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/0"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC0",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch0",
+            "interface": "FastEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC1",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch0",
+            "interface": "FastEthernet0/2"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Switch1",
+            "interface": "FastEthernet0/3"
+          },
+          "b": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC2",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch1",
+            "interface": "FastEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC3",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch1",
+            "interface": "FastEthernet0/2"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Switch2",
+            "interface": "FastEthernet0/3"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "GigabitEthernet0/0"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC4",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch2",
+            "interface": "FastEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC5",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch2",
+            "interface": "FastEthernet0/2"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Switch3",
+            "interface": "FastEthernet0/3"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "GigabitEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC6",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch3",
+            "interface": "FastEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC7",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch3",
+            "interface": "FastEthernet0/2"
+          },
+          "dce": null
+        }
+      ],
+      "vlans": [],
+      "checks": [
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "218.75.230.1"
+        },
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "218.75.230.65"
+        },
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "218.75.230.49"
+        },
+        {
+          "type": "ping",
+          "source": "PC6",
+          "destination": "218.75.230.33"
+        }
+      ]
+    }
+  },
+  "COURSE-4-10": {
+    "source": "实验4-10 RIPv1与RIPv2对比",
+    "adaptation": "复用已验证的三Serial三角形和PC .10/.130，区别于课件混合链路/.1/.129；保留该差异。课程核心协议对比/代价/ECMP已有人工证据，但本轮模型输出部署仍需核对。与UC01/02重复基础场景不双计独立需求。",
+    "expected": {
+      "case_id": "COURSE-4-10",
+      "status": "ready",
+      "questions": [],
+      "devices": [
+        {
+          "name": "R0",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "192.168.16.126/25"
+            },
+            {
+              "name": "Serial0/0/0",
+              "ipv4": "10.0.0.1/30"
+            },
+            {
+              "name": "Serial0/0/1",
+              "ipv4": "30.0.0.1/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "rip",
+              "version": 2,
+              "auto_summary": false,
+              "networks": [
+                "192.168.16.0",
+                "10.0.0.0",
+                "30.0.0.0"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "R1",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "Serial0/0/0",
+              "ipv4": "10.0.0.2/30"
+            },
+            {
+              "name": "Serial0/0/1",
+              "ipv4": "20.0.0.1/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "rip",
+              "version": 2,
+              "auto_summary": false,
+              "networks": [
+                "10.0.0.0",
+                "20.0.0.0"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "R2",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "Serial0/0/0",
+              "ipv4": "20.0.0.2/30"
+            },
+            {
+              "name": "Serial0/0/1",
+              "ipv4": "30.0.0.2/30"
+            },
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "192.168.16.190/26"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "rip",
+              "version": 2,
+              "auto_summary": false,
+              "networks": [
+                "192.168.16.0",
+                "20.0.0.0",
+                "30.0.0.0"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PC0",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.16.10/25"
+            }
+          ],
+          "default_gateway": "192.168.16.126",
+          "routing": []
+        },
+        {
+          "name": "PC1",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.16.130/26"
+            }
+          ],
+          "default_gateway": "192.168.16.190",
+          "routing": []
+        }
+      ],
+      "links": [
+        {
+          "a": {
+            "device": "PC0",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/0"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "R0",
+            "interface": "Serial0/0/0"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "Serial0/0/0"
+          },
+          "dce": {
+            "device": "R0",
+            "interface": "Serial0/0/0"
+          }
+        },
+        {
+          "a": {
+            "device": "R1",
+            "interface": "Serial0/0/1"
+          },
+          "b": {
+            "device": "R2",
+            "interface": "Serial0/0/0"
+          },
+          "dce": {
+            "device": "R1",
+            "interface": "Serial0/0/1"
+          }
+        },
+        {
+          "a": {
+            "device": "R0",
+            "interface": "Serial0/0/1"
+          },
+          "b": {
+            "device": "R2",
+            "interface": "Serial0/0/1"
+          },
+          "dce": {
+            "device": "R0",
+            "interface": "Serial0/0/1"
+          }
+        },
+        {
+          "a": {
+            "device": "R2",
+            "interface": "GigabitEthernet0/0"
+          },
+          "b": {
+            "device": "PC1",
+            "interface": "FastEthernet0"
+          },
+          "dce": null
+        }
+      ],
+      "vlans": [],
+      "checks": [
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "192.168.16.130"
+        },
+        {
+          "type": "ping",
+          "source": "PC1",
+          "destination": "192.168.16.10"
+        }
+      ]
+    }
+  },
+  "COURSE-4-11": {
+    "source": "实验4-11 OSPF",
+    "adaptation": "复用已验证的三Serial三角形和PC .10/.130，区别于课件混合链路/.1/.129；保留该差异。课程核心协议对比/代价/ECMP已有人工证据，但本轮模型输出部署仍需核对。与UC01/02重复基础场景不双计独立需求。",
+    "expected": {
+      "case_id": "COURSE-4-11",
+      "status": "ready",
+      "questions": [],
+      "devices": [
+        {
+          "name": "R0",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "192.168.16.126/25"
+            },
+            {
+              "name": "Serial0/0/0",
+              "ipv4": "10.0.0.1/30"
+            },
+            {
+              "name": "Serial0/0/1",
+              "ipv4": "30.0.0.1/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "ospf",
+              "process_id": 100,
+              "networks": [
+                {
+                  "network": "192.168.16.0",
+                  "wildcard": "0.0.0.127",
+                  "area": 0
+                },
+                {
+                  "network": "10.0.0.0",
+                  "wildcard": "0.0.0.3",
+                  "area": 0
+                },
+                {
+                  "network": "30.0.0.0",
+                  "wildcard": "0.0.0.3",
+                  "area": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "R1",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "Serial0/0/0",
+              "ipv4": "10.0.0.2/30"
+            },
+            {
+              "name": "Serial0/0/1",
+              "ipv4": "20.0.0.1/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "ospf",
+              "process_id": 100,
+              "networks": [
+                {
+                  "network": "10.0.0.0",
+                  "wildcard": "0.0.0.3",
+                  "area": 0
+                },
+                {
+                  "network": "20.0.0.0",
+                  "wildcard": "0.0.0.3",
+                  "area": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "R2",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "Serial0/0/0",
+              "ipv4": "20.0.0.2/30"
+            },
+            {
+              "name": "Serial0/0/1",
+              "ipv4": "30.0.0.2/30"
+            },
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "192.168.16.190/26"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "ospf",
+              "process_id": 100,
+              "networks": [
+                {
+                  "network": "192.168.16.128",
+                  "wildcard": "0.0.0.63",
+                  "area": 0
+                },
+                {
+                  "network": "20.0.0.0",
+                  "wildcard": "0.0.0.3",
+                  "area": 0
+                },
+                {
+                  "network": "30.0.0.0",
+                  "wildcard": "0.0.0.3",
+                  "area": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "PC0",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.16.10/25"
+            }
+          ],
+          "default_gateway": "192.168.16.126",
+          "routing": []
+        },
+        {
+          "name": "PC1",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.16.130/26"
+            }
+          ],
+          "default_gateway": "192.168.16.190",
+          "routing": []
+        }
+      ],
+      "links": [
+        {
+          "a": {
+            "device": "PC0",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/0"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "R0",
+            "interface": "Serial0/0/0"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "Serial0/0/0"
+          },
+          "dce": {
+            "device": "R0",
+            "interface": "Serial0/0/0"
+          }
+        },
+        {
+          "a": {
+            "device": "R1",
+            "interface": "Serial0/0/1"
+          },
+          "b": {
+            "device": "R2",
+            "interface": "Serial0/0/0"
+          },
+          "dce": {
+            "device": "R1",
+            "interface": "Serial0/0/1"
+          }
+        },
+        {
+          "a": {
+            "device": "R0",
+            "interface": "Serial0/0/1"
+          },
+          "b": {
+            "device": "R2",
+            "interface": "Serial0/0/1"
+          },
+          "dce": {
+            "device": "R0",
+            "interface": "Serial0/0/1"
+          }
+        },
+        {
+          "a": {
+            "device": "R2",
+            "interface": "GigabitEthernet0/0"
+          },
+          "b": {
+            "device": "PC1",
+            "interface": "FastEthernet0"
+          },
+          "dce": null
+        }
+      ],
+      "vlans": [],
+      "checks": [
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "192.168.16.130"
+        },
+        {
+          "type": "ping",
+          "source": "PC1",
+          "destination": "192.168.16.10"
+        }
+      ]
+    }
+  },
+  "COURSE-6-6": {
+    "source": "实验6-6 万维网文档与HTTP",
+    "adaptation": "沿用原PC-Server直连/IP，新增course_index.html作为本次模型生成的可辨识页面；HTTP服务/页面由生成指南人工设置，不声称CLI自动部署应用服务。",
+    "expected": {
+      "case_id": "COURSE-6-6",
+      "status": "ready",
+      "questions": [],
+      "devices": [
+        {
+          "name": "PC0",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.0.1/24"
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "Server0",
+          "type": "server",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.0.2/24"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [],
+          "services": {
+            "http": true,
+            "ftp": false,
+            "pages": [
+              {
+                "filename": "course_index.html",
+                "content": "<html><body>COURSE_HTTP_OK</body></html>"
+              }
+            ]
+          }
+        }
+      ],
+      "links": [
+        {
+          "a": {
+            "device": "PC0",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Server0",
+            "interface": "FastEthernet0"
+          },
+          "dce": null
+        }
+      ],
+      "vlans": [],
+      "checks": [
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "192.168.0.2"
+        }
+      ]
+    }
+  },
+  "COURSE-7-1": {
+    "source": "实验7-1 扩展ACL",
+    "adaptation": "对应用户原课内报告的两router两switch三PC一Server；按实际Gigabit接口规划。保留Web80、FTP20/21、PC1到PC2全部IP、部门A到R1 ICMP四类限制；HTTP/FTP需生成服务指南人工配置。",
+    "expected": {
+      "case_id": "COURSE-7-1",
+      "status": "ready",
+      "questions": [],
+      "devices": [
+        {
+          "name": "R0",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "192.168.0.254/24"
+            },
+            {
+              "name": "GigabitEthernet0/1",
+              "ipv4": "10.0.0.1/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "static",
+              "routes": [
+                {
+                  "prefix": "192.168.1.0/24",
+                  "next_hop": "10.0.0.2"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "R1",
+          "type": "router",
+          "interfaces": [
+            {
+              "name": "GigabitEthernet0/0",
+              "ipv4": "192.168.1.254/24"
+            },
+            {
+              "name": "GigabitEthernet0/1",
+              "ipv4": "10.0.0.2/30"
+            }
+          ],
+          "default_gateway": null,
+          "routing": [
+            {
+              "protocol": "static",
+              "routes": [
+                {
+                  "prefix": "192.168.0.0/24",
+                  "next_hop": "10.0.0.1"
+                }
+              ]
+            }
+          ],
+          "acls": [
+            {
+              "name": "COURSE_ACL",
+              "interface": "GigabitEthernet0/1",
+              "direction": "in",
+              "rules": [
+                {
+                  "action": "deny",
+                  "protocol": "tcp",
+                  "source": "192.168.0.0/24",
+                  "destination": "192.168.1.2/32",
+                  "destination_port": 80
+                },
+                {
+                  "action": "deny",
+                  "protocol": "tcp",
+                  "source": "192.168.0.1/32",
+                  "destination": "192.168.1.2/32",
+                  "destination_port": 20
+                },
+                {
+                  "action": "deny",
+                  "protocol": "tcp",
+                  "source": "192.168.0.1/32",
+                  "destination": "192.168.1.2/32",
+                  "destination_port": 21
+                },
+                {
+                  "action": "deny",
+                  "protocol": "ip",
+                  "source": "192.168.0.2/32",
+                  "destination": "192.168.1.1/32"
+                },
+                {
+                  "action": "deny",
+                  "protocol": "icmp",
+                  "source": "192.168.0.0/24",
+                  "destination": "10.0.0.2/32"
+                },
+                {
+                  "action": "permit",
+                  "protocol": "ip",
+                  "source": "any",
+                  "destination": "any"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Switch0",
+          "type": "switch",
+          "interfaces": [
+            {
+              "name": "FastEthernet0/1",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/2",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/3",
+              "ipv4": null
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "PC0",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.0.1/24"
+            }
+          ],
+          "default_gateway": "192.168.0.254",
+          "routing": []
+        },
+        {
+          "name": "PC1",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.0.2/24"
+            }
+          ],
+          "default_gateway": "192.168.0.254",
+          "routing": []
+        },
+        {
+          "name": "Switch1",
+          "type": "switch",
+          "interfaces": [
+            {
+              "name": "FastEthernet0/1",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/2",
+              "ipv4": null
+            },
+            {
+              "name": "FastEthernet0/3",
+              "ipv4": null
+            }
+          ],
+          "default_gateway": null,
+          "routing": []
+        },
+        {
+          "name": "PC2",
+          "type": "pc",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.1.1/24"
+            }
+          ],
+          "default_gateway": "192.168.1.254",
+          "routing": []
+        },
+        {
+          "name": "Server0",
+          "type": "server",
+          "interfaces": [
+            {
+              "name": "FastEthernet0",
+              "ipv4": "192.168.1.2/24"
+            }
+          ],
+          "default_gateway": "192.168.1.254",
+          "routing": [],
+          "services": {
+            "http": true,
+            "ftp": true,
+            "pages": []
+          }
+        }
+      ],
+      "links": [
+        {
+          "a": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/1"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "GigabitEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Switch0",
+            "interface": "FastEthernet0/3"
+          },
+          "b": {
+            "device": "R0",
+            "interface": "GigabitEthernet0/0"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC0",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch0",
+            "interface": "FastEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC1",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch0",
+            "interface": "FastEthernet0/2"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Switch1",
+            "interface": "FastEthernet0/3"
+          },
+          "b": {
+            "device": "R1",
+            "interface": "GigabitEthernet0/0"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "PC2",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch1",
+            "interface": "FastEthernet0/1"
+          },
+          "dce": null
+        },
+        {
+          "a": {
+            "device": "Server0",
+            "interface": "FastEthernet0"
+          },
+          "b": {
+            "device": "Switch1",
+            "interface": "FastEthernet0/2"
+          },
+          "dce": null
+        }
+      ],
+      "vlans": [],
+      "checks": [
+        {
+          "type": "ping",
+          "source": "PC1",
+          "destination": "192.168.1.1",
+          "expect": "deny"
+        },
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "10.0.0.2",
+          "expect": "deny"
+        },
+        {
+          "type": "ping",
+          "source": "PC0",
+          "destination": "192.168.1.1",
+          "expect": "allow"
+        }
+      ]
+    }
+  }
+}
