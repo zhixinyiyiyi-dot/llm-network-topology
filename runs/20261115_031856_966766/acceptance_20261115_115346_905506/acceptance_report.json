@@ -1,0 +1,273 @@
+{
+  "case_id": "UC-10",
+  "status": "PASS",
+  "started": "2026-11-15T03:53:46.905506+00:00",
+  "checks": [
+    {
+      "name": "设备名称",
+      "passed": true,
+      "detail": "要求五个预期设备名；非完整接线证明",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "Router0隧道端点IPv4",
+      "passed": true,
+      "detail": "IOS正式ping要求100%、5/5；实际[('100', '5', '5')]",
+      "evidence": "03_Router0_IPv4_ping.txt"
+    },
+    {
+      "name": "Router2隧道端点IPv4",
+      "passed": true,
+      "detail": "IOS正式ping要求100%、5/5；实际[('100', '5', '5')]",
+      "evidence": "05_Router2_IPv4_ping.txt"
+    },
+    {
+      "name": "Router0隧道配置",
+      "passed": true,
+      "detail": "接口形式隧道源；不匹配项：[]",
+      "evidence": "06_Router0_tunnel_state.txt"
+    },
+    {
+      "name": "Router0隧道状态",
+      "passed": true,
+      "detail": "要求show ipv6 interface brief明确显示Tunnel0 [up/up]",
+      "evidence": "06_Router0_tunnel_state.txt"
+    },
+    {
+      "name": "Router2隧道配置",
+      "passed": true,
+      "detail": "接口形式隧道源；不匹配项：[]",
+      "evidence": "07_Router2_tunnel_state.txt"
+    },
+    {
+      "name": "Router2隧道状态",
+      "passed": true,
+      "detail": "要求show ipv6 interface brief明确显示Tunnel0 [up/up]",
+      "evidence": "07_Router2_tunnel_state.txt"
+    },
+    {
+      "name": "骨干保持纯IPv4",
+      "passed": true,
+      "detail": "中间路由器不得配置IPv6转发、IPv6地址或隧道",
+      "evidence": "08_IPv4_only_core.txt"
+    },
+    {
+      "name": "PC0端到端IPv6",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "10_PC0_IPv6_ping.txt"
+    },
+    {
+      "name": "PC1端到端IPv6",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "13_PC1_IPv6_ping.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "ping 10.0.0.6"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_IPv4_warmup",
+      "evidence": "02_Router0_IPv4_warmup.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "ping 10.0.0.6"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_IPv4_ping",
+      "evidence": "03_Router0_IPv4_ping.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable",
+          "ping 10.0.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_IPv4_warmup",
+      "evidence": "04_Router2_IPv4_warmup.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable",
+          "ping 10.0.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_IPv4_ping",
+      "evidence": "05_Router2_IPv4_ping.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ipv6 interface brief",
+          "show ipv6 route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_tunnel_state",
+      "evidence": "06_Router0_tunnel_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ipv6 interface brief",
+          "show ipv6 route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_tunnel_state",
+      "evidence": "07_Router2_tunnel_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "IPv4_only_core",
+      "evidence": "08_IPv4_only_core.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 2002::10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_IPv6_warmup",
+      "evidence": "09_PC0_IPv6_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 2002::10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_IPv6_ping",
+      "evidence": "10_PC0_IPv6_ping.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "tracert 2002::10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_IPv6_trace",
+      "evidence": "11_PC0_IPv6_trace.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 2001::10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_IPv6_warmup",
+      "evidence": "12_PC1_IPv6_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 2001::10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_IPv6_ping",
+      "evidence": "13_PC1_IPv6_ping.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "tracert 2001::10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_IPv6_trace",
+      "evidence": "14_PC1_IPv6_trace.txt"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "ipv4_gate_passed": true,
+  "path_evidence": [
+    "11_PC0_IPv6_trace.txt",
+    "14_PC1_IPv6_trace.txt"
+  ],
+  "finished": "2026-11-15T03:54:08.908914+00:00"
+}

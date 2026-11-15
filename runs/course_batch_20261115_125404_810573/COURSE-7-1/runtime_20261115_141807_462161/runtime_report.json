@@ -1,0 +1,190 @@
+{
+  "case_id": "COURSE-7-1",
+  "mode": "live_read_only",
+  "started": "2026-11-15T06:18:07.462161+00:00",
+  "status": "ERROR_COLLECTION",
+  "checks": [
+    {
+      "name": "完整物理接线",
+      "passed": true,
+      "detail": "预期7条，实际识别7条；缺失[]；多余[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0实际接口地址/掩码",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0接口up/up",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "03_R0_interfaces.txt"
+    },
+    {
+      "name": "R0已安装静态路由",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "04_R0_routes.txt"
+    },
+    {
+      "name": "R1实际接口地址/掩码",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R1接口up/up",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "06_R1_interfaces.txt"
+    },
+    {
+      "name": "R1已安装静态路由",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "07_R1_routes.txt"
+    },
+    {
+      "name": "R1ACL有序规则",
+      "passed": false,
+      "detail": "实际=[]；预期=['deny tcp 192.168.0.0 0.0.0.255 192.168.1.2 0.0.0.0 eq 80', 'deny tcp 192.168.0.1 0.0.0.0 192.168.1.2 0.0.0.0 eq 20', 'deny tcp 192.168.0.1 0.0.0.0 192.168.1.2 0.0.0.0 eq 21', 'deny ip 192.168.0.2 0.0.0.0 192.168.1.1 0.0.0.0', 'deny icmp 192.168.0.0 0.0.0.255 10.0.0.2 0.0.0.0', 'permit ip any any']",
+      "evidence": "08_R1_acl.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_enable",
+      "evidence": "02_R0_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_interfaces",
+      "evidence": "03_R0_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_routes",
+      "evidence": "04_R0_routes.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_enable",
+      "evidence": "05_R1_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_interfaces",
+      "evidence": "06_R1_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_routes",
+      "evidence": "07_R1_routes.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show access-lists"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_acl",
+      "evidence": "08_R1_acl.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip interface GigabitEthernet0/1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_acl_binding",
+      "evidence": "09_R1_acl_binding.txt"
+    }
+  ],
+  "errors": [
+    "CollectionError: 本次命令缺少完整结果：show ip interface GigabitEthernet0/1"
+  ],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "finished": "2026-11-15T06:18:09.284402+00:00"
+}

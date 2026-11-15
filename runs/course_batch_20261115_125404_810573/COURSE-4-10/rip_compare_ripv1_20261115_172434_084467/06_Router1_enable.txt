@@ -1,0 +1,5 @@
+Router1 (CLI) — 1 command(s): 1 ok
+
+> enable    [ok]
+
+Final prompt: R1#  (mode: enable)

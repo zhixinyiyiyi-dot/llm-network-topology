@@ -1,0 +1,22 @@
+{
+  "case_id": "UC-01",
+  "started": "2026-11-14T11:52:17.798717+00:00",
+  "status": "ERROR",
+  "test_type": "development",
+  "fault_injector": "未记录",
+  "expected_sha256": "5a7d819f155b7ebe096009baaec8d0f7dbc68871cf53df4b759d9ef97d62d487",
+  "model": "deepseek-ai/DeepSeek-V3.2",
+  "rounds": [
+    {
+      "round": 1,
+      "started": "2026-11-14T11:54:53.643791+00:00",
+      "status": "COLLECTING",
+      "confirmed": false
+    }
+  ],
+  "automatic_repair_rounds": 0,
+  "errors": [
+    "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)"
+  ],
+  "finished": "2026-11-14T11:55:18.419268+00:00"
+}

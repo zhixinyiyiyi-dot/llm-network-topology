@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router1 (CLI) — 1 command(s): 1 ok\n\n> enable    [ok]\n\nFinal prompt: Router#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router1 (CLI) — 1 command(s): 1 ok\n\n> enable    [ok]\n\nFinal prompt: Router#  (mode: enable)"
+  },
+  "isError": false
+}

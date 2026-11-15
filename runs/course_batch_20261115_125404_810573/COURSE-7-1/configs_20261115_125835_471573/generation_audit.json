@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-11-15T04:58:35.474571+00:00",
+  "source": "C:\\Users\\admin\\Documents\\计网拓展\\runs\\course_batch_20261115_125404_810573\\COURSE-7-1\\topology.yaml",
+  "source_sha256": "8e2f89b485dfe27af7f29676128c261ed121d96e33920bccd09a4f02c1fbb123",
+  "validation_passed": true,
+  "command_guard_passed": true,
+  "deployed": false,
+  "migrate_from_rip": false,
+  "replace_ospf_process": null,
+  "omit_nat": false,
+  "from_uc04": false,
+  "files": {
+    "R0.cfg": "c34460f72abb93b014eabee6f288a293c3867efb5081b3f6867d27cd7c5ac819",
+    "R1.cfg": "e9c42750baa517e0d985b15cffbe56557fb8f50d04ec2e9f383bd19d3c345c95",
+    "Switch0.cfg": "d9ec801464a4875881339807e6dc9cecca464a96aa7b63d4b3c99cd7093817df",
+    "Switch1.cfg": "efc6f6b1ce600064e9ecdebf2b680fb92bdee15bdc27492070c51e17d739ca4f",
+    "PT_GUIDE.txt": "009b4d60d208392334942789aa4cab7864237759a497df9f38dc400c045561d2"
+  }
+}

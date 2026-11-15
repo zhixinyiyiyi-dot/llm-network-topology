@@ -1,0 +1,222 @@
+case_id: UC-05
+status: ready
+questions: []
+devices:
+- name: PC0
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.1.1/24
+  default_gateway: 192.168.1.254
+  routing: []
+- name: PC1
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.1.2/24
+  default_gateway: 192.168.1.254
+  routing: []
+- name: PC2
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.1.3/24
+  default_gateway: 192.168.1.254
+  routing: []
+- name: PC3
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.2.1/24
+  default_gateway: 192.168.2.254
+  routing: []
+- name: PC4
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.2.2/24
+  default_gateway: 192.168.2.254
+  routing: []
+- name: PC5
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.2.3/24
+  default_gateway: 192.168.2.254
+  routing: []
+- name: Switch0
+  type: multilayer_switch
+  ip_routing: true
+  interfaces:
+  - name: FastEthernet0/1
+    ipv4: null
+    switchport_mode: access
+    access_vlan: 10
+  - name: FastEthernet0/2
+    ipv4: null
+    switchport_mode: access
+    access_vlan: 10
+  - name: FastEthernet0/3
+    ipv4: null
+    switchport_mode: access
+    access_vlan: 10
+  - name: FastEthernet0/4
+    ipv4: null
+    switchport_mode: access
+    access_vlan: 20
+  - name: FastEthernet0/5
+    ipv4: null
+    switchport_mode: access
+    access_vlan: 20
+  - name: FastEthernet0/6
+    ipv4: null
+    switchport_mode: access
+    access_vlan: 20
+  - name: Vlan10
+    ipv4: 192.168.1.254/24
+    vlan_id: 10
+  - name: Vlan20
+    ipv4: 192.168.2.254/24
+    vlan_id: 20
+  default_gateway: null
+  routing: []
+links:
+- a:
+    device: PC0
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/1
+  dce: null
+- a:
+    device: PC1
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/2
+  dce: null
+- a:
+    device: PC2
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/3
+  dce: null
+- a:
+    device: PC3
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/4
+  dce: null
+- a:
+    device: PC4
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/5
+  dce: null
+- a:
+    device: PC5
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/6
+  dce: null
+vlans:
+- id: 10
+  name: FINANCE
+- id: 20
+  name: MARKETING
+checks:
+- type: ping
+  source: PC0
+  destination: 192.168.1.2
+- type: ping
+  source: PC0
+  destination: 192.168.1.3
+- type: ping
+  source: PC0
+  destination: 192.168.2.1
+- type: ping
+  source: PC0
+  destination: 192.168.2.2
+- type: ping
+  source: PC0
+  destination: 192.168.2.3
+- type: ping
+  source: PC1
+  destination: 192.168.1.1
+- type: ping
+  source: PC1
+  destination: 192.168.1.3
+- type: ping
+  source: PC1
+  destination: 192.168.2.1
+- type: ping
+  source: PC1
+  destination: 192.168.2.2
+- type: ping
+  source: PC1
+  destination: 192.168.2.3
+- type: ping
+  source: PC2
+  destination: 192.168.1.1
+- type: ping
+  source: PC2
+  destination: 192.168.1.2
+- type: ping
+  source: PC2
+  destination: 192.168.2.1
+- type: ping
+  source: PC2
+  destination: 192.168.2.2
+- type: ping
+  source: PC2
+  destination: 192.168.2.3
+- type: ping
+  source: PC3
+  destination: 192.168.1.1
+- type: ping
+  source: PC3
+  destination: 192.168.1.2
+- type: ping
+  source: PC3
+  destination: 192.168.1.3
+- type: ping
+  source: PC3
+  destination: 192.168.2.2
+- type: ping
+  source: PC3
+  destination: 192.168.2.3
+- type: ping
+  source: PC4
+  destination: 192.168.1.1
+- type: ping
+  source: PC4
+  destination: 192.168.1.2
+- type: ping
+  source: PC4
+  destination: 192.168.1.3
+- type: ping
+  source: PC4
+  destination: 192.168.2.1
+- type: ping
+  source: PC4
+  destination: 192.168.2.3
+- type: ping
+  source: PC5
+  destination: 192.168.1.1
+- type: ping
+  source: PC5
+  destination: 192.168.1.2
+- type: ping
+  source: PC5
+  destination: 192.168.1.3
+- type: ping
+  source: PC5
+  destination: 192.168.2.1
+- type: ping
+  source: PC5
+  destination: 192.168.2.2
+variant: svi

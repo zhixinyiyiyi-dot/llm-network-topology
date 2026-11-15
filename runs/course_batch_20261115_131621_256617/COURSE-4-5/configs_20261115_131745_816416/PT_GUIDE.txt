@@ -1,0 +1,52 @@
+Packet Tracer 人工部署指南
+生成配置尚未执行；本程序不打开 PT、不连接任何设备。
+仅在本地仿真环境使用。先另存一个副本再部署。
+下列配置面向新建或已确认没有冲突配置的设备，默认不会清除旧配置；指定 --migrate-from-rip 时会移除 RIP 路由进程。
+若在已有同名同接口拓扑上使用，应先审查现有配置。
+
+一、设备、接口及接线
+R0 GigabitEthernet0/2 <-> R1 GigabitEthernet0/2
+Switch0 FastEthernet0/3 <-> R0 GigabitEthernet0/0
+PC0 FastEthernet0 <-> Switch0 FastEthernet0/1
+PC2 FastEthernet0 <-> Switch0 FastEthernet0/2
+Switch1 FastEthernet0/3 <-> R0 GigabitEthernet0/1
+PC1 FastEthernet0 <-> Switch1 FastEthernet0/1
+PC3 FastEthernet0 <-> Switch1 FastEthernet0/2
+Switch2 FastEthernet0/3 <-> R1 GigabitEthernet0/0
+PC4 FastEthernet0 <-> Switch2 FastEthernet0/1
+PC6 FastEthernet0 <-> Switch2 FastEthernet0/2
+Switch3 FastEthernet0/1 <-> R1 GigabitEthernet0/1
+PC5 FastEthernet0 <-> Switch3 FastEthernet0/2
+PC7 FastEthernet0 <-> Switch3 FastEthernet0/3
+
+路由器需具备 YAML 中列出的串行接口；按现有 UC-01 拓扑选型与接线。
+
+二、PC 的 Desktop > IP Configuration（Static）
+PC0 FastEthernet0：IP 218.75.230.33；掩码 255.255.255.240；网关 218.75.230.46
+PC2 FastEthernet0：IP 218.75.230.34；掩码 255.255.255.240；网关 218.75.230.46
+PC1 FastEthernet0：IP 218.75.230.1；掩码 255.255.255.224；网关 218.75.230.30
+PC3 FastEthernet0：IP 218.75.230.2；掩码 255.255.255.224；网关 218.75.230.30
+PC4 FastEthernet0：IP 218.75.230.65；掩码 255.255.255.240；网关 218.75.230.78
+PC6 FastEthernet0：IP 218.75.230.66；掩码 255.255.255.240；网关 218.75.230.78
+PC5 FastEthernet0：IP 218.75.230.49；掩码 255.255.255.240；网关 218.75.230.62
+PC7 FastEthernet0：IP 218.75.230.50；掩码 255.255.255.240；网关 218.75.230.62
+
+三、部署与验证
+人工审查所有 .cfg 后，再自行决定是否粘贴到对应 PT 路由器的 CLI。
+在设备 > 提示符下粘贴；若处于配置模式，先输入 end。
+出现密码提示应停下来检查，不要继续盲目粘贴。
+先配置路由器，再设置 PC 地址。等待接口与路由收敛后验证。
+在相应路由器的特权模式执行 show ip interface brief、show ip protocols、show ip route。
+在对应 PC 的 Command Prompt 执行以下测试：
+PC0：ping 218.75.230.1
+PC0：ping 218.75.230.65
+PC0：ping 218.75.230.49
+PC5：ping 218.75.230.33
+PC0 可对checks中对应目标执行tracert，保存实际路径结果。
+以上是人工验证步骤，不是自动验收。
+确认结果后，在路由器 # 提示符下执行 copy running-config startup-config，按回车接受文件名。
+最后保存 .pkt 文件。
+
+范围：IPv4/RIPv2/OSPF/eBGP 配置模板；支持单地址NAPT、静态路由；支持VLAN access/trunk、单臂子接口与SVI；支持扩展IPv4 ACL及UC07指定策略；并非状态防火墙。
+内置白名单和危险词检查仅审查本程序生成的命令，不是完整 Cisco CLI 语法/语义分析器。
+本程序没有自动部署功能，也未实现自动部署前 CONFIRM 门。

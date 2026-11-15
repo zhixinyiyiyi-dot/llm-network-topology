@@ -1,0 +1,258 @@
+{
+  "case_id": "UC-09",
+  "started": "2026-11-14T19:02:22.527079+00:00",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "设备名称",
+      "passed": true,
+      "detail": "要求Router0和Router1存在。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "R0本地AS与router-id",
+      "passed": false,
+      "detail": "要求AS100、router-id 10.1.0.1。",
+      "evidence": "02_R0_BGP_state.json"
+    },
+    {
+      "name": "R0eBGP邻居",
+      "passed": true,
+      "detail": "邻居10.0.0.2为AS200，State/PfxRcd应为已收前缀的数值。",
+      "evidence": "02_R0_BGP_state.json"
+    },
+    {
+      "name": "R0BGP学习前缀",
+      "passed": true,
+      "detail": "BGP表应有20.0.0.0/24，下一跳10.0.0.2，AS_PATH含对端AS200。",
+      "evidence": "02_R0_BGP_state.json"
+    },
+    {
+      "name": "R0实际BGP路由",
+      "passed": true,
+      "detail": "IP路由表应以B、AD20安装20.0.0.0/24，而不是依靠直连或静态路由。",
+      "evidence": "02_R0_BGP_state.json"
+    },
+    {
+      "name": "R1本地AS与router-id",
+      "passed": false,
+      "detail": "要求AS200、router-id 20.0.0.1。",
+      "evidence": "03_R1_BGP_state.json"
+    },
+    {
+      "name": "R1eBGP邻居",
+      "passed": true,
+      "detail": "邻居10.0.0.1为AS100，State/PfxRcd应为已收前缀的数值。",
+      "evidence": "03_R1_BGP_state.json"
+    },
+    {
+      "name": "R1BGP学习前缀",
+      "passed": true,
+      "detail": "BGP表应有10.1.0.0/24，下一跳10.0.0.1，AS_PATH含对端AS100。",
+      "evidence": "03_R1_BGP_state.json"
+    },
+    {
+      "name": "R1实际BGP路由",
+      "passed": true,
+      "detail": "IP路由表应以B、AD20安装10.1.0.0/24，而不是依靠直连或静态路由。",
+      "evidence": "03_R1_BGP_state.json"
+    },
+    {
+      "name": "原宣告与直连优先",
+      "passed": true,
+      "detail": "R0保留宣告10.0.0.0/24，R1对同一互联前缀保留C路由，不误判为BGP失败。",
+      "evidence": "02_R0_BGP_state.json, 03_R1_BGP_state.json"
+    },
+    {
+      "name": "R0到对端Loopback",
+      "passed": true,
+      "detail": "要求IOS正式ping为100%、5/5；识别到[('100', '5', '5')]。",
+      "evidence": "05_R0_ping.json"
+    },
+    {
+      "name": "R0对端路径",
+      "passed": true,
+      "detail": "实际跳记录[['10.0.0.2']]；要求一跳到承载目标Loopback的对端路由器（20.0.0.1或其链路接口10.0.0.2响应）。",
+      "evidence": "06_R0_trace.json"
+    },
+    {
+      "name": "R1到对端Loopback",
+      "passed": true,
+      "detail": "要求IOS正式ping为100%、5/5；识别到[('100', '5', '5')]。",
+      "evidence": "08_R1_ping.json"
+    },
+    {
+      "name": "R1对端路径",
+      "passed": true,
+      "detail": "实际跳记录[['10.0.0.1']]；要求一跳到承载目标Loopback的对端路由器（10.1.0.1或其链路接口10.0.0.1响应）。",
+      "evidence": "09_R1_trace.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "status": "RETURNED",
+      "evidence": "01_topology.json"
+    },
+    {
+      "index": 2,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip bgp summary",
+          "show ip bgp",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_BGP_state",
+      "status": "RETURNED",
+      "evidence": "02_R0_BGP_state.json"
+    },
+    {
+      "index": 3,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip bgp summary",
+          "show ip bgp",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_BGP_state",
+      "status": "RETURNED",
+      "evidence": "03_R1_BGP_state.json"
+    },
+    {
+      "index": 4,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "ping 20.0.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_ping_warmup",
+      "status": "RETURNED",
+      "evidence": "04_R0_ping_warmup.json"
+    },
+    {
+      "index": 5,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "ping 20.0.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_ping",
+      "status": "RETURNED",
+      "evidence": "05_R0_ping.json"
+    },
+    {
+      "index": 6,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "traceroute 20.0.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_trace",
+      "status": "RETURNED",
+      "evidence": "06_R0_trace.json"
+    },
+    {
+      "index": 7,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "ping 10.1.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_ping_warmup",
+      "status": "RETURNED",
+      "evidence": "07_R1_ping_warmup.json"
+    },
+    {
+      "index": 8,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "ping 10.1.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_ping",
+      "status": "RETURNED",
+      "evidence": "08_R1_ping.json"
+    },
+    {
+      "index": 9,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "traceroute 10.1.0.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_trace",
+      "status": "RETURNED",
+      "evidence": "09_R1_trace.json"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "adaptation": "original 10.0.0.0/24 advertisement retained; additional AS100 Loopback10.1/24 makes remote BGP RIB installation distinguishable from connected link",
+  "original_link_prefix_seen_in_peer_bgp_table": true,
+  "finished": "2026-11-14T19:02:30.686924+00:00"
+}

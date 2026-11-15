@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router0 (CLI) — 1 command(s): 1 ok\n(console primed: answered the initial dialog / Press RETURN)\n\n> enable    [ok]\n\nFinal prompt: R0#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router0 (CLI) — 1 command(s): 1 ok\n(console primed: answered the initial dialog / Press RETURN)\n\n> enable    [ok]\n\nFinal prompt: R0#  (mode: enable)"
+  },
+  "isError": false
+}

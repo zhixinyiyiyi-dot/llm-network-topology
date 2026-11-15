@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC6 (Command Prompt) — 1 command(s): 1 ok\n\n> ipconfig    [ok]\nFastEthernet0 Connection:(default port)\n\n   Connection-specific DNS Suffix..: \n   Link-local IPv6 Address.........: FE80::260:2FFF:FE16:7987\n   IPv6 Address....................: ::\n   IPv4 Address....................: 218.75.230.66\n   Subnet Mask.....................: 255.255.255.240\n   Default Gateway.................: ::\n                                     218.75.230.78\n\nBluetooth Connection:\n\n   Connection-specific DNS Suffix..: \n   Link-local IPv6 Address.........: ::\n   IPv6 Address....................: ::\n   IPv4 Address....................: 0.0.0.0\n   Subnet Mask.....................: 0.0.0.0\n   Default Gateway.................: ::\n                                     0.0.0.0\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC6 (Command Prompt) — 1 command(s): 1 ok\n\n> ipconfig    [ok]\nFastEthernet0 Connection:(default port)\n\n   Connection-specific DNS Suffix..: \n   Link-local IPv6 Address.........: FE80::260:2FFF:FE16:7987\n   IPv6 Address....................: ::\n   IPv4 Address....................: 218.75.230.66\n   Subnet Mask.....................: 255.255.255.240\n   Default Gateway.................: ::\n                                     218.75.230.78\n\nBluetooth Connection:\n\n   Connection-specific DNS Suffix..: \n   Link-local IPv6 Address.........: ::\n   IPv6 Address....................: ::\n   IPv4 Address....................: 0.0.0.0\n   Subnet Mask.....................: 0.0.0.0\n   Default Gateway.................: ::\n                                     0.0.0.0\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

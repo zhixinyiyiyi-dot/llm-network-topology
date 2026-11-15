@@ -1,0 +1,13 @@
+{
+  "device": "Router2",
+  "commands": [
+    "enable",
+    "configure terminal",
+    "interface GigabitEthernet0/0",
+    "no shutdown",
+    "exit",
+    "end"
+  ],
+  "approved": true,
+  "timestamp": "2026-11-14T12:09:28.795670+00:00"
+}

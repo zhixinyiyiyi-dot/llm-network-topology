@@ -1,0 +1,26 @@
+{
+  "model": "deepseek-ai/DeepSeek-V3.2",
+  "response_id": "01a1d962f266455402965c50118682cf",
+  "finish_reason": "stop",
+  "usage": {
+    "completion_tokens": 913,
+    "prompt_tokens": 785,
+    "total_tokens": 1698,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 785
+  }
+}

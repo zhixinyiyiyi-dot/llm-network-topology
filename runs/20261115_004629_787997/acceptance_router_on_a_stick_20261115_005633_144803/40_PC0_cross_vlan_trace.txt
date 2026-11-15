@@ -1,0 +1,14 @@
+PC0 (Command Prompt) — 1 command(s): 1 TIMEOUT
+
+> tracert 192.168.2.1    [TIMEOUT]
+Tracing route to 192.168.2.1 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      192.168.1.254
+  2   *         *         *         Request timed out.
+  3   *         *         *         Request timed out.
+  4   *         *         
+Control-C
+^C
+  ↳ aborted after 45s without the prompt coming back
+
+Final prompt: C:\>  (mode: user)

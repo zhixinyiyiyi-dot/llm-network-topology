@@ -1,0 +1,13 @@
+PC1 (Command Prompt) — 1 command(s): 1 TIMEOUT
+
+> tracert 2001::10    [TIMEOUT]
+Tracing route to 2001::10 over a maximum of 30 hops: 
+
+  1   *         *         *         Request timed out.
+  2   *         *         *         Request timed out.
+  3   *         *         
+Control-C
+^C
+  ↳ aborted after 45s without the prompt coming back
+
+Final prompt: C:\>  (mode: user)

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Server0 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 10.1.0.10    [ok]\nPinging 10.1.0.10 with 32 bytes of data:\n\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\n\nPing statistics for 10.1.0.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Server0 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 10.1.0.10    [ok]\nPinging 10.1.0.10 with 32 bytes of data:\n\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\nReply from 10.1.0.10: bytes=32 time<1ms TTL=125\n\nPing statistics for 10.1.0.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

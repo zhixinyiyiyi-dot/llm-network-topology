@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "errors": [
+    {
+      "code": "COURSE_INTENT",
+      "path": "devices",
+      "message": "与本课程明确需求不一致；不自动修正模型输出"
+    },
+    {
+      "code": "COURSE_INTENT",
+      "path": "checks",
+      "message": "与本课程明确需求不一致；不自动修正模型输出"
+    }
+  ],
+  "first_output": true,
+  "manual_changes": false
+}

@@ -1,0 +1,18 @@
+用例：UC-08 双出口冗余
+全部设备在本地Packet Tracer，不能连接真实网络。
+设备：R0/R1/R2（公司内部三台router）、R3/R4（两家模拟ISP router）、Switch0（switch）、PC0（pc）、Server0（server）。无NAT、无ACL、vlans=[]，不加variant。
+物理连接：PC0 FastEthernet0—R0 GigabitEthernet0/0；R0 GigabitEthernet0/1—R1 GigabitEthernet0/0；R0 GigabitEthernet0/2—R2 GigabitEthernet0/0；R1 GigabitEthernet0/1—R3 GigabitEthernet0/0；R2 GigabitEthernet0/1—R4 GigabitEthernet0/0；R3 GigabitEthernet0/1—Switch0 FastEthernet0/1；R4 GigabitEthernet0/1—Switch0 FastEthernet0/2；Server0 FastEthernet0—Switch0 FastEthernet0/3。全部dce:null。
+R0 G0/0=10.1.0.254/16、G0/1=10.0.1.1/30、G0/2=10.0.2.1/30。
+R1 G0/0=10.0.1.2/30、G0/1=198.51.100.1/30；R2 G0/0=10.0.2.2/30、G0/1=198.51.100.5/30。
+R3 G0/0=198.51.100.2/30、G0/1=203.0.113.1/24；R4 G0/0=198.51.100.6/30、G0/1=203.0.113.2/24。
+以上接口字段必须使用完整名称GigabitEthernet0/0等，不能用G0/0缩写。
+PC0 FastEthernet0=10.1.0.10/16，网关10.1.0.254；Server0 FastEthernet0=203.0.113.100/24，网关203.0.113.1。其他设备网关null。
+Switch0只列Fa0/1、Fa0/2、Fa0/3的完整名称FastEthernet0/1等、ipv4:null，不加VLAN/switchport字段，使用默认VLAN1。
+R0/R1/R2各有一项protocol:ospf、process_id:100，所有本机已编址接口都用精确子网及反掩码列入area0。R0的passive_interfaces=[GigabitEthernet0/0]；R1/R2的passive_interfaces=[GigabitEthernet0/1]。ISP不运行OSPF。
+R0另有一项protocol:static，routes精确两条：{prefix:0.0.0.0/0,next_hop:198.51.100.2,distance:1,recursive:true}和{prefix:0.0.0.0/0,next_hop:198.51.100.6,distance:10,recursive:true}。核心递归下一跳依赖OSPF学习的WAN网段，不经默认路由进行解析。
+R1另有一项static，routes:[{prefix:0.0.0.0/0,next_hop:198.51.100.2,distance:1}]；R2另有static，routes:[{prefix:0.0.0.0/0,next_hop:198.51.100.6,distance:1}]。
+R3只有static，routes两条：{prefix:10.1.0.0/16,next_hop:198.51.100.1,distance:1}和{prefix:10.1.0.0/16,next_hop:203.0.113.2,distance:10}。这是服务器默认网关在主WAN断开时经ISP2返回总部的必要备用路径。
+R4只有static，routes:[{prefix:10.1.0.0/16,next_hop:198.51.100.5,distance:1}]。
+除R0两条默认路由外，其他静态条目不加recursive字段。PC、Server、Switch routing=[]。
+checks精确两项：PC0 ping 203.0.113.100、Server0 ping 10.1.0.10；destination必须为IPv4不是设备名。
+后续测试：正常时主出口AD1；手工关闭R1 GigabitEthernet0/1，OSPF撤销主WAN前缀，核心备用默认路由AD10接管，PC路径应改经R2/R4；恢复接口后再验收。此YAML只描述正常目标，不执行shutdown，不自动修改配置。

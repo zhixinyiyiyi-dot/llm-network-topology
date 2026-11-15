@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC0 (Command Prompt) — 1 command(s): 1 ok\n\n> tracert 192.168.16.130    [ok]\nTracing route to 192.168.16.130 over a maximum of 30 hops: \n\n  1   0 ms      0 ms      0 ms      192.168.16.126\n  2   1 ms      16 ms     24 ms     30.0.0.2\n  3   8 ms      0 ms      0 ms      192.168.16.130\n\nTrace complete.\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC0 (Command Prompt) — 1 command(s): 1 ok\n\n> tracert 192.168.16.130    [ok]\nTracing route to 192.168.16.130 over a maximum of 30 hops: \n\n  1   0 ms      0 ms      0 ms      192.168.16.126\n  2   1 ms      16 ms     24 ms     30.0.0.2\n  3   8 ms      0 ms      0 ms      192.168.16.130\n\nTrace complete.\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

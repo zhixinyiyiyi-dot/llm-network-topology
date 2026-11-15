@@ -1,0 +1,86 @@
+{
+  "mode": "offline_guard_and_validator_tests",
+  "started": "2026-11-15T05:43:21.949907+00:00",
+  "tests": [
+    {
+      "name": "合法模板正例",
+      "passed": true,
+      "detail": "合法模板允许，仅离线检查"
+    },
+    {
+      "name": "黑名单reload",
+      "passed": true,
+      "detail": "ALERT_BLOCKED 命令被安全检查拒绝：'reload'"
+    },
+    {
+      "name": "黑名单write erase",
+      "passed": true,
+      "detail": "ALERT_BLOCKED 命令被安全检查拒绝：'write erase'"
+    },
+    {
+      "name": "黑名单format",
+      "passed": true,
+      "detail": "ALERT_BLOCKED 命令被安全检查拒绝：'format flash:'"
+    },
+    {
+      "name": "未知CLI白名单",
+      "passed": true,
+      "detail": "ALERT_BLOCKED 命令被安全检查拒绝：'show version'"
+    },
+    {
+      "name": "不完整IP命令",
+      "passed": true,
+      "detail": "ALERT_BLOCKED 命令被安全检查拒绝：'ip address 192.168.1.1'"
+    },
+    {
+      "name": "命令拼接",
+      "passed": true,
+      "detail": "ALERT_BLOCKED 命令被安全检查拒绝：'no shutdown; reload'"
+    },
+    {
+      "name": "正确DSL正例",
+      "passed": true,
+      "detail": "现有UC01修正后目标应合法"
+    },
+    {
+      "name": "非法地址/掩码",
+      "passed": true,
+      "detail": "拦截代码：['IP_INVALID', 'RIP_NETWORK_UNUSED', 'GATEWAY_INVALID']"
+    },
+    {
+      "name": "错误终端网关",
+      "passed": true,
+      "detail": "拦截代码：['GATEWAY_INVALID']"
+    },
+    {
+      "name": "非法重叠地址",
+      "passed": true,
+      "detail": "拦截代码：['DUP_IP', 'LINK_SUBNET', 'DISCONNECTED_SUBNET', 'RIP_NETWORK_UNUSED']"
+    },
+    {
+      "name": "网关/VLAN一致性",
+      "passed": true,
+      "detail": "拦截代码：['DISCONNECTED_SUBNET', 'GATEWAY_INVALID', 'UC05_ACCESS']"
+    },
+    {
+      "name": "越界接口",
+      "passed": true,
+      "detail": "接口不属于预期拓扑。"
+    },
+    {
+      "name": "未知修复动作",
+      "passed": true,
+      "detail": "操作字段、类型或目标设备不在白名单。"
+    },
+    {
+      "name": "额外任意命令",
+      "passed": true,
+      "detail": "操作字段、类型或目标设备不在白名单。"
+    }
+  ],
+  "device_writes": 0,
+  "api_calls": 0,
+  "scope": "真实调用现有编译器guard、DSL校验器及修复计划护栏；不是完整IOS语法分析器、Batfish或正式设备排障",
+  "status": "PASS",
+  "finished": "2026-11-15T05:43:21.984977+00:00"
+}

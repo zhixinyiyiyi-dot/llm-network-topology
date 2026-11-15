@@ -1,0 +1,12 @@
+PC1 (Command Prompt) — 1 command(s): 1 ok
+
+> tracert 218.75.230.1    [ok]
+Tracing route to 218.75.230.1 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      192.168.0.254
+  2   0 ms      0 ms      6 ms      218.75.230.254
+  3   0 ms      0 ms      0 ms      218.75.230.1
+
+Trace complete.
+
+Final prompt: C:\>  (mode: user)

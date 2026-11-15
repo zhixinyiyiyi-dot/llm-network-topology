@@ -1,0 +1,6 @@
+﻿case_id,first_generation_status,compile_status,runtime_status,automatic_repair_rounds
+COURSE-4-5,FAIL,NOT_RUN,PENDING,
+COURSE-4-10,FAIL,NOT_RUN,PENDING,
+COURSE-4-11,FAIL,NOT_RUN,PENDING,
+COURSE-6-6,FAIL,NOT_RUN,PENDING,
+COURSE-7-1,FAIL,NOT_RUN,PENDING,

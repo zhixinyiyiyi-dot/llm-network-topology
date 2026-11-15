@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router1 (CLI) — 1 command(s): 1 ok\n\n> show ip interface brief    [ok]\nInterface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0     unassigned      YES unset  administratively down down \nGigabitEthernet0/1     unassigned      YES unset  administratively down down \nGigabitEthernet0/2     unassigned      YES unset  administratively down down \nSerial0/0/0            10.0.0.2        YES manual up                    up \nSerial0/0/1            20.0.0.1        YES manual up                    up \nVlan1                  unassigned      YES unset  administratively down down\n\nFinal prompt: R1#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router1 (CLI) — 1 command(s): 1 ok\n\n> show ip interface brief    [ok]\nInterface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0     unassigned      YES unset  administratively down down \nGigabitEthernet0/1     unassigned      YES unset  administratively down down \nGigabitEthernet0/2     unassigned      YES unset  administratively down down \nSerial0/0/0            10.0.0.2        YES manual up                    up \nSerial0/0/1            20.0.0.1        YES manual up                    up \nVlan1                  unassigned      YES unset  administratively down down\n\nFinal prompt: R1#  (mode: enable)"
+  },
+  "isError": false
+}

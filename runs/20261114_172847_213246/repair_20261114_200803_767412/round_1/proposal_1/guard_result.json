@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "commands": {
+    "R2": [
+      "enable",
+      "configure terminal",
+      "interface GigabitEthernet0/0",
+      "no shutdown",
+      "exit",
+      "end"
+    ]
+  }
+}

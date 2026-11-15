@@ -1,0 +1,5 @@
+{
+  "source": "实验4-5 IPv4地址无分类编址",
+  "adaptation": "按用户实际原题拓扑纠正PC1/PC2和PC5/PC6映射及Switch3端口；旧需求由助手整理错误，不归因模型。沿用原CIDR第一方案，第二编址方案未覆盖。",
+  "mapping_revision": "original_topology_v2"
+}

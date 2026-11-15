@@ -1,0 +1,192 @@
+{
+  "case_id": "UC-04",
+  "stage": "before",
+  "started": "2026-11-14T16:12:50.846125+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "设备存在",
+      "passed": true,
+      "detail": "找到6个预期设备名称。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "R0默认路由",
+      "passed": true,
+      "detail": "要求默认静态路由指向218.75.230.254。",
+      "evidence": "02_R0_config_route.json"
+    },
+    {
+      "name": "NAPT阶段",
+      "passed": true,
+      "detail": "after应启用指定NAPT规则；before不得启用源地址转换。",
+      "evidence": "02_R0_config_route.json"
+    },
+    {
+      "name": "ISP仅有预期直连路由",
+      "passed": true,
+      "detail": "不靠ISP额外私网/默认路由绕过NAT需求。",
+      "evidence": "03_R1_routes.json"
+    },
+    {
+      "name": "外网基础连通",
+      "passed": true,
+      "detail": "R0自身到Server0的正式ping应为100%。",
+      "evidence": "05_R0_server_ping.json"
+    },
+    {
+      "name": "PC0到Server0",
+      "passed": true,
+      "detail": "未启用NAT的预期为4发0收4丢；实际(4, 0, 4)。",
+      "evidence": "07_PC0_ping.json"
+    },
+    {
+      "name": "PC1到Server0",
+      "passed": true,
+      "detail": "未启用NAT的预期为4发0收4丢；实际(4, 0, 4)。",
+      "evidence": "09_PC1_ping.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "status": "RETURNED",
+      "evidence": "01_topology.json"
+    },
+    {
+      "index": 2,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_config_route",
+      "status": "RETURNED",
+      "evidence": "02_R0_config_route.json"
+    },
+    {
+      "index": 3,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_routes",
+      "status": "RETURNED",
+      "evidence": "03_R1_routes.json"
+    },
+    {
+      "index": 4,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "ping 218.75.230.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_server_warmup",
+      "status": "RETURNED",
+      "evidence": "04_R0_server_warmup.json"
+    },
+    {
+      "index": 5,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "ping 218.75.230.1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_server_ping",
+      "status": "RETURNED",
+      "evidence": "05_R0_server_ping.json"
+    },
+    {
+      "index": 6,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_warmup",
+      "status": "RETURNED",
+      "evidence": "06_PC0_warmup.json"
+    },
+    {
+      "index": 7,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ping",
+      "status": "RETURNED",
+      "evidence": "07_PC0_ping.json"
+    },
+    {
+      "index": 8,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_warmup",
+      "status": "RETURNED",
+      "evidence": "08_PC1_warmup.json"
+    },
+    {
+      "index": 9,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ping",
+      "status": "RETURNED",
+      "evidence": "09_PC1_ping.json"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "finished": "2026-11-14T16:14:34.039313+00:00"
+}

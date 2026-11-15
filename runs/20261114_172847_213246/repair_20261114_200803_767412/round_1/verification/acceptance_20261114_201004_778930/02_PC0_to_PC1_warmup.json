@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC0 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.16.130    [ok]\nPinging 192.168.16.130 with 32 bytes of data:\n\nRequest timed out.\nReply from 192.168.16.130: bytes=32 time=16ms TTL=126\nReply from 192.168.16.130: bytes=32 time=1ms TTL=126\nReply from 192.168.16.130: bytes=32 time=13ms TTL=126\n\nPing statistics for 192.168.16.130:\n    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 1ms, Maximum = 16ms, Average = 10ms\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC0 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.16.130    [ok]\nPinging 192.168.16.130 with 32 bytes of data:\n\nRequest timed out.\nReply from 192.168.16.130: bytes=32 time=16ms TTL=126\nReply from 192.168.16.130: bytes=32 time=1ms TTL=126\nReply from 192.168.16.130: bytes=32 time=13ms TTL=126\n\nPing statistics for 192.168.16.130:\n    Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 1ms, Maximum = 16ms, Average = 10ms\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

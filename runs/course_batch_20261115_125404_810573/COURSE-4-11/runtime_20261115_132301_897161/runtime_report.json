@@ -1,0 +1,21 @@
+{
+  "case_id": "COURSE-4-11",
+  "mode": "live_read_only",
+  "started": "2026-11-15T05:23:01.897161+00:00",
+  "status": "ERROR",
+  "checks": [],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    }
+  ],
+  "errors": [
+    "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)"
+  ],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "finished": "2026-11-15T05:23:02.956655+00:00"
+}

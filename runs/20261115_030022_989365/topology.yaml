@@ -1,0 +1,63 @@
+case_id: UC-09
+status: ready
+questions: []
+devices:
+- name: R0
+  type: router
+  default_gateway: null
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 10.0.0.1/24
+  - name: Loopback0
+    ipv4: 10.1.0.1/24
+  routing:
+  - protocol: bgp
+    local_as: 100
+    router_id: 10.1.0.1
+    networks:
+    - 10.0.0.0/24
+    - 10.1.0.0/24
+    neighbors:
+    - address: 10.0.0.2
+      remote_as: 200
+  nat: null
+  ip_routing: true
+  acls: []
+- name: R1
+  type: router
+  default_gateway: null
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 10.0.0.2/24
+  - name: Loopback0
+    ipv4: 20.0.0.1/24
+  routing:
+  - protocol: bgp
+    local_as: 200
+    router_id: 20.0.0.1
+    networks:
+    - 20.0.0.0/24
+    neighbors:
+    - address: 10.0.0.1
+      remote_as: 100
+  nat: null
+  ip_routing: true
+  acls: []
+links:
+- a:
+    device: R0
+    interface: GigabitEthernet0/0
+  b:
+    device: R1
+    interface: GigabitEthernet0/0
+  dce: null
+vlans: []
+checks:
+- type: ping
+  source: R0
+  destination: 20.0.0.1
+  expect: allow
+- type: ping
+  source: R1
+  destination: 10.1.0.1
+  expect: allow

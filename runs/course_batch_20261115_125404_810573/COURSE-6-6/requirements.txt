@@ -1,0 +1,10 @@
+课内来源：实验6-6 万维网文档与HTTP
+范围说明：沿用原PC-Server直连/IP，新增course_index.html作为本次模型生成的可辨识页面；HTTP服务/页面由生成指南人工设置，不声称CLI自动部署应用服务。
+请生成最终目标DSL，case_id=COURSE-6-6，status=ready、questions=[]、vlans=[]。
+按以下明确接口/接线与业务策略规划。不要自行增加默认路由、NAT、VLAN或其他服务。
+设备PC0，类型pc；接口：FastEthernet0=192.168.0.1/24；终端网关：None。
+设备Server0，类型server；接口：FastEthernet0=192.168.0.2/24；终端网关：None。
+服务：HTTP=True、FTP=False；pages空列表表示保留默认页面。
+网页文件名course_index.html，内容为合法HTML，正文包含唯一标记COURSE_HTTP_OK；不要输出JavaScript或外链。
+物理接线：PC0 FastEthernet0—Server0 FastEthernet0；DCE=None
+验证条目精确如下（type=ping，destination填IP）：PC0 到 192.168.0.2，预期allow

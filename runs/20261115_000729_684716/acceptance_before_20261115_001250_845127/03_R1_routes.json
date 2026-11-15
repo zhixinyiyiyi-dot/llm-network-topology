@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router1 (CLI) — 2 command(s): 2 ok\n\n> enable    [ok]\n\nR1#show ip route    [ok]\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area\n       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2\n       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP\n       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area\n       * - candidate default, U - per-user static route, o - ODR\n       P - periodic downloaded static route\n\nGateway of last resort is not set\n\n     218.75.230.0/24 is variably subnetted, 4 subnets, 3 masks\nC       218.75.230.0/25 is directly connected, GigabitEthernet0/1\nL       218.75.230.126/32 is directly connected, GigabitEthernet0/1\nC       218.75.230.252/30 is directly connected, GigabitEthernet0/0\nL       218.75.230.254/32 is directly connected, GigabitEthernet0/0\n\nFinal prompt: R1#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router1 (CLI) — 2 command(s): 2 ok\n\n> enable    [ok]\n\nR1#show ip route    [ok]\nCodes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP\n       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area\n       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2\n       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP\n       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area\n       * - candidate default, U - per-user static route, o - ODR\n       P - periodic downloaded static route\n\nGateway of last resort is not set\n\n     218.75.230.0/24 is variably subnetted, 4 subnets, 3 masks\nC       218.75.230.0/25 is directly connected, GigabitEthernet0/1\nL       218.75.230.126/32 is directly connected, GigabitEthernet0/1\nC       218.75.230.252/30 is directly connected, GigabitEthernet0/0\nL       218.75.230.254/32 is directly connected, GigabitEthernet0/0\n\nFinal prompt: R1#  (mode: enable)"
+  },
+  "isError": false
+}

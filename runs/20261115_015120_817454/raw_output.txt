@@ -1,0 +1,169 @@
+case_id: UC-07
+status: ready
+questions: []
+devices:
+  - name: R0
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: null
+      - name: GigabitEthernet0/0.30
+        ipv4: 192.168.30.254/24
+        encapsulation_vlan: 30
+      - name: GigabitEthernet0/0.40
+        ipv4: 192.168.40.254/24
+        encapsulation_vlan: 40
+      - name: GigabitEthernet0/1
+        ipv4: 218.75.230.253/30
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 0.0.0.0/0
+            next_hop: 218.75.230.254
+    nat:
+      outside_interface: GigabitEthernet0/1
+      acl_id: 1
+      pool_name: UC07
+      pool_start: 218.75.230.253
+      pool_end: 218.75.230.253
+      netmask: 255.255.255.252
+      overload: true
+      inside_interfaces:
+        - GigabitEthernet0/0.30
+        - GigabitEthernet0/0.40
+      source_networks:
+        - 192.168.30.0/24
+        - 192.168.40.0/24
+    ip_routing: true
+    acls:
+      - name: GUEST_IN
+        interface: GigabitEthernet0/0.30
+        direction: in
+        rules:
+          - action: permit
+            protocol: icmp
+            source: 192.168.30.0/24
+            destination: 192.168.40.0/24
+            icmp_type: echo-reply
+          - action: permit
+            protocol: tcp
+            source: 192.168.30.0/24
+            destination: 192.168.40.0/24
+            established: true
+          - action: deny
+            protocol: ip
+            source: 192.168.30.0/24
+            destination: 192.168.40.0/24
+          - action: permit
+            protocol: ip
+            source: any
+            destination: any
+  - name: R1
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 218.75.230.254/30
+      - name: GigabitEthernet0/1
+        ipv4: 218.75.230.126/25
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes: []
+    ip_routing: true
+  - name: Switch0
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+        switchport_mode: access
+        access_vlan: 30
+      - name: FastEthernet0/2
+        ipv4: null
+        switchport_mode: access
+        access_vlan: 40
+      - name: FastEthernet0/24
+        ipv4: null
+        switchport_mode: trunk
+        allowed_vlans: [30, 40]
+    default_gateway: null
+    routing: []
+  - name: PC0
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 192.168.30.10/24
+    default_gateway: 192.168.30.254
+    routing: []
+  - name: PC1
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 192.168.40.10/24
+    default_gateway: 192.168.40.254
+    routing: []
+  - name: Server0
+    type: server
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.1/25
+    default_gateway: 218.75.230.126
+    routing: []
+links:
+  - a:
+      device: PC0
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: PC1
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/2
+    dce: null
+  - a:
+      device: Switch0
+      interface: FastEthernet0/24
+    b:
+      device: R0
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R0
+      interface: GigabitEthernet0/1
+    b:
+      device: R1
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R1
+      interface: GigabitEthernet0/1
+    b:
+      device: Server0
+      interface: FastEthernet0
+    dce: null
+vlans:
+  - id: 30
+    name: GUEST
+  - id: 40
+    name: CASHIER
+checks:
+  - type: ping
+    source: PC0
+    destination: 192.168.40.10
+    expect: deny
+  - type: ping
+    source: PC1
+    destination: 192.168.30.10
+    expect: allow
+  - type: ping
+    source: PC0
+    destination: 218.75.230.1
+    expect: allow
+  - type: ping
+    source: PC1
+    destination: 218.75.230.1
+    expect: allow

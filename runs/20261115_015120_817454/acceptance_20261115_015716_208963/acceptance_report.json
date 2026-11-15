@@ -1,0 +1,447 @@
+{
+  "case_id": "UC-07",
+  "started": "2026-11-14T17:57:16.210109+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "设备名称",
+      "passed": true,
+      "detail": "找到6个预期设备名称。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "VLAN30与接入口",
+      "passed": true,
+      "detail": "FastEthernet0/1必须属于对应active VLAN。",
+      "evidence": "02_Switch0_VLAN.json"
+    },
+    {
+      "name": "VLAN40与接入口",
+      "passed": true,
+      "detail": "FastEthernet0/2必须属于对应active VLAN。",
+      "evidence": "02_Switch0_VLAN.json"
+    },
+    {
+      "name": "上联Trunk",
+      "passed": true,
+      "detail": "Fa0/24应Trunking，仅允许30、40。",
+      "evidence": "02_Switch0_VLAN.json"
+    },
+    {
+      "name": "VLAN30网关与内口",
+      "passed": true,
+      "detail": "子接口dot1Q、IP、NAT inside及直连路由应一致。",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "name": "VLAN40网关与内口",
+      "passed": true,
+      "detail": "子接口dot1Q、IP、NAT inside及直连路由应一致。",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "name": "清理旧单网段地址",
+      "passed": true,
+      "detail": "父接口不应残留旧IP或NAT inside。",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "name": "默认路由",
+      "passed": true,
+      "detail": "R0默认路由指向模拟ISP。",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "name": "ACL规则与绑定",
+      "passed": true,
+      "detail": "顺序为ICMP回包许可、TCP established许可、客人到收银deny、其余permit，入方向绑定客人子接口。",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "name": "共享NAPT配置",
+      "passed": true,
+      "detail": "仅两私网源共用.253池，外口标记正确。",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "name": "ISP直连路由",
+      "passed": true,
+      "detail": "ISP不靠额外私网返回路由绕过NAPT。",
+      "evidence": "04_R1_routes.json"
+    },
+    {
+      "name": "PC0网关可达",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "06_PC0_gateway_ping.json"
+    },
+    {
+      "name": "PC1网关可达",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "08_PC1_gateway_ping.json"
+    },
+    {
+      "name": "客人不能主动ping收银",
+      "passed": true,
+      "detail": "未启用NAT的预期为4发0收4丢；实际(4, 0, 4)。",
+      "evidence": "09_guest_to_cashier_denied.json"
+    },
+    {
+      "name": "收银主动ping客人",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "11_cashier_to_guest.json"
+    },
+    {
+      "name": "PC0访问模拟公网",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "13_PC0_WAN_ping.json"
+    },
+    {
+      "name": "PC0实际转换表",
+      "passed": true,
+      "detail": "要求原始ICMP转换条目：192.168.30.10→218.75.230.253，目标218.75.230.1。 匹配到：icmp 218.75.230.253:13 192.168.30.10:13   218.75.230.1:13    218.75.230.1:13",
+      "evidence": "14_NAPT_PC0.json"
+    },
+    {
+      "name": "PC0公网路径",
+      "passed": true,
+      "detail": "实际路径 ['192.168.30.254', '218.75.230.254', '218.75.230.1']；预期 ['192.168.30.254', '218.75.230.254', '218.75.230.1']。",
+      "evidence": "15_PC0_WAN_trace.json"
+    },
+    {
+      "name": "PC1访问模拟公网",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "17_PC1_WAN_ping.json"
+    },
+    {
+      "name": "PC1实际转换表",
+      "passed": true,
+      "detail": "要求原始ICMP转换条目：192.168.40.10→218.75.230.253，目标218.75.230.1。 匹配到：icmp 218.75.230.253:1024192.168.40.10:17   218.75.230.1:17    218.75.230.1:1024",
+      "evidence": "18_NAPT_PC1.json"
+    },
+    {
+      "name": "PC1公网路径",
+      "passed": true,
+      "detail": "实际路径 ['192.168.40.254', '218.75.230.254', '218.75.230.1']；预期 ['192.168.40.254', '218.75.230.254', '218.75.230.1']。",
+      "evidence": "19_PC1_WAN_trace.json"
+    },
+    {
+      "name": "ACL拒绝与回包命中",
+      "passed": true,
+      "detail": "期望deny及echo-reply命中均≥4；实际deny=4、reply=8。",
+      "evidence": "20_ACL_counters.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "status": "RETURNED",
+      "evidence": "01_topology.json"
+    },
+    {
+      "index": 2,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Switch0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show vlan brief",
+          "show interfaces trunk"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Switch0_VLAN",
+      "status": "RETURNED",
+      "evidence": "02_Switch0_VLAN.json"
+    },
+    {
+      "index": 3,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_config_routes",
+      "status": "RETURNED",
+      "evidence": "03_R0_config_routes.json"
+    },
+    {
+      "index": 4,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_routes",
+      "status": "RETURNED",
+      "evidence": "04_R1_routes.json"
+    },
+    {
+      "index": 5,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.30.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "05_PC0_gateway_warmup.json"
+    },
+    {
+      "index": 6,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.30.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_gateway_ping",
+      "status": "RETURNED",
+      "evidence": "06_PC0_gateway_ping.json"
+    },
+    {
+      "index": 7,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.40.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "07_PC1_gateway_warmup.json"
+    },
+    {
+      "index": 8,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.40.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_gateway_ping",
+      "status": "RETURNED",
+      "evidence": "08_PC1_gateway_ping.json"
+    },
+    {
+      "index": 9,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.40.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "guest_to_cashier_denied",
+      "status": "RETURNED",
+      "evidence": "09_guest_to_cashier_denied.json"
+    },
+    {
+      "index": 10,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.30.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "cashier_to_guest_warmup",
+      "status": "RETURNED",
+      "evidence": "10_cashier_to_guest_warmup.json"
+    },
+    {
+      "index": 11,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.30.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "cashier_to_guest",
+      "status": "RETURNED",
+      "evidence": "11_cashier_to_guest.json"
+    },
+    {
+      "index": 12,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_WAN_warmup",
+      "status": "RETURNED",
+      "evidence": "12_PC0_WAN_warmup.json"
+    },
+    {
+      "index": 13,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_WAN_ping",
+      "status": "RETURNED",
+      "evidence": "13_PC0_WAN_ping.json"
+    },
+    {
+      "index": 14,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show ip nat translations"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "NAPT_PC0",
+      "status": "RETURNED",
+      "evidence": "14_NAPT_PC0.json"
+    },
+    {
+      "index": 15,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "tracert 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_WAN_trace",
+      "status": "RETURNED",
+      "evidence": "15_PC0_WAN_trace.json"
+    },
+    {
+      "index": 16,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_WAN_warmup",
+      "status": "RETURNED",
+      "evidence": "16_PC1_WAN_warmup.json"
+    },
+    {
+      "index": 17,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_WAN_ping",
+      "status": "RETURNED",
+      "evidence": "17_PC1_WAN_ping.json"
+    },
+    {
+      "index": 18,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show ip nat translations"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "NAPT_PC1",
+      "status": "RETURNED",
+      "evidence": "18_NAPT_PC1.json"
+    },
+    {
+      "index": 19,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "tracert 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_WAN_trace",
+      "status": "RETURNED",
+      "evidence": "19_PC1_WAN_trace.json"
+    },
+    {
+      "index": 20,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show access-lists"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "ACL_counters",
+      "status": "RETURNED",
+      "evidence": "20_ACL_counters.json"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "scope": "ICMP ACL directions and shared NAPT; TCP established rule configured, not traffic-tested; no full UDP/session firewall claim",
+  "finished": "2026-11-14T17:58:13.014681+00:00"
+}

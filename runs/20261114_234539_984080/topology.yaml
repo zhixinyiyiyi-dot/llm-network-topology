@@ -1,0 +1,132 @@
+case_id: UC-03
+status: ready
+questions: []
+devices:
+- name: R0
+  type: router
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 192.168.0.254/24
+  - name: Serial0/0/0
+    ipv4: 10.0.0.1/30
+  - name: Serial0/0/1
+    ipv4: 172.19.0.1/30
+  default_gateway: null
+  routing:
+  - protocol: ospf
+    process_id: 1
+    networks:
+    - network: 192.168.0.0
+      wildcard: 0.0.0.255
+      area: 0
+    - network: 10.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+    - network: 172.19.0.0
+      wildcard: 0.0.0.3
+      area: 100
+- name: R1
+  type: router
+  interfaces:
+  - name: Serial0/0/0
+    ipv4: 10.0.0.2/30
+  - name: Serial0/0/1
+    ipv4: 172.16.0.1/30
+  default_gateway: null
+  routing:
+  - protocol: ospf
+    process_id: 1
+    networks:
+    - network: 10.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+    - network: 172.16.0.0
+      wildcard: 0.0.0.3
+      area: 100
+- name: R2
+  type: router
+  interfaces:
+  - name: Serial0/0/0
+    ipv4: 172.16.0.2/30
+  - name: Serial0/0/1
+    ipv4: 172.19.0.2/30
+  - name: GigabitEthernet0/0
+    ipv4: 192.168.1.254/24
+  default_gateway: null
+  routing:
+  - protocol: ospf
+    process_id: 1
+    networks:
+    - network: 192.168.1.0
+      wildcard: 0.0.0.255
+      area: 100
+    - network: 172.16.0.0
+      wildcard: 0.0.0.3
+      area: 100
+    - network: 172.19.0.0
+      wildcard: 0.0.0.3
+      area: 100
+- name: PC0
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.0.10/24
+  default_gateway: 192.168.0.254
+  routing: []
+- name: PC1
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.1.10/24
+  default_gateway: 192.168.1.254
+  routing: []
+links:
+- a:
+    device: PC0
+    interface: FastEthernet0
+  b:
+    device: R0
+    interface: GigabitEthernet0/0
+  dce: null
+- a:
+    device: R0
+    interface: Serial0/0/0
+  b:
+    device: R1
+    interface: Serial0/0/0
+  dce:
+    device: R0
+    interface: Serial0/0/0
+- a:
+    device: R1
+    interface: Serial0/0/1
+  b:
+    device: R2
+    interface: Serial0/0/0
+  dce:
+    device: R1
+    interface: Serial0/0/1
+- a:
+    device: R0
+    interface: Serial0/0/1
+  b:
+    device: R2
+    interface: Serial0/0/1
+  dce:
+    device: R0
+    interface: Serial0/0/1
+- a:
+    device: R2
+    interface: GigabitEthernet0/0
+  b:
+    device: PC1
+    interface: FastEthernet0
+  dce: null
+vlans: []
+checks:
+- type: ping
+  source: PC0
+  destination: 192.168.1.10
+- type: ping
+  source: PC1
+  destination: 192.168.0.10

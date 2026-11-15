@@ -1,0 +1,869 @@
+{
+  "case_id": "UC-05",
+  "variant": "router_on_a_stick",
+  "started": "2026-11-14T16:56:33.144803+00:00",
+  "status": "FAIL",
+  "checks": [
+    {
+      "name": "设备存在",
+      "passed": true,
+      "detail": "已找到所有预期设备名称。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "VLAN10存在",
+      "passed": true,
+      "detail": "show vlan brief应显示该VLAN active。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "VLAN20存在",
+      "passed": true,
+      "detail": "show vlan brief应显示该VLAN active。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "FastEthernet0/1接入VLAN",
+      "passed": true,
+      "detail": "要求access VLAN 10。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "FastEthernet0/2接入VLAN",
+      "passed": true,
+      "detail": "要求access VLAN 10。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "FastEthernet0/3接入VLAN",
+      "passed": true,
+      "detail": "要求access VLAN 10。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "FastEthernet0/4接入VLAN",
+      "passed": true,
+      "detail": "要求access VLAN 20。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "FastEthernet0/5接入VLAN",
+      "passed": true,
+      "detail": "要求access VLAN 20。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "FastEthernet0/6接入VLAN",
+      "passed": true,
+      "detail": "要求access VLAN 20。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "上联Trunk",
+      "passed": true,
+      "detail": "Gi0/1配置允许10,20，实际状态trunking。",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "name": "GigabitEthernet0/0.10",
+      "passed": true,
+      "detail": "要求dot1Q、网关正确且up/up。",
+      "evidence": "03_Router0_subinterfaces_routes.json"
+    },
+    {
+      "name": "GigabitEthernet0/0.20",
+      "passed": true,
+      "detail": "要求dot1Q、网关正确且up/up。",
+      "evidence": "03_Router0_subinterfaces_routes.json"
+    },
+    {
+      "name": "192.168.1.0/24直连路由",
+      "passed": true,
+      "detail": "要求通过对应子接口/SVI直连。",
+      "evidence": "03_Router0_subinterfaces_routes.json"
+    },
+    {
+      "name": "192.168.2.0/24直连路由",
+      "passed": true,
+      "detail": "要求通过对应子接口/SVI直连。",
+      "evidence": "03_Router0_subinterfaces_routes.json"
+    },
+    {
+      "name": "PC0→PC1",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "10_PC0_to_PC1.json"
+    },
+    {
+      "name": "PC0→PC2",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "11_PC0_to_PC2.json"
+    },
+    {
+      "name": "PC0→PC3",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "12_PC0_to_PC3.json"
+    },
+    {
+      "name": "PC0→PC4",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "13_PC0_to_PC4.json"
+    },
+    {
+      "name": "PC0→PC5",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "14_PC0_to_PC5.json"
+    },
+    {
+      "name": "PC1→PC0",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "15_PC1_to_PC0.json"
+    },
+    {
+      "name": "PC1→PC2",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "16_PC1_to_PC2.json"
+    },
+    {
+      "name": "PC1→PC3",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "17_PC1_to_PC3.json"
+    },
+    {
+      "name": "PC1→PC4",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "18_PC1_to_PC4.json"
+    },
+    {
+      "name": "PC1→PC5",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "19_PC1_to_PC5.json"
+    },
+    {
+      "name": "PC2→PC0",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "20_PC2_to_PC0.json"
+    },
+    {
+      "name": "PC2→PC1",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "21_PC2_to_PC1.json"
+    },
+    {
+      "name": "PC2→PC3",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "22_PC2_to_PC3.json"
+    },
+    {
+      "name": "PC2→PC4",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "23_PC2_to_PC4.json"
+    },
+    {
+      "name": "PC2→PC5",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "24_PC2_to_PC5.json"
+    },
+    {
+      "name": "PC3→PC0",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "25_PC3_to_PC0.json"
+    },
+    {
+      "name": "PC3→PC1",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "26_PC3_to_PC1.json"
+    },
+    {
+      "name": "PC3→PC2",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "27_PC3_to_PC2.json"
+    },
+    {
+      "name": "PC3→PC4",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "28_PC3_to_PC4.json"
+    },
+    {
+      "name": "PC3→PC5",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "29_PC3_to_PC5.json"
+    },
+    {
+      "name": "PC4→PC0",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "30_PC4_to_PC0.json"
+    },
+    {
+      "name": "PC4→PC1",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "31_PC4_to_PC1.json"
+    },
+    {
+      "name": "PC4→PC2",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "32_PC4_to_PC2.json"
+    },
+    {
+      "name": "PC4→PC3",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "33_PC4_to_PC3.json"
+    },
+    {
+      "name": "PC4→PC5",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "34_PC4_to_PC5.json"
+    },
+    {
+      "name": "PC5→PC0",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "35_PC5_to_PC0.json"
+    },
+    {
+      "name": "PC5→PC1",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "36_PC5_to_PC1.json"
+    },
+    {
+      "name": "PC5→PC2",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "37_PC5_to_PC2.json"
+    },
+    {
+      "name": "PC5→PC3",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "38_PC5_to_PC3.json"
+    },
+    {
+      "name": "PC5→PC4",
+      "passed": false,
+      "detail": "发送 4，收到 0，丢失 4；验收要求 4/4、0 丢包。",
+      "evidence": "39_PC5_to_PC4.json"
+    },
+    {
+      "name": "PC0跨VLAN路径",
+      "passed": false,
+      "detail": "路径测试未正常完成。",
+      "evidence": "40_PC0_cross_vlan_trace.json"
+    },
+    {
+      "name": "PC3跨VLAN路径",
+      "passed": false,
+      "detail": "路径测试未正常完成。",
+      "evidence": "41_PC3_cross_vlan_trace.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "status": "RETURNED",
+      "evidence": "01_topology.json"
+    },
+    {
+      "index": 2,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Switch0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show vlan brief",
+          "show interfaces trunk"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Switch0_vlan_config",
+      "status": "RETURNED",
+      "evidence": "02_Switch0_vlan_config.json"
+    },
+    {
+      "index": 3,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip route"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_subinterfaces_routes",
+      "status": "RETURNED",
+      "evidence": "03_Router0_subinterfaces_routes.json"
+    },
+    {
+      "index": 4,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "04_PC0_gateway_warmup.json"
+    },
+    {
+      "index": 5,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "05_PC1_gateway_warmup.json"
+    },
+    {
+      "index": 6,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ping 192.168.1.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "06_PC2_gateway_warmup.json"
+    },
+    {
+      "index": 7,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ping 192.168.2.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "07_PC3_gateway_warmup.json"
+    },
+    {
+      "index": 8,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ping 192.168.2.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "08_PC4_gateway_warmup.json"
+    },
+    {
+      "index": 9,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 192.168.2.254",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_gateway_warmup",
+      "status": "RETURNED",
+      "evidence": "09_PC5_gateway_warmup.json"
+    },
+    {
+      "index": 10,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC1",
+      "status": "RETURNED",
+      "evidence": "10_PC0_to_PC1.json"
+    },
+    {
+      "index": 11,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC2",
+      "status": "RETURNED",
+      "evidence": "11_PC0_to_PC2.json"
+    },
+    {
+      "index": 12,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.2.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC3",
+      "status": "RETURNED",
+      "evidence": "12_PC0_to_PC3.json"
+    },
+    {
+      "index": 13,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.2.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC4",
+      "status": "RETURNED",
+      "evidence": "13_PC0_to_PC4.json"
+    },
+    {
+      "index": 14,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.2.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC5",
+      "status": "RETURNED",
+      "evidence": "14_PC0_to_PC5.json"
+    },
+    {
+      "index": 15,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC0",
+      "status": "RETURNED",
+      "evidence": "15_PC1_to_PC0.json"
+    },
+    {
+      "index": 16,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC2",
+      "status": "RETURNED",
+      "evidence": "16_PC1_to_PC2.json"
+    },
+    {
+      "index": 17,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.2.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC3",
+      "status": "RETURNED",
+      "evidence": "17_PC1_to_PC3.json"
+    },
+    {
+      "index": 18,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.2.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC4",
+      "status": "RETURNED",
+      "evidence": "18_PC1_to_PC4.json"
+    },
+    {
+      "index": 19,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.2.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC5",
+      "status": "RETURNED",
+      "evidence": "19_PC1_to_PC5.json"
+    },
+    {
+      "index": 20,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_to_PC0",
+      "status": "RETURNED",
+      "evidence": "20_PC2_to_PC0.json"
+    },
+    {
+      "index": 21,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_to_PC1",
+      "status": "RETURNED",
+      "evidence": "21_PC2_to_PC1.json"
+    },
+    {
+      "index": 22,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ping 192.168.2.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_to_PC3",
+      "status": "RETURNED",
+      "evidence": "22_PC2_to_PC3.json"
+    },
+    {
+      "index": 23,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ping 192.168.2.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_to_PC4",
+      "status": "RETURNED",
+      "evidence": "23_PC2_to_PC4.json"
+    },
+    {
+      "index": 24,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ping 192.168.2.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_to_PC5",
+      "status": "RETURNED",
+      "evidence": "24_PC2_to_PC5.json"
+    },
+    {
+      "index": 25,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_to_PC0",
+      "status": "RETURNED",
+      "evidence": "25_PC3_to_PC0.json"
+    },
+    {
+      "index": 26,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_to_PC1",
+      "status": "RETURNED",
+      "evidence": "26_PC3_to_PC1.json"
+    },
+    {
+      "index": 27,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ping 192.168.1.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_to_PC2",
+      "status": "RETURNED",
+      "evidence": "27_PC3_to_PC2.json"
+    },
+    {
+      "index": 28,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ping 192.168.2.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_to_PC4",
+      "status": "RETURNED",
+      "evidence": "28_PC3_to_PC4.json"
+    },
+    {
+      "index": 29,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ping 192.168.2.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_to_PC5",
+      "status": "RETURNED",
+      "evidence": "29_PC3_to_PC5.json"
+    },
+    {
+      "index": 30,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_to_PC0",
+      "status": "RETURNED",
+      "evidence": "30_PC4_to_PC0.json"
+    },
+    {
+      "index": 31,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_to_PC1",
+      "status": "RETURNED",
+      "evidence": "31_PC4_to_PC1.json"
+    },
+    {
+      "index": 32,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ping 192.168.1.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_to_PC2",
+      "status": "RETURNED",
+      "evidence": "32_PC4_to_PC2.json"
+    },
+    {
+      "index": 33,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ping 192.168.2.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_to_PC3",
+      "status": "RETURNED",
+      "evidence": "33_PC4_to_PC3.json"
+    },
+    {
+      "index": 34,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ping 192.168.2.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_to_PC5",
+      "status": "RETURNED",
+      "evidence": "34_PC4_to_PC5.json"
+    },
+    {
+      "index": 35,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_to_PC0",
+      "status": "RETURNED",
+      "evidence": "35_PC5_to_PC0.json"
+    },
+    {
+      "index": 36,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_to_PC1",
+      "status": "RETURNED",
+      "evidence": "36_PC5_to_PC1.json"
+    },
+    {
+      "index": 37,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 192.168.1.3",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_to_PC2",
+      "status": "RETURNED",
+      "evidence": "37_PC5_to_PC2.json"
+    },
+    {
+      "index": 38,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 192.168.2.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_to_PC3",
+      "status": "RETURNED",
+      "evidence": "38_PC5_to_PC3.json"
+    },
+    {
+      "index": 39,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 192.168.2.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_to_PC4",
+      "status": "RETURNED",
+      "evidence": "39_PC5_to_PC4.json"
+    },
+    {
+      "index": 40,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "tracert 192.168.2.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_cross_vlan_trace",
+      "status": "RETURNED",
+      "evidence": "40_PC0_cross_vlan_trace.json"
+    },
+    {
+      "index": 41,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "tracert 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_cross_vlan_trace",
+      "status": "RETURNED",
+      "evidence": "41_PC3_cross_vlan_trace.json"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "finished": "2026-11-14T17:09:32.219876+00:00"
+}

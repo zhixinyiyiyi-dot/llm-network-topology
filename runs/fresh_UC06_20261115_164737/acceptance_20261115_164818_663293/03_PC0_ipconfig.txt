@@ -1,0 +1,24 @@
+PC0 (Command Prompt) — 1 command(s): 1 ok
+
+> ipconfig    [ok]
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: FE80::202:16FF:FE84:3E36
+   IPv6 Address....................: ::
+   IPv4 Address....................: 192.168.1.1
+   Subnet Mask.....................: 255.255.255.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0
+
+Final prompt: C:\>  (mode: user)

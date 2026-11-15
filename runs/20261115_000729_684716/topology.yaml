@@ -1,0 +1,118 @@
+case_id: UC-04
+status: ready
+questions: []
+devices:
+- name: R0
+  type: router
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 192.168.0.254/24
+  - name: GigabitEthernet0/1
+    ipv4: 218.75.230.253/30
+  default_gateway: null
+  routing:
+  - protocol: static
+    routes:
+    - prefix: 0.0.0.0/0
+      next_hop: 218.75.230.254
+  nat:
+    inside_interface: GigabitEthernet0/0
+    outside_interface: GigabitEthernet0/1
+    source_network: 192.168.0.0/24
+    acl_id: 1
+    pool_name: UC04
+    pool_start: 218.75.230.253
+    pool_end: 218.75.230.253
+    netmask: 255.255.255.252
+    overload: true
+- name: R1
+  type: router
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 218.75.230.254/30
+  - name: GigabitEthernet0/1
+    ipv4: 218.75.230.126/25
+  default_gateway: null
+  routing:
+  - protocol: static
+    routes: []
+- name: Switch0
+  type: switch
+  interfaces:
+  - name: FastEthernet0/1
+    ipv4: null
+  - name: FastEthernet0/2
+    ipv4: null
+  - name: FastEthernet0/24
+    ipv4: null
+  default_gateway: null
+  routing: []
+  nat: null
+- name: PC0
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.0.1/24
+  default_gateway: 192.168.0.254
+  routing: []
+  nat: null
+- name: PC1
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.0.2/24
+  default_gateway: 192.168.0.254
+  routing: []
+  nat: null
+- name: Server0
+  type: server
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.1/25
+  default_gateway: 218.75.230.126
+  routing: []
+  nat: null
+links:
+- a:
+    device: PC0
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/1
+  dce: null
+- a:
+    device: PC1
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/2
+  dce: null
+- a:
+    device: Switch0
+    interface: FastEthernet0/24
+  b:
+    device: R0
+    interface: GigabitEthernet0/0
+  dce: null
+- a:
+    device: R0
+    interface: GigabitEthernet0/1
+  b:
+    device: R1
+    interface: GigabitEthernet0/0
+  dce: null
+- a:
+    device: R1
+    interface: GigabitEthernet0/1
+  b:
+    device: Server0
+    interface: FastEthernet0
+  dce: null
+vlans: []
+checks:
+- type: ping
+  source: PC0
+  destination: 218.75.230.1
+- type: ping
+  source: PC1
+  destination: 218.75.230.1

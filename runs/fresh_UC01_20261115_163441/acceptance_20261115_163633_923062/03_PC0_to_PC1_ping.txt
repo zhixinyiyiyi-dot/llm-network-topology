@@ -1,0 +1,16 @@
+PC0 (Command Prompt) — 1 command(s): 1 ok
+
+> ping 192.168.16.130    [ok]
+Pinging 192.168.16.130 with 32 bytes of data:
+
+Reply from 192.168.16.130: bytes=32 time=14ms TTL=126
+Reply from 192.168.16.130: bytes=32 time=15ms TTL=126
+Reply from 192.168.16.130: bytes=32 time=23ms TTL=126
+Reply from 192.168.16.130: bytes=32 time=17ms TTL=126
+
+Ping statistics for 192.168.16.130:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 14ms, Maximum = 23ms, Average = 17ms
+
+Final prompt: C:\>  (mode: user)

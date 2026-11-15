@@ -1,0 +1,4 @@
+{
+  "source": "实验6-6 万维网文档与HTTP",
+  "adaptation": "沿用原PC-Server直连/IP，新增course_index.html作为本次模型生成的可辨识页面；HTTP服务/页面由生成指南人工设置，不声称CLI自动部署应用服务。"
+}

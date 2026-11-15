@@ -1,0 +1,6 @@
+UC10：仅生成文件，未部署。先人工审查后粘贴Router0/1/2对应R0/1/2.cfg。
+PC手工设置IPv6地址/前缀/默认网关；IPv4留空；Tunnel0是软件接口，不接线。
+PC0：IPv6 2001::10/64，默认网关 2001::1
+PC1：IPv6 2002::10/64，默认网关 2002::1
+配置好后运行accept_uc10.py，先验证两端IPv4；底层失败时停止，不继续IPv6验收。
+通过后路由器手工copy running-config startup-config并保存UC-10_IPv6_Tunnel.pkt。

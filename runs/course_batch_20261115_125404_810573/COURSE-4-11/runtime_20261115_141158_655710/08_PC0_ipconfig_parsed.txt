@@ -1,0 +1,19 @@
+FastEthernet0 Connection:(default port)
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: FE80::204:9AFF:FE86:663C
+   IPv6 Address....................: ::
+   IPv4 Address....................: 192.168.16.10
+   Subnet Mask.....................: 255.255.255.128
+   Default Gateway.................: ::
+                                     192.168.16.126
+
+Bluetooth Connection:
+
+   Connection-specific DNS Suffix..: 
+   Link-local IPv6 Address.........: ::
+   IPv6 Address....................: ::
+   IPv4 Address....................: 0.0.0.0
+   Subnet Mask.....................: 0.0.0.0
+   Default Gateway.................: ::
+                                     0.0.0.0

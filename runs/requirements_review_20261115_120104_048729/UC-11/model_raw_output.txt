@@ -1,0 +1,26 @@
+{
+    "case_id": "UC-11",
+    "decision": "needs_clarification",
+    "reason": "用户需求描述过于模糊，缺乏网络规划所需的关键信息，无法直接进行可行性评估或生成方案。",
+    "questions": [
+        {
+            "category": "hosts",
+            "question": "“二十来台机器”的具体数量是多少？办公网和测试网各自预计有多少台设备？"
+        },
+        {
+            "category": "addressing",
+            "question": "您是否有指定的IP地址段（例如192.168.x.x/24）？还是由我们规划？"
+        },
+        {
+            "category": "uplink",
+            "question": "“能上网”是指通过何种方式接入互联网？已有路由器或需要新建？"
+        },
+        {
+            "category": "security",
+            "question": "“安全一点”具体指哪些方面？例如办公网和测试网之间是否需要隔离？"
+        }
+    ],
+    "capacity": null,
+    "alternatives": [],
+    "deployable_config": null
+}

@@ -1,0 +1,14 @@
+PC0 (Command Prompt) — 1 command(s): 1 ok
+
+> ping 10.0.0.2    [ok]
+Pinging 10.0.0.2 with 32 bytes of data:
+
+Reply from 10.0.0.2: Destination host unreachable.
+Reply from 10.0.0.2: Destination host unreachable.
+Reply from 10.0.0.2: Destination host unreachable.
+Reply from 10.0.0.2: Destination host unreachable.
+
+Ping statistics for 10.0.0.2:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+Final prompt: C:\>  (mode: user)

@@ -1,0 +1,16 @@
+PC1 (Command Prompt) — 1 command(s): 1 ok
+
+> ping 218.75.230.1    [ok]
+Pinging 218.75.230.1 with 32 bytes of data:
+
+Reply from 218.75.230.1: bytes=32 time<1ms TTL=126
+Reply from 218.75.230.1: bytes=32 time<1ms TTL=126
+Reply from 218.75.230.1: bytes=32 time<1ms TTL=126
+Reply from 218.75.230.1: bytes=32 time<1ms TTL=126
+
+Ping statistics for 218.75.230.1:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 0ms, Average = 0ms
+
+Final prompt: C:\>  (mode: user)

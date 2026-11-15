@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC2 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.2.2    [ok]\nPinging 192.168.2.2 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out.\nRequest timed out.\nRequest timed out.\n\nPing statistics for 192.168.2.2:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC2 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.2.2    [ok]\nPinging 192.168.2.2 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out.\nRequest timed out.\nRequest timed out.\n\nPing statistics for 192.168.2.2:\n    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

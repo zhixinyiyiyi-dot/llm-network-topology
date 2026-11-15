@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router1 (CLI) — 1 command(s): 1 ERROR\n\n> show access-lists    [ERROR]\n         ^\n% Invalid input detected at '^' marker.\n\nFinal prompt: R1>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router1 (CLI) — 1 command(s): 1 ERROR\n\n> show access-lists    [ERROR]\n         ^\n% Invalid input detected at '^' marker.\n\nFinal prompt: R1>  (mode: user)"
+  },
+  "isError": false
+}

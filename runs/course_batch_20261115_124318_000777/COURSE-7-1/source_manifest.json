@@ -1,0 +1,4 @@
+{
+  "source": "实验7-1 扩展ACL",
+  "adaptation": "对应用户原课内报告的两router两switch三PC一Server；按实际Gigabit接口规划。保留Web80、FTP20/21、PC1到PC2全部IP、部门A到R1 ICMP四类限制；HTTP/FTP需生成服务指南人工配置。"
+}

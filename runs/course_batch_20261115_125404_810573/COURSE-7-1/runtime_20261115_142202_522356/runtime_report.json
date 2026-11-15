@@ -1,0 +1,357 @@
+{
+  "case_id": "COURSE-7-1",
+  "mode": "live_read_only",
+  "started": "2026-11-15T06:22:02.522356+00:00",
+  "status": "MISMATCH",
+  "checks": [
+    {
+      "name": "完整物理接线",
+      "passed": true,
+      "detail": "预期7条，实际识别7条；缺失[]；多余[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0实际接口地址/掩码",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0接口up/up",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "03_R0_interfaces.txt"
+    },
+    {
+      "name": "R0已安装静态路由",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "04_R0_routes.txt"
+    },
+    {
+      "name": "R1实际接口地址/掩码",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R1接口up/up",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "06_R1_interfaces.txt"
+    },
+    {
+      "name": "R1已安装静态路由",
+      "passed": true,
+      "detail": "[]",
+      "evidence": "07_R1_routes.txt"
+    },
+    {
+      "name": "R1ACL有序规则",
+      "passed": false,
+      "detail": "实际=[]；预期=['deny tcp 192.168.0.0 0.0.0.255 192.168.1.2 0.0.0.0 eq 80', 'deny tcp 192.168.0.1 0.0.0.0 192.168.1.2 0.0.0.0 eq 20', 'deny tcp 192.168.0.1 0.0.0.0 192.168.1.2 0.0.0.0 eq 21', 'deny ip 192.168.0.2 0.0.0.0 192.168.1.1 0.0.0.0', 'deny icmp 192.168.0.0 0.0.0.255 10.0.0.2 0.0.0.0', 'permit ip any any']",
+      "evidence": "08_R1_acl.txt"
+    },
+    {
+      "name": "R1ACL接口绑定",
+      "passed": false,
+      "detail": "GigabitEthernet0/1 in",
+      "evidence": "09_R1_acl_binding.txt"
+    },
+    {
+      "name": "PC0地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "10_PC0_ipconfig.txt"
+    },
+    {
+      "name": "PC1地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "11_PC1_ipconfig.txt"
+    },
+    {
+      "name": "PC2地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "12_PC2_ipconfig.txt"
+    },
+    {
+      "name": "Server0地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "13_Server0_ipconfig.txt"
+    },
+    {
+      "name": "PC1到192.168.1.1",
+      "passed": true,
+      "detail": "实际发送/收到/丢失=('4', '0', '4')；预期拒绝（仅证明探测未成功）",
+      "evidence": "15_ping_0.txt"
+    },
+    {
+      "name": "PC0到10.0.0.2",
+      "passed": true,
+      "detail": "实际发送/收到/丢失=('4', '0', '4')；预期拒绝（仅证明探测未成功）",
+      "evidence": "17_ping_1.txt"
+    },
+    {
+      "name": "PC0到192.168.1.1",
+      "passed": true,
+      "detail": "实际发送/收到/丢失=('4', '4', '0')；要求4/4、0丢包",
+      "evidence": "19_ping_2.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_enable",
+      "evidence": "02_R0_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_interfaces",
+      "evidence": "03_R0_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_routes",
+      "evidence": "04_R0_routes.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_enable",
+      "evidence": "05_R1_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_interfaces",
+      "evidence": "06_R1_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_routes",
+      "evidence": "07_R1_routes.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show access-lists"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_acl",
+      "evidence": "08_R1_acl.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip interface GigabitEthernet0/1"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_acl_binding",
+      "evidence": "09_R1_acl_binding.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ipconfig",
+      "evidence": "10_PC0_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ipconfig",
+      "evidence": "11_PC1_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_ipconfig",
+      "evidence": "12_PC2_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "Server0",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "Server0_ipconfig",
+      "evidence": "13_Server0_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_0_warmup",
+      "evidence": "14_ping_0_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_0",
+      "evidence": "15_ping_0.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 10.0.0.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_1_warmup",
+      "evidence": "16_ping_1_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 10.0.0.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_1",
+      "evidence": "17_ping_1.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_2_warmup",
+      "evidence": "18_ping_2_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_2",
+      "evidence": "19_ping_2.txt"
+    }
+  ],
+  "errors": [],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "application_evidence": "REQUIRES_MANUAL_HTTP_FTP_EVIDENCE",
+  "finished": "2026-11-15T06:22:35.706431+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router2 (CLI) — 6 command(s): 6 ok\n\n> enable    [ok]\n\nR2#configure terminal    [ok]\nEnter configuration commands, one per line.  End with CNTL/Z.\n\nR2(config)#interface GigabitEthernet0/0    [ok]\n\nR2(config-if)#no shutdown    [ok]\n\nR2(config-if)#exit    [ok]\n\nR2(config)#end    [ok]\n\nFinal prompt: R2#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router2 (CLI) — 6 command(s): 6 ok\n\n> enable    [ok]\n\nR2#configure terminal    [ok]\nEnter configuration commands, one per line.  End with CNTL/Z.\n\nR2(config)#interface GigabitEthernet0/0    [ok]\n\nR2(config-if)#no shutdown    [ok]\n\nR2(config-if)#exit    [ok]\n\nR2(config)#end    [ok]\n\nFinal prompt: R2#  (mode: enable)"
+  },
+  "isError": false
+}

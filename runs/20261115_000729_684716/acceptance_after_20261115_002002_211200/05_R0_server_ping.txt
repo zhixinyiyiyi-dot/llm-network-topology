@@ -1,0 +1,11 @@
+Router0 (CLI) — 2 command(s): 2 ok
+
+> enable    [ok]
+
+R0#ping 218.75.230.1    [ok]
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 218.75.230.1, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
+Final prompt: R0#  (mode: enable)

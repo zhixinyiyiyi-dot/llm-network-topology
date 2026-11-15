@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "DEVICES:3|LINKS:1\n\n  Router0              [2911]  (Vlan1,GigabitEthernet0/0=10.0.0.1/255.255.255.0,GigabitEthernet0/1,GigabitEthernet0/2,Loopback0=10.1.0.1/255.255.255.0)\n  Power Distribution Device0 [Power Distribution Device]\n  Router1              [2911]  (Vlan1,GigabitEthernet0/0=10.0.0.2/255.255.255.0,GigabitEthernet0/1,GigabitEthernet0/2,Loopback0=20.0.0.1/255.255.255.0)\n\n  Links:\n    Router0:GigabitEthernet0/0  <--[cross]-->  Router1:GigabitEthernet0/0",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "DEVICES:3|LINKS:1\n\n  Router0              [2911]  (Vlan1,GigabitEthernet0/0=10.0.0.1/255.255.255.0,GigabitEthernet0/1,GigabitEthernet0/2,Loopback0=10.1.0.1/255.255.255.0)\n  Power Distribution Device0 [Power Distribution Device]\n  Router1              [2911]  (Vlan1,GigabitEthernet0/0=10.0.0.2/255.255.255.0,GigabitEthernet0/1,GigabitEthernet0/2,Loopback0=20.0.0.1/255.255.255.0)\n\n  Links:\n    Router0:GigabitEthernet0/0  <--[cross]-->  Router1:GigabitEthernet0/0"
+  },
+  "isError": false
+}

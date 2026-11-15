@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router0 (CLI) — 1 command(s): 1 ok\n\n> show ip interface brief    [ok]\nInterface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0     192.168.16.126  YES manual up                    up \nGigabitEthernet0/1     unassigned      YES unset  administratively down down \nGigabitEthernet0/2     unassigned      YES unset  administratively down down \nSerial0/0/0            10.0.0.1        YES manual up                    up \nSerial0/0/1            30.0.0.1        YES manual up                    up \nVlan1                  unassigned      YES unset  administratively down down\n\nFinal prompt: R0#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router0 (CLI) — 1 command(s): 1 ok\n\n> show ip interface brief    [ok]\nInterface              IP-Address      OK? Method Status                Protocol \nGigabitEthernet0/0     192.168.16.126  YES manual up                    up \nGigabitEthernet0/1     unassigned      YES unset  administratively down down \nGigabitEthernet0/2     unassigned      YES unset  administratively down down \nSerial0/0/0            10.0.0.1        YES manual up                    up \nSerial0/0/1            30.0.0.1        YES manual up                    up \nVlan1                  unassigned      YES unset  administratively down down\n\nFinal prompt: R0#  (mode: enable)"
+  },
+  "isError": false
+}

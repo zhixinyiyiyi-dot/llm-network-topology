@@ -1,0 +1,164 @@
+Router2 (CLI) — 5 command(s): 5 ok
+(console primed: answered the initial dialog / Press RETURN)
+
+> enable    [ok]
+
+R2#show running-config    [ok]
+Building configuration...
+
+Current configuration : 927 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R2
+!
+!
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX152420D6-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.16.190 255.255.255.192
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Serial0/0/0
+ ip address 20.0.0.2 255.255.255.252
+!
+interface Serial0/0/1
+ ip address 30.0.0.2 255.255.255.252
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router rip
+ version 2
+ network 20.0.0.0
+ network 30.0.0.0
+ network 192.168.16.0
+ no auto-summary
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+R2#show ip interface brief    [ok]
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     192.168.16.190  YES manual up                    up 
+GigabitEthernet0/1     unassigned      YES unset  administratively down down 
+GigabitEthernet0/2     unassigned      YES unset  administratively down down 
+Serial0/0/0            20.0.0.2        YES manual up                    up 
+Serial0/0/1            30.0.0.2        YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+
+R2#show ip protocols    [ok]
+Routing Protocol is "rip"
+Sending updates every 30 seconds, next due in 12 seconds
+Invalid after 180 seconds, hold down 180, flushed after 240
+Outgoing update filter list for all interfaces is not set
+Incoming update filter list for all interfaces is not set
+Redistributing: rip
+Default version control: send version 2, receive 2
+  Interface             Send  Recv  Triggered RIP  Key-chain
+  GigabitEthernet0/0    22
+  Serial0/0/1           22
+  Serial0/0/0           22
+Automatic network summarization is not in effect
+Maximum path: 4
+Routing for Networks:
+	20.0.0.0
+	30.0.0.0
+	192.168.16.0
+Passive Interface(s):
+Routing Information Sources:
+	Gateway         Distance      Last Update
+	30.0.0.1             120      00:00:16
+	20.0.0.1             120      00:00:19
+Distance: (default is 120)
+
+R2#show ip route    [ok]
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     10.0.0.0/30 is subnetted, 1 subnets
+R       10.0.0.0/30 [120/1] via 30.0.0.1, 00:00:16, Serial0/0/1
+                    [120/1] via 20.0.0.1, 00:00:19, Serial0/0/0
+     20.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C       20.0.0.0/30 is directly connected, Serial0/0/0
+L       20.0.0.2/32 is directly connected, Serial0/0/0
+     30.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C       30.0.0.0/30 is directly connected, Serial0/0/1
+L       30.0.0.2/32 is directly connected, Serial0/0/1
+     192.168.16.0/24 is variably subnetted, 3 subnets, 3 masks
+R       192.168.16.0/25 [120/1] via 30.0.0.1, 00:00:16, Serial0/0/1
+C       192.168.16.128/26 is directly connected, GigabitEthernet0/0
+L       192.168.16.190/32 is directly connected, GigabitEthernet0/0
+
+Final prompt: R2#  (mode: enable)

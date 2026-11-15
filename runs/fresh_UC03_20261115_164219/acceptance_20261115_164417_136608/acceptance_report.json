@@ -1,0 +1,331 @@
+{
+  "case_id": "UC-03",
+  "started": "2026-11-15T08:44:17.142540+00:00",
+  "endpoint": "http://127.0.0.1:39400/mcp",
+  "mode": "live_read_only",
+  "mapping": {
+    "R0": "Router0",
+    "R1": "Router1",
+    "R2": "Router2",
+    "PC0": "PC0",
+    "PC1": "PC1"
+  },
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "预期设备名称存在",
+      "passed": true,
+      "detail": "已找到5个预期名称；不代表全部拓扑已验证。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "PC0_to_PC1 ping",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "03_PC0_to_PC1_ping.json"
+    },
+    {
+      "name": "PC1_to_PC0 ping",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "05_PC1_to_PC0_ping.json"
+    },
+    {
+      "name": "PC0_to_PC1 路径",
+      "passed": true,
+      "detail": "实际路径 ['192.168.0.254', '172.19.0.2', '192.168.1.10']；预期 ['192.168.0.254', '172.19.0.2', '192.168.1.10']。",
+      "evidence": "06_PC0_to_PC1_trace.json"
+    },
+    {
+      "name": "PC1_to_PC0 路径",
+      "passed": true,
+      "detail": "实际路径 ['192.168.1.254', '172.19.0.1', '192.168.0.10']；预期 ['192.168.1.254', '172.19.0.1', '192.168.0.10']。",
+      "evidence": "07_PC1_to_PC0_trace.json"
+    },
+    {
+      "name": "R0 OSPF进程1",
+      "passed": true,
+      "detail": "要求实际协议输出与配置均显示OSPF进程1。",
+      "evidence": "08_R0_routes.json"
+    },
+    {
+      "name": "R0 旧RIP已清除",
+      "passed": true,
+      "detail": "配置与实际协议输出不应含RIP，且OSPF输出可识别。",
+      "evidence": "08_R0_routes.json"
+    },
+    {
+      "name": "R0 区域声明",
+      "passed": true,
+      "detail": "要求区域与UC-03分区完全一致。",
+      "evidence": "08_R0_routes.json"
+    },
+    {
+      "name": "R0 OSPF邻居",
+      "passed": true,
+      "detail": "三角形拓扑预期2个FULL邻居，实际识别2个。",
+      "evidence": "08_R0_routes.json"
+    },
+    {
+      "name": "R0 192.168.1.0/24",
+      "passed": true,
+      "detail": "要求 OSPF 192.168.1.0/24 [110/cost] via 172.19.0.2，接口 Serial0/0/1。",
+      "evidence": "08_R0_routes.json"
+    },
+    {
+      "name": "R1 OSPF进程1",
+      "passed": true,
+      "detail": "要求实际协议输出与配置均显示OSPF进程1。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R1 旧RIP已清除",
+      "passed": true,
+      "detail": "配置与实际协议输出不应含RIP，且OSPF输出可识别。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R1 区域声明",
+      "passed": true,
+      "detail": "要求区域与UC-03分区完全一致。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R1 ABR角色",
+      "passed": true,
+      "detail": "要求实际show ip ospf显示area border router。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R1 OSPF邻居",
+      "passed": true,
+      "detail": "三角形拓扑预期2个FULL邻居，实际识别2个。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R1 192.168.0.0/24",
+      "passed": true,
+      "detail": "要求 OSPF 192.168.0.0/24 [110/cost] via 10.0.0.1，接口 Serial0/0/0。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R1 192.168.1.0/24",
+      "passed": true,
+      "detail": "要求 OSPF 192.168.1.0/24 [110/cost] via 172.16.0.2，接口 Serial0/0/1。",
+      "evidence": "09_R1_routes.json"
+    },
+    {
+      "name": "R2 OSPF进程1",
+      "passed": true,
+      "detail": "要求实际协议输出与配置均显示OSPF进程1。",
+      "evidence": "10_R2_routes.json"
+    },
+    {
+      "name": "R2 旧RIP已清除",
+      "passed": true,
+      "detail": "配置与实际协议输出不应含RIP，且OSPF输出可识别。",
+      "evidence": "10_R2_routes.json"
+    },
+    {
+      "name": "R2 区域声明",
+      "passed": true,
+      "detail": "要求区域与UC-03分区完全一致。",
+      "evidence": "10_R2_routes.json"
+    },
+    {
+      "name": "R2 OSPF邻居",
+      "passed": true,
+      "detail": "三角形拓扑预期2个FULL邻居，实际识别2个。",
+      "evidence": "10_R2_routes.json"
+    },
+    {
+      "name": "R2 192.168.0.0/24",
+      "passed": true,
+      "detail": "要求 OSPF 192.168.0.0/24 [110/cost] via 172.19.0.1，接口 Serial0/0/1。",
+      "evidence": "10_R2_routes.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "started": "2026-11-15T08:44:18.222537+00:00",
+      "status": "RETURNED",
+      "evidence": "01_topology.json",
+      "finished": "2026-11-15T08:44:18.344553+00:00"
+    },
+    {
+      "index": 2,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC1_warmup",
+      "started": "2026-11-15T08:44:18.348574+00:00",
+      "status": "RETURNED",
+      "evidence": "02_PC0_to_PC1_warmup.json",
+      "finished": "2026-11-15T08:44:27.235176+00:00"
+    },
+    {
+      "index": 3,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC1_ping",
+      "started": "2026-11-15T08:44:27.239404+00:00",
+      "status": "RETURNED",
+      "evidence": "03_PC0_to_PC1_ping.json",
+      "finished": "2026-11-15T08:44:30.727853+00:00"
+    },
+    {
+      "index": 4,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.0.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC0_warmup",
+      "started": "2026-11-15T08:44:30.733019+00:00",
+      "status": "RETURNED",
+      "evidence": "04_PC1_to_PC0_warmup.json",
+      "finished": "2026-11-15T08:44:34.239087+00:00"
+    },
+    {
+      "index": 5,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.0.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC0_ping",
+      "started": "2026-11-15T08:44:34.242166+00:00",
+      "status": "RETURNED",
+      "evidence": "05_PC1_to_PC0_ping.json",
+      "finished": "2026-11-15T08:44:38.179183+00:00"
+    },
+    {
+      "index": 6,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "tracert 192.168.1.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC1_trace",
+      "started": "2026-11-15T08:44:38.183859+00:00",
+      "status": "RETURNED",
+      "evidence": "06_PC0_to_PC1_trace.json",
+      "finished": "2026-11-15T08:44:39.467702+00:00"
+    },
+    {
+      "index": 7,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "tracert 192.168.0.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC0_trace",
+      "started": "2026-11-15T08:44:39.472821+00:00",
+      "status": "RETURNED",
+      "evidence": "07_PC1_to_PC0_trace.json",
+      "finished": "2026-11-15T08:44:40.699401+00:00"
+    },
+    {
+      "index": 8,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show ip route",
+          "show ip protocols",
+          "show running-config",
+          "show ip ospf neighbor",
+          "show ip ospf"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_routes",
+      "started": "2026-11-15T08:44:40.706299+00:00",
+      "status": "RETURNED",
+      "evidence": "08_R0_routes.json",
+      "finished": "2026-11-15T08:44:41.183549+00:00"
+    },
+    {
+      "index": 9,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show ip route",
+          "show ip protocols",
+          "show running-config",
+          "show ip ospf neighbor",
+          "show ip ospf"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_routes",
+      "started": "2026-11-15T08:44:41.193474+00:00",
+      "status": "RETURNED",
+      "evidence": "09_R1_routes.json",
+      "finished": "2026-11-15T08:44:41.542193+00:00"
+    },
+    {
+      "index": 10,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable",
+          "show ip route",
+          "show ip protocols",
+          "show running-config",
+          "show ip ospf neighbor",
+          "show ip ospf"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R2_routes",
+      "started": "2026-11-15T08:44:41.552408+00:00",
+      "status": "RETURNED",
+      "evidence": "10_R2_routes.json",
+      "finished": "2026-11-15T08:44:42.332434+00:00"
+    }
+  ],
+  "errors": [],
+  "policy": "双向 ping 预热后测量，必须4/4；双向精确路径；四条关键 OSPF 路由、进程1、无RIP及邻居FULL。无自动修复。",
+  "finished": "2026-11-15T08:44:42.341591+00:00"
+}

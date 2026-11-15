@@ -1,0 +1,15 @@
+DEVICES:6|LINKS:5
+
+  PC0                  [PC-PT]  (FastEthernet0=192.168.16.10/255.255.255.128,Bluetooth)
+  PC1                  [PC-PT]  (FastEthernet0=192.168.16.130/255.255.255.192,Bluetooth)
+  Router0              [2911]  (Vlan1,GigabitEthernet0/0=192.168.16.126/255.255.255.128,GigabitEthernet0/1,GigabitEthernet0/2,Serial0/0/0=10.0.0.1/255.255.255.252,Serial0/0/1=30.0.0.1/255.255.255.252)
+  Power Distribution Device0 [Power Distribution Device]
+  Router1              [2911]  (Vlan1,GigabitEthernet0/0,GigabitEthernet0/1,GigabitEthernet0/2,Serial0/0/0=10.0.0.2/255.255.255.252,Serial0/0/1=20.0.0.1/255.255.255.252)
+  Router2              [2911]  (Vlan1,GigabitEthernet0/0=192.168.16.190/255.255.255.192,GigabitEthernet0/1,GigabitEthernet0/2,Serial0/0/0=20.0.0.2/255.255.255.252,Serial0/0/1=30.0.0.2/255.255.255.252)
+
+  Links:
+    PC0:FastEthernet0  <--[cross]-->  Router0:GigabitEthernet0/0
+    PC1:FastEthernet0  <--[cross]-->  Router2:GigabitEthernet0/0
+    Router0:Serial0/0/0  <--[serial]-->  Router1:Serial0/0/0
+    Router1:Serial0/0/1  <--[serial]-->  Router2:Serial0/0/0
+    Router0:Serial0/0/1  <--[serial]-->  Router2:Serial0/0/1

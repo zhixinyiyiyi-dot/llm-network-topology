@@ -1,0 +1,140 @@
+Router2 (CLI) — 4 command(s): 4 ok
+
+> enable    [ok]
+
+R2#show running-config    [ok]
+Building configuration...
+
+Current configuration : 963 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R2
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+ipv6 unicast-routing
+!
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX1524I9PH-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface Tunnel0
+ no ip address
+ mtu 1476
+ ipv6 address 2003::2/64
+ tunnel source GigabitEthernet0/1
+ tunnel destination 10.0.0.1
+ tunnel mode ipv6ip
+!
+!
+interface GigabitEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2002::1/64
+!
+interface GigabitEthernet0/1
+ ip address 10.0.0.6 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 10.0.0.0 255.255.255.252 10.0.0.5 
+!
+ip flow-export version 9
+!
+ipv6 route 2001::/64 2003::1
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+R2#show ipv6 interface brief    [ok]
+GigabitEthernet0/0         [up/up]
+    FE80::2D0:58FF:FE77:5501
+    2002::1
+GigabitEthernet0/1         [up/up]
+    unassigned
+GigabitEthernet0/2         [administratively down/down]
+    unassigned
+Tunnel0                    [up/up]
+    FE80::290:CFF:FE46:8D5B
+    2003::2
+Vlan1                      [administratively down/down]
+    unassigned
+
+R2#show ipv6 route    [ok]
+IPv6 Routing Table - 6 entries
+Codes: C - Connected, L - Local, S - Static, R - RIP, B - BGP
+       U - Per-user Static route, M - MIPv6
+       I1 - ISIS L1, I2 - ISIS L2, IA - ISIS interarea, IS - ISIS summary
+       ND - ND Default, NDp - ND Prefix, DCE - Destination, NDr - Redirect
+       O - OSPF intra, OI - OSPF inter, OE1 - OSPF ext 1, OE2 - OSPF ext 2
+       ON1 - OSPF NSSA ext 1, ON2 - OSPF NSSA ext 2
+       D - EIGRP, EX - EIGRP external
+S   2001::/64 [1/0]
+     via 2003::1
+C   2002::/64 [0/0]
+     via GigabitEthernet0/0, directly connected
+L   2002::1/128 [0/0]
+     via GigabitEthernet0/0, receive
+C   2003::/64 [0/0]
+     via Tunnel0, directly connected
+L   2003::2/128 [0/0]
+     via Tunnel0, receive
+L   FF00::/8 [0/0]
+     via Null0, receive
+
+Final prompt: R2#  (mode: enable)

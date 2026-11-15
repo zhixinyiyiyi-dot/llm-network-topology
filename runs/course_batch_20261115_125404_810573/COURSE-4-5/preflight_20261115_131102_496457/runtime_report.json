@@ -1,0 +1,221 @@
+{
+  "case_id": "COURSE-4-5",
+  "mode": "preflight_read_only",
+  "started": "2026-11-15T05:11:02.496457+00:00",
+  "status": "MISMATCH",
+  "checks": [
+    {
+      "name": "完整物理接线",
+      "passed": false,
+      "detail": "预期13条，实际识别13条；缺失[[('Switch2', 'FastEthernet0/2'), ('PC5', 'FastEthernet0')], [('Switch1', 'FastEthernet0/1'), ('PC2', 'FastEthernet0')], [('Switch3', 'FastEthernet0/3'), ('Router1', 'GigabitEthernet0/1')], [('PC1', 'FastEthernet0'), ('Switch0', 'FastEthernet0/2')], [('Switch3', 'FastEthernet0/1'), ('PC6', 'FastEthernet0')], [('Switch3', 'FastEthernet0/2'), ('PC7', 'FastEthernet0')]]；多余[[('Switch2', 'FastEthernet0/2'), ('PC6', 'FastEthernet0')], [('Switch0', 'FastEthernet0/2'), ('PC2', 'FastEthernet0')], [('Switch3', 'FastEthernet0/3'), ('PC7', 'FastEthernet0')], [('Switch3', 'FastEthernet0/1'), ('Router1', 'GigabitEthernet0/1')], [('Switch3', 'FastEthernet0/2'), ('PC5', 'FastEthernet0')], [('PC1', 'FastEthernet0'), ('Switch1', 'FastEthernet0/1')]]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "name": "R1接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "03_R1_state.txt"
+    },
+    {
+      "name": "PC0地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "04_PC0_ipconfig.txt"
+    },
+    {
+      "name": "PC1地址/掩码/网关",
+      "passed": false,
+      "detail": "需与本轮YAML一致",
+      "evidence": "05_PC1_ipconfig.txt"
+    },
+    {
+      "name": "PC2地址/掩码/网关",
+      "passed": false,
+      "detail": "需与本轮YAML一致",
+      "evidence": "06_PC2_ipconfig.txt"
+    },
+    {
+      "name": "PC3地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "07_PC3_ipconfig.txt"
+    },
+    {
+      "name": "PC4地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "08_PC4_ipconfig.txt"
+    },
+    {
+      "name": "PC5地址/掩码/网关",
+      "passed": false,
+      "detail": "需与本轮YAML一致",
+      "evidence": "09_PC5_ipconfig.txt"
+    },
+    {
+      "name": "PC6地址/掩码/网关",
+      "passed": false,
+      "detail": "需与本轮YAML一致",
+      "evidence": "10_PC6_ipconfig.txt"
+    },
+    {
+      "name": "PC7地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "11_PC7_ipconfig.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_state",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_state",
+      "evidence": "03_R1_state.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ipconfig",
+      "evidence": "04_PC0_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ipconfig",
+      "evidence": "05_PC1_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_ipconfig",
+      "evidence": "06_PC2_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_ipconfig",
+      "evidence": "07_PC3_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_ipconfig",
+      "evidence": "08_PC4_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_ipconfig",
+      "evidence": "09_PC5_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC6",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC6_ipconfig",
+      "evidence": "10_PC6_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC7",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC7_ipconfig",
+      "evidence": "11_PC7_ipconfig.txt"
+    }
+  ],
+  "errors": [],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "application_evidence": "NOT_APPLICABLE",
+  "finished": "2026-11-15T05:11:05.004306+00:00"
+}

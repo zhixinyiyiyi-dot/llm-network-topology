@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-11-14T19:01:17.424623+00:00",
+  "source": "C:\\Users\\admin\\Documents\\计网拓展\\runs\\20261115_030022_989365\\topology.yaml",
+  "source_sha256": "3ab298a1b39c229415b656574a6ea2635c4378a6d69aa8017950ecac7c944641",
+  "validation_passed": true,
+  "command_guard_passed": true,
+  "deployed": false,
+  "migrate_from_rip": false,
+  "replace_ospf_process": null,
+  "omit_nat": false,
+  "from_uc04": false,
+  "files": {
+    "R0.cfg": "c204089501b1edbc2ffa4cda370d25864334862c87919bbfb9be7c0f94dca65a",
+    "R1.cfg": "c3cf594812d36de1a868ef1c8914fff6ff25b5eb81fe846378eebdd51fdc48cb",
+    "PT_GUIDE.txt": "6a3cf9a1fca1cb06b620296b4e27b486ad89c92b4d4779bc0764c9bf604d6a05"
+  }
+}

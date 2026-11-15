@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case_id": "UC-11",
+      "status": "PASS",
+      "errors": [],
+      "deployed": false,
+      "model_requests": 1,
+      "device_repair_rounds": null,
+      "scope": "需求澄清/不可行性拒绝；不是拓扑部署或连通性验收",
+      "human_semantic_review": "PENDING"
+    },
+    {
+      "case_id": "UC-12",
+      "status": "PASS",
+      "errors": [],
+      "deployed": false,
+      "model_requests": 1,
+      "device_repair_rounds": null,
+      "scope": "需求澄清/不可行性拒绝；不是拓扑部署或连通性验收",
+      "human_semantic_review": "PENDING"
+    }
+  ],
+  "finished": "2026-11-15T04:01:42.331414+00:00",
+  "scope": "结构与独立规则检查通过不代表人工语义复核完成；不计网络部署通过率"
+}

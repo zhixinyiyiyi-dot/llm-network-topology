@@ -1,0 +1,367 @@
+将需求转成严格符合下列Schema的YAML。只输出YAML，不要围栏或额外解释。所有字段必填，空值null，空列表[]。interfaces仅物理接口，隧道写独立tunnel字段。R1为纯IPv4骨干，ipv6全null且没有隧道。checks按IPv4先、IPv6后。{
+  "type": "object",
+  "required": [
+    "case_id",
+    "status",
+    "devices",
+    "links",
+    "checks"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "type",
+              "interfaces",
+              "ipv6_gateway",
+              "ipv4_routes",
+              "ipv6_routes",
+              "tunnel"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "interfaces": {
+                "type": "array",
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "ipv4",
+                        "ipv6"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "ipv4": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "ipv6": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    {
+                      "type": "object",
+                      "required": [
+                        "name",
+                        "ipv4",
+                        "ipv6"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "type": "string"
+                        },
+                        "ipv4": {
+                          "type": "string"
+                        },
+                        "ipv6": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "ipv6_gateway": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ipv4_routes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prefix",
+                    "next_hop"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prefix": {
+                      "type": "string"
+                    },
+                    "next_hop": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ipv6_routes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "prefix",
+                    "next_hop"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "prefix": {
+                      "type": "string"
+                    },
+                    "next_hop": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "tunnel": {
+                "type": "object",
+                "required": [
+                  "name",
+                  "mode",
+                  "source",
+                  "destination",
+                  "ipv6"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "mode": {
+                    "type": "string"
+                  },
+                  "source": {
+                    "type": "string"
+                  },
+                  "destination": {
+                    "type": "string"
+                  },
+                  "ipv6": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "type",
+              "interfaces",
+              "ipv6_gateway",
+              "ipv4_routes",
+              "ipv6_routes",
+              "tunnel"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "interfaces": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "ipv4",
+                    "ipv6"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "ipv4": {
+                      "type": "string"
+                    },
+                    "ipv6": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                }
+              },
+              "ipv6_gateway": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ipv4_routes": {
+                "type": "array"
+              },
+              "ipv6_routes": {
+                "type": "array"
+              },
+              "tunnel": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "name",
+              "type",
+              "interfaces",
+              "ipv6_gateway",
+              "ipv4_routes",
+              "ipv6_routes",
+              "tunnel"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "interfaces": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "name",
+                    "ipv4",
+                    "ipv6"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "ipv4": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "ipv6": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ipv6_gateway": {
+                "type": "string"
+              },
+              "ipv4_routes": {
+                "type": "array"
+              },
+              "ipv6_routes": {
+                "type": "array"
+              },
+              "tunnel": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "a",
+          "b"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "a": {
+            "type": "object",
+            "required": [
+              "device",
+              "interface"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "device": {
+                "type": "string"
+              },
+              "interface": {
+                "type": "string"
+              }
+            }
+          },
+          "b": {
+            "type": "object",
+            "required": [
+              "device",
+              "interface"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "device": {
+                "type": "string"
+              },
+              "interface": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "destination",
+          "family"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          },
+          "family": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

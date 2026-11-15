@@ -1,0 +1,347 @@
+case_id: COURSE-4-5
+status: ready
+questions: []
+devices:
+- name: R0
+  type: router
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 218.75.230.46/28
+  - name: GigabitEthernet0/1
+    ipv4: 218.75.230.30/27
+  - name: GigabitEthernet0/2
+    ipv4: 218.75.230.81/30
+  default_gateway: null
+  routing:
+  - protocol: static
+    routes:
+    - prefix: 218.75.230.64/28
+      next_hop: 218.75.230.82
+    - prefix: 218.75.230.48/28
+      next_hop: 218.75.230.82
+  nat: null
+  ip_routing: true
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: R1
+  type: router
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 218.75.230.78/28
+  - name: GigabitEthernet0/1
+    ipv4: 218.75.230.62/28
+  - name: GigabitEthernet0/2
+    ipv4: 218.75.230.82/30
+  default_gateway: null
+  routing:
+  - protocol: static
+    routes:
+    - prefix: 218.75.230.32/28
+      next_hop: 218.75.230.81
+    - prefix: 218.75.230.0/27
+      next_hop: 218.75.230.81
+  nat: null
+  ip_routing: true
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: Switch0
+  type: switch
+  interfaces:
+  - name: FastEthernet0/1
+    ipv4: null
+  - name: FastEthernet0/2
+    ipv4: null
+  - name: FastEthernet0/3
+    ipv4: null
+  default_gateway: null
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC0
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.33/28
+  default_gateway: 218.75.230.46
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC1
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.34/28
+  default_gateway: 218.75.230.46
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: Switch1
+  type: switch
+  interfaces:
+  - name: FastEthernet0/1
+    ipv4: null
+  - name: FastEthernet0/2
+    ipv4: null
+  - name: FastEthernet0/3
+    ipv4: null
+  default_gateway: null
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC2
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.1/27
+  default_gateway: 218.75.230.30
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC3
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.2/27
+  default_gateway: 218.75.230.30
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: Switch2
+  type: switch
+  interfaces:
+  - name: FastEthernet0/1
+    ipv4: null
+  - name: FastEthernet0/2
+    ipv4: null
+  - name: FastEthernet0/3
+    ipv4: null
+  default_gateway: null
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC4
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.65/28
+  default_gateway: 218.75.230.78
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC5
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.66/28
+  default_gateway: 218.75.230.78
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: Switch3
+  type: switch
+  interfaces:
+  - name: FastEthernet0/1
+    ipv4: null
+  - name: FastEthernet0/2
+    ipv4: null
+  - name: FastEthernet0/3
+    ipv4: null
+  default_gateway: null
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC6
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.49/28
+  default_gateway: 218.75.230.62
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+- name: PC7
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 218.75.230.50/28
+  default_gateway: 218.75.230.62
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: false
+    ftp: false
+    pages: []
+links:
+- a:
+    device: R0
+    interface: GigabitEthernet0/2
+  b:
+    device: R1
+    interface: GigabitEthernet0/2
+  dce: null
+- a:
+    device: Switch0
+    interface: FastEthernet0/3
+  b:
+    device: R0
+    interface: GigabitEthernet0/0
+  dce: null
+- a:
+    device: PC0
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/1
+  dce: null
+- a:
+    device: PC1
+    interface: FastEthernet0
+  b:
+    device: Switch0
+    interface: FastEthernet0/2
+  dce: null
+- a:
+    device: Switch1
+    interface: FastEthernet0/3
+  b:
+    device: R0
+    interface: GigabitEthernet0/1
+  dce: null
+- a:
+    device: PC2
+    interface: FastEthernet0
+  b:
+    device: Switch1
+    interface: FastEthernet0/1
+  dce: null
+- a:
+    device: PC3
+    interface: FastEthernet0
+  b:
+    device: Switch1
+    interface: FastEthernet0/2
+  dce: null
+- a:
+    device: Switch2
+    interface: FastEthernet0/3
+  b:
+    device: R1
+    interface: GigabitEthernet0/0
+  dce: null
+- a:
+    device: PC4
+    interface: FastEthernet0
+  b:
+    device: Switch2
+    interface: FastEthernet0/1
+  dce: null
+- a:
+    device: PC5
+    interface: FastEthernet0
+  b:
+    device: Switch2
+    interface: FastEthernet0/2
+  dce: null
+- a:
+    device: Switch3
+    interface: FastEthernet0/3
+  b:
+    device: R1
+    interface: GigabitEthernet0/1
+  dce: null
+- a:
+    device: PC6
+    interface: FastEthernet0
+  b:
+    device: Switch3
+    interface: FastEthernet0/1
+  dce: null
+- a:
+    device: PC7
+    interface: FastEthernet0
+  b:
+    device: Switch3
+    interface: FastEthernet0/2
+  dce: null
+vlans: []
+checks:
+- type: ping
+  source: PC0
+  destination: 218.75.230.1
+  expect: allow
+- type: ping
+  source: PC0
+  destination: 218.75.230.65
+  expect: allow
+- type: ping
+  source: PC0
+  destination: 218.75.230.49
+  expect: allow
+- type: ping
+  source: PC6
+  destination: 218.75.230.33
+  expect: allow
+variant: router_on_a_stick

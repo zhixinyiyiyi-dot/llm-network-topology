@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "DEVICES:6|LINKS:4\n\n  PC0                  [PC-PT]  (FastEthernet0,Bluetooth)\n  PC1                  [PC-PT]  (FastEthernet0,Bluetooth)\n  Router0              [2911]  (Vlan1,GigabitEthernet0/0,GigabitEthernet0/1=10.0.0.1/255.255.255.252,GigabitEthernet0/2,Tunnel0)\n  Power Distribution Device0 [Power Distribution Device]\n  Router1              [2911]  (Vlan1,GigabitEthernet0/0=10.0.0.2/255.255.255.252,GigabitEthernet0/1=10.0.0.5/255.255.255.252,GigabitEthernet0/2)\n  Router2              [2911]  (Vlan1,GigabitEthernet0/0,GigabitEthernet0/1=10.0.0.6/255.255.255.252,GigabitEthernet0/2,Tunnel0)\n\n  Links:\n    PC0:FastEthernet0  <--[cross]-->  Router0:GigabitEthernet0/0\n    Router0:GigabitEthernet0/1  <--[cross]-->  Router1:GigabitEthernet0/0\n    PC1:FastEthernet0  <--[cross]-->  Router2:GigabitEthernet0/0\n    Router2:GigabitEthernet0/1  <--[cross]-->  Router1:GigabitEthernet0/1",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "DEVICES:6|LINKS:4\n\n  PC0                  [PC-PT]  (FastEthernet0,Bluetooth)\n  PC1                  [PC-PT]  (FastEthernet0,Bluetooth)\n  Router0              [2911]  (Vlan1,GigabitEthernet0/0,GigabitEthernet0/1=10.0.0.1/255.255.255.252,GigabitEthernet0/2,Tunnel0)\n  Power Distribution Device0 [Power Distribution Device]\n  Router1              [2911]  (Vlan1,GigabitEthernet0/0=10.0.0.2/255.255.255.252,GigabitEthernet0/1=10.0.0.5/255.255.255.252,GigabitEthernet0/2)\n  Router2              [2911]  (Vlan1,GigabitEthernet0/0,GigabitEthernet0/1=10.0.0.6/255.255.255.252,GigabitEthernet0/2,Tunnel0)\n\n  Links:\n    PC0:FastEthernet0  <--[cross]-->  Router0:GigabitEthernet0/0\n    Router0:GigabitEthernet0/1  <--[cross]-->  Router1:GigabitEthernet0/0\n    PC1:FastEthernet0  <--[cross]-->  Router2:GigabitEthernet0/0\n    Router2:GigabitEthernet0/1  <--[cross]-->  Router1:GigabitEthernet0/1"
+  },
+  "isError": false
+}

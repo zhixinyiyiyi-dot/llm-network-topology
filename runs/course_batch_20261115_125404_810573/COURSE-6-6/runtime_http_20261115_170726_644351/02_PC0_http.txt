@@ -1,0 +1,1 @@
+{"device":"PC0","url":"http://192.168.0.2/course_index.html","html_bytes":127,"text":"Course Page\nHTTP Service Test\nCOURSE_HTTP_OK","notes":["GUI: could not show it (Can't find PT's logical canvas.). The work was still done through the API.","The page is identical to the last one loaded in this browser."]}

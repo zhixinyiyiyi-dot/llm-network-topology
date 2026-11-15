@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC0 (Command Prompt) — 1 command(s): 1 TIMEOUT\n\n> tracert 192.168.16.130    [TIMEOUT]\nTracing route to 192.168.16.130 over a maximum of 30 hops: \n\n  1   0 ms      0 ms      0 ms      192.168.16.126\n  2   1 ms      0 ms      0 ms      30.0.0.2\n  3   1 ms      *         1 ms      30.0.0.2\n  4   *         1 ms      *         Request timed out.\n  5   7 ms      *         0 ms      30.0.0.2\n  6   *         2 ms      *         Request timed out.\n  7   4 ms      *         1 ms      30.0.0.2\n  8   *         1 ms      \nControl-C\n^C\n  ↳ aborted after 45s without the prompt coming back\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC0 (Command Prompt) — 1 command(s): 1 TIMEOUT\n\n> tracert 192.168.16.130    [TIMEOUT]\nTracing route to 192.168.16.130 over a maximum of 30 hops: \n\n  1   0 ms      0 ms      0 ms      192.168.16.126\n  2   1 ms      0 ms      0 ms      30.0.0.2\n  3   1 ms      *         1 ms      30.0.0.2\n  4   *         1 ms      *         Request timed out.\n  5   7 ms      *         0 ms      30.0.0.2\n  6   *         2 ms      *         Request timed out.\n  7   4 ms      *         1 ms      30.0.0.2\n  8   *         1 ms      \nControl-C\n^C\n  ↳ aborted after 45s without the prompt coming back\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC0 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.1.254    [ok]\nPinging 192.168.1.254 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out.\nRequest timed out.\nReply from 192.168.1.254: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.1.254:\n    Packets: Sent = 4, Received = 1, Lost = 3 (75% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC0 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.1.254    [ok]\nPinging 192.168.1.254 with 32 bytes of data:\n\nRequest timed out.\nRequest timed out.\nRequest timed out.\nReply from 192.168.1.254: bytes=32 time<1ms TTL=255\n\nPing statistics for 192.168.1.254:\n    Packets: Sent = 4, Received = 1, Lost = 3 (75% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 0ms, Maximum = 0ms, Average = 0ms\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

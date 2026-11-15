@@ -1,0 +1,195 @@
+原题：两个IPv6站点2001::/64和2002::/64，各一台PC，被纯IPv4骨干两条/30链路隔开。边界建立手动IPv6 over IPv4隧道（ipv6ip），隧道网段2003::/64。先验IPv4端点，再验IPv6端到端。
+明确规划（不是模型输出）：
+{
+  "case_id": "UC-10",
+  "status": "ready",
+  "devices": [
+    {
+      "name": "R0",
+      "type": "router",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet0/0",
+          "ipv4": null,
+          "ipv6": "2001::1/64"
+        },
+        {
+          "name": "GigabitEthernet0/1",
+          "ipv4": "10.0.0.1/30",
+          "ipv6": null
+        }
+      ],
+      "ipv6_gateway": null,
+      "ipv4_routes": [
+        {
+          "prefix": "10.0.0.4/30",
+          "next_hop": "10.0.0.2"
+        }
+      ],
+      "ipv6_routes": [
+        {
+          "prefix": "2002::/64",
+          "next_hop": "2003::2"
+        }
+      ],
+      "tunnel": {
+        "name": "Tunnel0",
+        "mode": "ipv6ip",
+        "source": "10.0.0.1",
+        "destination": "10.0.0.6",
+        "ipv6": "2003::1/64"
+      }
+    },
+    {
+      "name": "R1",
+      "type": "router",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet0/0",
+          "ipv4": "10.0.0.2/30",
+          "ipv6": null
+        },
+        {
+          "name": "GigabitEthernet0/1",
+          "ipv4": "10.0.0.5/30",
+          "ipv6": null
+        }
+      ],
+      "ipv6_gateway": null,
+      "ipv4_routes": [],
+      "ipv6_routes": [],
+      "tunnel": null
+    },
+    {
+      "name": "R2",
+      "type": "router",
+      "interfaces": [
+        {
+          "name": "GigabitEthernet0/0",
+          "ipv4": null,
+          "ipv6": "2002::1/64"
+        },
+        {
+          "name": "GigabitEthernet0/1",
+          "ipv4": "10.0.0.6/30",
+          "ipv6": null
+        }
+      ],
+      "ipv6_gateway": null,
+      "ipv4_routes": [
+        {
+          "prefix": "10.0.0.0/30",
+          "next_hop": "10.0.0.5"
+        }
+      ],
+      "ipv6_routes": [
+        {
+          "prefix": "2001::/64",
+          "next_hop": "2003::1"
+        }
+      ],
+      "tunnel": {
+        "name": "Tunnel0",
+        "mode": "ipv6ip",
+        "source": "10.0.0.6",
+        "destination": "10.0.0.1",
+        "ipv6": "2003::2/64"
+      }
+    },
+    {
+      "name": "PC0",
+      "type": "pc",
+      "interfaces": [
+        {
+          "name": "FastEthernet0",
+          "ipv4": null,
+          "ipv6": "2001::10/64"
+        }
+      ],
+      "ipv6_gateway": "2001::1",
+      "ipv4_routes": [],
+      "ipv6_routes": [],
+      "tunnel": null
+    },
+    {
+      "name": "PC1",
+      "type": "pc",
+      "interfaces": [
+        {
+          "name": "FastEthernet0",
+          "ipv4": null,
+          "ipv6": "2002::10/64"
+        }
+      ],
+      "ipv6_gateway": "2002::1",
+      "ipv4_routes": [],
+      "ipv6_routes": [],
+      "tunnel": null
+    }
+  ],
+  "links": [
+    {
+      "a": {
+        "device": "PC0",
+        "interface": "FastEthernet0"
+      },
+      "b": {
+        "device": "R0",
+        "interface": "GigabitEthernet0/0"
+      }
+    },
+    {
+      "a": {
+        "device": "R0",
+        "interface": "GigabitEthernet0/1"
+      },
+      "b": {
+        "device": "R1",
+        "interface": "GigabitEthernet0/0"
+      }
+    },
+    {
+      "a": {
+        "device": "R1",
+        "interface": "GigabitEthernet0/1"
+      },
+      "b": {
+        "device": "R2",
+        "interface": "GigabitEthernet0/1"
+      }
+    },
+    {
+      "a": {
+        "device": "R2",
+        "interface": "GigabitEthernet0/0"
+      },
+      "b": {
+        "device": "PC1",
+        "interface": "FastEthernet0"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "source": "R0",
+      "destination": "10.0.0.6",
+      "family": "ipv4"
+    },
+    {
+      "source": "R2",
+      "destination": "10.0.0.1",
+      "family": "ipv4"
+    },
+    {
+      "source": "PC0",
+      "destination": "2002::10",
+      "family": "ipv6"
+    },
+    {
+      "source": "PC1",
+      "destination": "2001::10",
+      "family": "ipv6"
+    }
+  ]
+}
+不得改变规划；只输出Schema兼容YAML。

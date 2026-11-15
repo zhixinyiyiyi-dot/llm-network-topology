@@ -1,0 +1,260 @@
+你是本地Packet Tracer网络规划助手。把自然语言需求转换为严格符合Schema的YAML，只输出YAML。所有设备name/type/interfaces/default_gateway/routing必填；非终端网关null。PC与server无路由时routing=[]。交换机接口ipv4=null，无VLAN时vlans=[]。RIP networks填有类主网络；OSPF按反掩码精确覆盖。静态路由不能遗漏远端或新增默认路由。ACL规则保持顺序，TCP目的端口用destination_port整数。services仅server允许，pages里是HTML字符串，禁止脚本外链。checks目标填IPv4而不是设备名，要求deny时明确expect:deny，其余按需求。不要输出CLI或答案说明。Schema：{"type": "object", "properties": {"case_id": {"type": "string", "minLength": 1}, "status": {"enum": ["ready", "needs_clarification"]}, "questions": {"type": "array", "items": {"type": "string", "minLength": 1}}, "devices": {"type": "array", "items": {"type": "object", "properties": {"name": {"type": "string", "minLength": 1}, "type": {"enum": ["router", "pc", "switch", "server"]}, "interfaces": {"type": "array", "items": {"type": "object", "properties": {"name": {"type": "string", "minLength": 1}, "ipv4": {"type": ["string", "null"]}}, "required": ["name", "ipv4"], "additionalProperties": false}, "minItems": 1}, "default_gateway": {"type": ["string", "null"]}, "routing": {"type": "array", "items": {"oneOf": [{"type": "object", "properties": {"protocol": {"const": "rip"}, "version": {"const": 2}, "auto_summary": {"const": false}, "networks": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}}, "required": ["protocol", "version", "auto_summary", "networks"], "additionalProperties": false}, {"type": "object", "additionalProperties": false, "required": ["protocol", "process_id", "networks"], "properties": {"protocol": {"const": "ospf"}, "process_id": {"type": "integer", "minimum": 1, "maximum": 65535}, "networks": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["network", "wildcard", "area"], "properties": {"network": {"type": "string"}, "wildcard": {"type": "string"}, "area": {"type": "integer", "minimum": 0, "maximum": 4294967295}}}}, "passive_interfaces": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}}}, {"type": "object", "properties": {"protocol": {"const": "static"}, "routes": {"type": "array", "items": {"type": "object", "properties": {"prefix": {"type": "string", "minLength": 1}, "next_hop": {"type": "string", "minLength": 1}, "distance": {"type": "integer", "minimum": 1, "maximum": 254}, "recursive": {"const": true}}, "required": ["prefix", "next_hop"], "additionalProperties": false}, "uniqueItems": true}}, "required": ["protocol", "routes"], "additionalProperties": false}]}, "maxItems": 2}, "acls": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["name", "interface", "direction", "rules"], "properties": {"name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"}, "interface": {"type": "string"}, "direction": {"enum": ["in", "out"]}, "rules": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["action", "protocol", "source", "destination"], "properties": {"action": {"enum": ["permit", "deny"]}, "protocol": {"enum": ["ip", "icmp", "tcp"]}, "source": {"type": "string"}, "destination": {"type": "string"}, "icmp_type": {"const": "echo-reply"}, "established": {"const": true}, "destination_port": {"type": "integer", "minimum": 1, "maximum": 65535}}}, "minItems": 1}}}}, "services": {"type": "object", "additionalProperties": false, "required": ["http", "ftp", "pages"], "properties": {"http": {"type": "boolean"}, "ftp": {"type": "boolean"}, "pages": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["filename", "content"], "properties": {"filename": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*\\.html$"}, "content": {"type": "string", "minLength": 10, "maxLength": 2048}}}}}}}, "required": ["name", "type", "interfaces", "default_gateway", "routing"], "additionalProperties": false, "allOf": [{"if": {"properties": {"type": {"enum": ["router", "pc", "switch"]}}}, "then": {"properties": {"services": false}}}, {"if": {"properties": {"type": {"const": "server"}}}, "then": {"required": ["services"]}}, {"if": {"properties": {"type": {"enum": ["pc", "switch", "server"]}}}, "then": {"properties": {"acls": false}}}]}, "minItems": 1}, "links": {"type": "array", "items": {"type": "object", "properties": {"a": {"type": "object", "properties": {"device": {"type": "string", "minLength": 1}, "interface": {"type": "string", "minLength": 1}}, "required": ["device", "interface"], "additionalProperties": false}, "b": {"type": "object", "properties": {"device": {"type": "string", "minLength": 1}, "interface": {"type": "string", "minLength": 1}}, "required": ["device", "interface"], "additionalProperties": false}, "dce": {"anyOf": [{"type": "object", "properties": {"device": {"type": "string", "minLength": 1}, "interface": {"type": "string", "minLength": 1}}, "required": ["device", "interface"], "additionalProperties": false}, {"type": "null"}]}}, "required": ["a", "b", "dce"], "additionalProperties": false}}, "vlans": {"type": "array", "uniqueItems": true, "items": {"type": "object", "properties": {"id": {"type": "integer", "minimum": 1, "maximum": 4094}, "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]{0,31}$"}}, "required": ["id", "name"], "additionalProperties": false}}, "checks": {"type": "array", "items": {"type": "object", "properties": {"type": {"const": "ping"}, "source": {"type": "string", "minLength": 1}, "destination": {"type": "string", "minLength": 1}, "expect": {"enum": ["allow", "deny"]}}, "required": ["type", "source", "destination"], "additionalProperties": false}, "minItems": 1}}, "required": ["case_id", "status", "questions", "devices", "links", "vlans", "checks"], "additionalProperties": false, "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://example.invalid/ipv4-rip-v1.schema.json", "title": "IPv4 RIP/OSPF DSL v2 (VLAN not yet supported)"} 课程专用约定：绝对不要输出variant、ip_routing、nat；不适用的services/acls字段必须省略，不写null、不写全false空对象。只有server可写services。router默认IPv4转发无需ip_routing字段。expect省略等价allow；deny必须显式填写。
+这是后续修订，不是首轮。本次需求文本若声明原题映射纠正，以本次需求为准，不继承旧映射。其他内容按当前Schema和需求核对。不得擅改当前需求。
+原始输出：
+```yaml
+case_id: COURSE-4-5
+status: ready
+questions: []
+devices:
+  - name: R0
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 218.75.230.46/28
+      - name: GigabitEthernet0/1
+        ipv4: 218.75.230.30/27
+      - name: GigabitEthernet0/2
+        ipv4: 218.75.230.81/30
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 218.75.230.64/28
+            next_hop: 218.75.230.82
+          - prefix: 218.75.230.48/28
+            next_hop: 218.75.230.82
+  - name: R1
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 218.75.230.78/28
+      - name: GigabitEthernet0/1
+        ipv4: 218.75.230.62/28
+      - name: GigabitEthernet0/2
+        ipv4: 218.75.230.82/30
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 218.75.230.32/28
+            next_hop: 218.75.230.81
+          - prefix: 218.75.230.0/27
+            next_hop: 218.75.230.81
+  - name: Switch0
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+  - name: PC0
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.33/28
+    default_gateway: 218.75.230.46
+    routing: []
+  - name: PC1
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.34/28
+    default_gateway: 218.75.230.46
+    routing: []
+  - name: Switch1
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+  - name: PC2
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.1/27
+    default_gateway: 218.75.230.30
+    routing: []
+  - name: PC3
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.2/27
+    default_gateway: 218.75.230.30
+    routing: []
+  - name: Switch2
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+  - name: PC4
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.65/28
+    default_gateway: 218.75.230.78
+    routing: []
+  - name: PC5
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.66/28
+    default_gateway: 218.75.230.78
+    routing: []
+  - name: Switch3
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+  - name: PC6
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.49/28
+    default_gateway: 218.75.230.62
+    routing: []
+  - name: PC7
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 218.75.230.50/28
+    default_gateway: 218.75.230.62
+    routing: []
+links:
+  - a:
+      device: R0
+      interface: GigabitEthernet0/2
+    b:
+      device: R1
+      interface: GigabitEthernet0/2
+    dce: null
+  - a:
+      device: Switch0
+      interface: FastEthernet0/3
+    b:
+      device: R0
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: PC0
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: PC1
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/2
+    dce: null
+  - a:
+      device: Switch1
+      interface: FastEthernet0/3
+    b:
+      device: R0
+      interface: GigabitEthernet0/1
+    dce: null
+  - a:
+      device: PC2
+      interface: FastEthernet0
+    b:
+      device: Switch1
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: PC3
+      interface: FastEthernet0
+    b:
+      device: Switch1
+      interface: FastEthernet0/2
+    dce: null
+  - a:
+      device: Switch2
+      interface: FastEthernet0/3
+    b:
+      device: R1
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: PC4
+      interface: FastEthernet0
+    b:
+      device: Switch2
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: PC5
+      interface: FastEthernet0
+    b:
+      device: Switch2
+      interface: FastEthernet0/2
+    dce: null
+  - a:
+      device: Switch3
+      interface: FastEthernet0/3
+    b:
+      device: R1
+      interface: GigabitEthernet0/1
+    dce: null
+  - a:
+      device: PC6
+      interface: FastEthernet0
+    b:
+      device: Switch3
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: PC7
+      interface: FastEthernet0
+    b:
+      device: Switch3
+      interface: FastEthernet0/2
+    dce: null
+vlans: []
+checks:
+  - type: ping
+    source: PC0
+    destination: 218.75.230.1
+    expect: allow
+  - type: ping
+    source: PC0
+    destination: 218.75.230.65
+    expect: allow
+  - type: ping
+    source: PC0
+    destination: 218.75.230.49
+    expect: allow
+  - type: ping
+    source: PC6
+    destination: 218.75.230.33
+    expect: allow
+```
+旧校验记录（其中默认allow导致的比较差异已修复；其他错误仍应核对）：
+{
+  "passed": true,
+  "errors": [],
+  "first_output": false,
+  "manual_changes": false
+}

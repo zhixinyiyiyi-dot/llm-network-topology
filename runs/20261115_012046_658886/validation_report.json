@@ -1,0 +1,160 @@
+{
+  "passed": false,
+  "errors": [
+    {
+      "code": "UC05_MATRIX",
+      "path": "checks",
+      "message": "必须包含6台PC的30个有向两两ping，且无重复。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/0",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/1",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/2",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/3",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/4",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/5",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/6",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/7",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/8",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/9",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/10",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/11",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/12",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/13",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/14",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/15",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/16",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/17",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/18",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/19",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/20",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/21",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/22",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/23",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/24",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/25",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/26",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/27",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/28",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/29",
+      "message": "测试目标不是合法 IPv4。"
+    }
+  ]
+}

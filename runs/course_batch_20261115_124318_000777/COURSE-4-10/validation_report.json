@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "errors": [
+    {
+      "code": "SCHEMA",
+      "path": "devices/0/services",
+      "message": "None is not of type 'object'"
+    },
+    {
+      "code": "SCHEMA",
+      "path": "devices/1/services",
+      "message": "None is not of type 'object'"
+    },
+    {
+      "code": "SCHEMA",
+      "path": "devices/2/services",
+      "message": "None is not of type 'object'"
+    },
+    {
+      "code": "SCHEMA",
+      "path": "devices/3/services",
+      "message": "None is not of type 'object'"
+    },
+    {
+      "code": "SCHEMA",
+      "path": "devices/4/services",
+      "message": "None is not of type 'object'"
+    }
+  ],
+  "first_output": true,
+  "manual_changes": false
+}

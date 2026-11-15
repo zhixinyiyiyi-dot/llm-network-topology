@@ -1,0 +1,198 @@
+{
+  "case_id": "COURSE-4-10",
+  "mode": "live_read_only",
+  "started": "2026-11-15T05:27:16.289045+00:00",
+  "status": "PASS_NETWORK_CHECKS",
+  "checks": [
+    {
+      "name": "完整物理接线",
+      "passed": true,
+      "detail": "预期5条，实际识别5条；缺失[]；多余[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "name": "R1接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "03_R1_state.txt"
+    },
+    {
+      "name": "R2接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "04_R2_state.txt"
+    },
+    {
+      "name": "PC0地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "05_PC0_ipconfig.txt"
+    },
+    {
+      "name": "PC1地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "06_PC1_ipconfig.txt"
+    },
+    {
+      "name": "PC0到192.168.16.130",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "08_ping_0.txt"
+    },
+    {
+      "name": "PC1到192.168.16.10",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "10_ping_1.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_state",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_state",
+      "evidence": "03_R1_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R2_state",
+      "evidence": "04_R2_state.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ipconfig",
+      "evidence": "05_PC0_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ipconfig",
+      "evidence": "06_PC1_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.16.130",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_0_warmup",
+      "evidence": "07_ping_0_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.16.130",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_0",
+      "evidence": "08_ping_0.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.16.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_1_warmup",
+      "evidence": "09_ping_1_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.16.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_1",
+      "evidence": "10_ping_1.txt"
+    }
+  ],
+  "errors": [],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "application_evidence": "NOT_APPLICABLE",
+  "finished": "2026-11-15T05:27:38.323349+00:00"
+}

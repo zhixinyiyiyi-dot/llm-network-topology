@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-11-14T09:45:34.445921+00:00",
+  "input": "C:\\Users\\admin\\Documents\\计网拓展\\runs\\20261114_172847_213246\\topology.yaml",
+  "sha256": "2d50b4bc7ea645d5c48606052604bdb741fcbf2059a9fc24be7d115118fee76c",
+  "scope": "IPv4/RIPv2 only; no VLAN/OSPF/CLI/runtime validation",
+  "passed": false,
+  "errors": [
+    {
+      "code": "RIP_NETWORK_CANONICAL",
+      "path": "R2",
+      "message": "RIP network 192.168.16.128 应规范化为 192.168.16.0。"
+    }
+  ]
+}

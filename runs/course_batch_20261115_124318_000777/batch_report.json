@@ -1,0 +1,240 @@
+{
+  "started": "2026-11-15T04:43:18.000777+00:00",
+  "mode": "generation_validation_compilation_only",
+  "cases": [
+    {
+      "case_id": "COURSE-4-5",
+      "source": "实验4-5 IPv4地址无分类编址",
+      "adaptation": "采用原CIDR划分与四LAN拓扑；接口/PC分组明确如下。第二编址方案与重测尚需后续，单次通过不声称原实验全部步骤完成。",
+      "model_requests": 1,
+      "first_generation_status": "FAIL",
+      "compile_status": "NOT_RUN",
+      "runtime_status": "PENDING",
+      "automatic_repair_rounds": null,
+      "manual_changes": false,
+      "errors": [
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "SERVICE_ROLE",
+          "message": "HTTP/FTP仅配置于服务器"
+        },
+        {
+          "code": "COURSE_INTENT",
+          "path": "devices",
+          "message": "与本课程明确需求不一致；不自动修正模型输出"
+        },
+        {
+          "code": "COURSE_INTENT",
+          "path": "checks",
+          "message": "与本课程明确需求不一致；不自动修正模型输出"
+        }
+      ]
+    },
+    {
+      "case_id": "COURSE-4-10",
+      "source": "实验4-10 RIPv1与RIPv2对比",
+      "adaptation": "复用已验证的三Serial三角形和PC .10/.130，区别于课件混合链路/.1/.129；保留该差异。课程核心协议对比/代价/ECMP已有人工证据，但本轮模型输出部署仍需核对。与UC01/02重复基础场景不双计独立需求。",
+      "model_requests": 1,
+      "first_generation_status": "FAIL",
+      "compile_status": "NOT_RUN",
+      "runtime_status": "PENDING",
+      "automatic_repair_rounds": null,
+      "manual_changes": false,
+      "errors": [
+        {
+          "code": "SCHEMA",
+          "path": "devices/0/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/1/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/2/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/3/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/4/services",
+          "message": "None is not of type 'object'"
+        }
+      ]
+    },
+    {
+      "case_id": "COURSE-4-11",
+      "source": "实验4-11 OSPF",
+      "adaptation": "复用已验证的三Serial三角形和PC .10/.130，区别于课件混合链路/.1/.129；保留该差异。课程核心协议对比/代价/ECMP已有人工证据，但本轮模型输出部署仍需核对。与UC01/02重复基础场景不双计独立需求。",
+      "model_requests": 1,
+      "first_generation_status": "FAIL",
+      "compile_status": "NOT_RUN",
+      "runtime_status": "PENDING",
+      "automatic_repair_rounds": null,
+      "manual_changes": false,
+      "errors": [
+        {
+          "code": "SCHEMA",
+          "path": "devices/0/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/1/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/2/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/3/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/4/services",
+          "message": "None is not of type 'object'"
+        }
+      ]
+    },
+    {
+      "case_id": "COURSE-6-6",
+      "source": "实验6-6 万维网文档与HTTP",
+      "adaptation": "沿用原PC-Server直连/IP，新增course_index.html作为本次模型生成的可辨识页面；HTTP服务/页面由生成指南人工设置，不声称CLI自动部署应用服务。",
+      "model_requests": 1,
+      "first_generation_status": "FAIL",
+      "compile_status": "NOT_RUN",
+      "runtime_status": "PENDING",
+      "automatic_repair_rounds": null,
+      "manual_changes": false,
+      "errors": [
+        {
+          "code": "COURSE_INTENT",
+          "path": "devices",
+          "message": "与本课程明确需求不一致；不自动修正模型输出"
+        },
+        {
+          "code": "COURSE_INTENT",
+          "path": "checks",
+          "message": "与本课程明确需求不一致；不自动修正模型输出"
+        }
+      ]
+    },
+    {
+      "case_id": "COURSE-7-1",
+      "source": "实验7-1 扩展ACL",
+      "adaptation": "对应用户原课内报告的两router两switch三PC一Server；按实际Gigabit接口规划。保留Web80、FTP20/21、PC1到PC2全部IP、部门A到R1 ICMP四类限制；HTTP/FTP需生成服务指南人工配置。",
+      "model_requests": 1,
+      "first_generation_status": "FAIL",
+      "compile_status": "NOT_RUN",
+      "runtime_status": "PENDING",
+      "automatic_repair_rounds": null,
+      "manual_changes": false,
+      "errors": [
+        {
+          "code": "SCHEMA",
+          "path": "devices/0/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/1/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/2/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/3/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/4/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/5/services",
+          "message": "None is not of type 'object'"
+        },
+        {
+          "code": "SCHEMA",
+          "path": "devices/6/services",
+          "message": "None is not of type 'object'"
+        }
+      ]
+    }
+  ],
+  "deployment": "PENDING",
+  "scope": "五个课程来源；改编及与UC01/02重复范围明示，不重复凑独立需求数",
+  "finished": "2026-11-15T04:48:19.967972+00:00",
+  "first_generation_passed": 0,
+  "generation_attempts": 5,
+  "first_generation_rate": 0.0,
+  "configuration_first_runtime_pass_rate": null,
+  "repair_average_rounds": null
+}

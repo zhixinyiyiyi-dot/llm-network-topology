@@ -1,0 +1,307 @@
+{
+  "case_id": "UC-08",
+  "stage": "restored",
+  "started": "2026-11-14T18:33:21.612032+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "设备名称",
+      "passed": true,
+      "detail": "已找到8个预期设备名称。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "主备默认路由配置",
+      "passed": true,
+      "detail": "主AD1、备AD10，两条配置都保留。",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "name": "当前活动默认路由",
+      "passed": true,
+      "detail": "restored应为[1/0] via 198.51.100.2。",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "name": "非当前出口未占用默认路由",
+      "passed": true,
+      "detail": "不能只看配置，必须核对实际安装的默认路由。",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "name": "主下一跳解析路由",
+      "passed": true,
+      "detail": "主链路断开时OSPF应撤销主WAN前缀，正常及恢复时应存在。",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "name": "备用下一跳解析路由",
+      "passed": true,
+      "detail": "备用WAN前缀始终经R2可达。",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "name": "R0内部OSPF",
+      "passed": true,
+      "detail": "要求OSPF100、2个FULL邻居及指定被动接口。",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "name": "R1内部OSPF",
+      "passed": true,
+      "detail": "要求OSPF100、1个FULL邻居及指定被动接口。",
+      "evidence": "03_R1_state.json"
+    },
+    {
+      "name": "R2内部OSPF",
+      "passed": true,
+      "detail": "要求OSPF100、1个FULL邻居及指定被动接口。",
+      "evidence": "04_R2_state.json"
+    },
+    {
+      "name": "R1总部返回路由",
+      "passed": true,
+      "detail": "内部OSPF应学习总部/16。",
+      "evidence": "03_R1_state.json"
+    },
+    {
+      "name": "R2总部返回路由",
+      "passed": true,
+      "detail": "内部OSPF应学习总部/16。",
+      "evidence": "04_R2_state.json"
+    },
+    {
+      "name": "主出口接口状态",
+      "passed": true,
+      "detail": "backup应administratively down/down，其他阶段up/up。",
+      "evidence": "03_R1_state.json"
+    },
+    {
+      "name": "ISP1总部返回路由",
+      "passed": true,
+      "detail": "服务器网关应使用[1/0] via 198.51.100.1返回总部。",
+      "evidence": "05_R3_state.json"
+    },
+    {
+      "name": "ISP2总部返回路由",
+      "passed": true,
+      "detail": "ISP2应通过R2返回总部。",
+      "evidence": "06_R4_state.json"
+    },
+    {
+      "name": "PC_to_Server",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "08_PC_to_Server_ping.json"
+    },
+    {
+      "name": "Server_to_PC",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "10_Server_to_PC_ping.json"
+    },
+    {
+      "name": "出口路径",
+      "passed": true,
+      "detail": "实际路径 ['10.1.0.254', '10.0.1.2', '198.51.100.2', '203.0.113.100']；预期 ['10.1.0.254', '10.0.1.2', '198.51.100.2', '203.0.113.100']。",
+      "evidence": "11_PC_path.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "status": "RETURNED",
+      "evidence": "01_topology.json"
+    },
+    {
+      "index": 2,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip route",
+          "show ip interface brief",
+          "show ip ospf neighbor",
+          "show ip protocols"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_state",
+      "status": "RETURNED",
+      "evidence": "02_R0_state.json"
+    },
+    {
+      "index": 3,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip route",
+          "show ip interface brief",
+          "show ip ospf neighbor",
+          "show ip protocols"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_state",
+      "status": "RETURNED",
+      "evidence": "03_R1_state.json"
+    },
+    {
+      "index": 4,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip route",
+          "show ip interface brief",
+          "show ip ospf neighbor",
+          "show ip protocols"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R2_state",
+      "status": "RETURNED",
+      "evidence": "04_R2_state.json"
+    },
+    {
+      "index": 5,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router3",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip route",
+          "show ip interface brief"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R3_state",
+      "status": "RETURNED",
+      "evidence": "05_R3_state.json"
+    },
+    {
+      "index": 6,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router4",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip route",
+          "show ip interface brief"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R4_state",
+      "status": "RETURNED",
+      "evidence": "06_R4_state.json"
+    },
+    {
+      "index": 7,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 203.0.113.100",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC_to_Server_warmup",
+      "status": "RETURNED",
+      "evidence": "07_PC_to_Server_warmup.json"
+    },
+    {
+      "index": 8,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 203.0.113.100",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC_to_Server_ping",
+      "status": "RETURNED",
+      "evidence": "08_PC_to_Server_ping.json"
+    },
+    {
+      "index": 9,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "Server0",
+        "command": "ping 10.1.0.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "Server_to_PC_warmup",
+      "status": "RETURNED",
+      "evidence": "09_Server_to_PC_warmup.json"
+    },
+    {
+      "index": 10,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "Server0",
+        "command": "ping 10.1.0.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "Server_to_PC_ping",
+      "status": "RETURNED",
+      "evidence": "10_Server_to_PC_ping.json"
+    },
+    {
+      "index": 11,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "tracert 203.0.113.100",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC_path",
+      "status": "RETURNED",
+      "evidence": "11_PC_path.json"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "fault": "Router1 GigabitEthernet0/1 admin shutdown only in backup stage",
+  "scope": "link-down floating defaults, not general remote-ISP outage/SLA monitoring",
+  "expected_path": [
+    "10.1.0.254",
+    "10.0.1.2",
+    "198.51.100.2",
+    "203.0.113.100"
+  ],
+  "finished": "2026-11-14T18:33:47.079164+00:00"
+}

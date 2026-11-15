@@ -1,0 +1,16 @@
+PC0 (Command Prompt) — 1 command(s): 1 ok
+
+> ping 203.0.113.100    [ok]
+Pinging 203.0.113.100 with 32 bytes of data:
+
+Reply from 203.0.113.100: bytes=32 time<1ms TTL=124
+Reply from 203.0.113.100: bytes=32 time<1ms TTL=124
+Reply from 203.0.113.100: bytes=32 time=10ms TTL=124
+Reply from 203.0.113.100: bytes=32 time<1ms TTL=124
+
+Ping statistics for 203.0.113.100:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 10ms, Average = 2ms
+
+Final prompt: C:\>  (mode: user)

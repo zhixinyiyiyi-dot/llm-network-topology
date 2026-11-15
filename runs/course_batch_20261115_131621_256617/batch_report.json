@@ -1,0 +1,31 @@
+{
+  "started": "2026-11-15T05:16:21.256617+00:00",
+  "mode": "generation_validation_compilation_only",
+  "stage": "model_revision",
+  "parent_batch": "runs\\course_batch_20261115_125404_810573",
+  "cases": [
+    {
+      "case_id": "COURSE-4-5",
+      "source": "实验4-5 IPv4地址无分类编址",
+      "adaptation": "按用户实际原题拓扑纠正PC1/PC2和PC5/PC6映射及Switch3端口；旧需求由助手整理错误，不归因模型。沿用原CIDR第一方案，第二编址方案未覆盖。",
+      "model_requests": 1,
+      "generation_status": "PASS",
+      "compile_status": "PASS",
+      "runtime_status": "PENDING",
+      "automatic_repair_rounds": null,
+      "manual_changes": false,
+      "is_first_output": false,
+      "original_first_output_status": "FAIL",
+      "errors": []
+    }
+  ],
+  "deployment": "PENDING",
+  "scope": "五个课程来源；改编及与UC01/02重复范围明示，不重复凑独立需求数",
+  "finished": "2026-11-15T05:17:45.846218+00:00",
+  "current_output_passed": 1,
+  "generation_attempts": 1,
+  "current_output_rate": 1.0,
+  "first_generation_rate": null,
+  "configuration_first_runtime_pass_rate": null,
+  "repair_average_rounds": null
+}

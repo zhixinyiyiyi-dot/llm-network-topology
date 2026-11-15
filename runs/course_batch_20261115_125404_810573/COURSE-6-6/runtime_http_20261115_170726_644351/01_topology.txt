@@ -1,0 +1,8 @@
+DEVICES:3|LINKS:1
+
+  PC0                  [PC-PT]  (FastEthernet0=192.168.0.1/255.255.255.0,Bluetooth)
+  Server0              [Server-PT]  (FastEthernet0=192.168.0.2/255.255.255.0)
+  Power Distribution Device0 [Power Distribution Device]
+
+  Links:
+    PC0:FastEthernet0  <--[cross]-->  Server0:FastEthernet0

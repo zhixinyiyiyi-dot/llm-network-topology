@@ -1,0 +1,47 @@
+{
+  "id": "01a1dd5bed339b766c4b6a62256ffbde",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\n    \"case_id\": \"UC-11\",\n    \"decision\": \"needs_clarification\",\n    \"reason\": \"用户需求描述过于模糊，缺乏网络规划所需的关键信息，无法直接进行可行性评估或生成方案。\",\n    \"questions\": [\n        {\n            \"category\": \"hosts\",\n            \"question\": \"“二十来台机器”的具体数量是多少？办公网和测试网各自预计有多少台设备？\"\n        },\n        {\n            \"category\": \"addressing\",\n            \"question\": \"您是否有指定的IP地址段（例如192.168.x.x/24）？还是由我们规划？\"\n        },\n        {\n            \"category\": \"uplink\",\n            \"question\": \"“能上网”是指通过何种方式接入互联网？已有路由器或需要新建？\"\n        },\n        {\n            \"category\": \"security\",\n            \"question\": \"“安全一点”具体指哪些方面？例如办公网和测试网之间是否需要隔离？\"\n        }\n    ],\n    \"capacity\": null,\n    \"alternatives\": [],\n    \"deployable_config\": null\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1794715152,
+  "model": "deepseek-ai/DeepSeek-V3.2",
+  "object": "chat.completion",
+  "metadata": null,
+  "moderation": null,
+  "service_tier": null,
+  "system_fingerprint": "",
+  "usage": {
+    "completion_tokens": 229,
+    "prompt_tokens": 500,
+    "total_tokens": 729,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cache_write_tokens": null,
+      "cached_tokens": 0,
+      "image_tokens": null,
+      "text_tokens": null
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 500
+  }
+}

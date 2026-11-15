@@ -1,0 +1,213 @@
+```yaml
+case_id: COURSE-7-1
+status: ready
+questions: []
+devices:
+  - name: R0
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 192.168.0.254/24
+      - name: GigabitEthernet0/1
+        ipv4: 10.0.0.1/30
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 192.168.1.0/24
+            next_hop: 10.0.0.2
+    nat: null
+    ip_routing: true
+    acls: []
+    services: null
+  - name: R1
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 192.168.1.254/24
+      - name: GigabitEthernet0/1
+        ipv4: 10.0.0.2/30
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 192.168.0.0/24
+            next_hop: 10.0.0.1
+    nat: null
+    ip_routing: true
+    acls:
+      - name: COURSE_ACL
+        interface: GigabitEthernet0/1
+        direction: in
+        rules:
+          - action: deny
+            protocol: tcp
+            source: 192.168.0.0/24
+            destination: 192.168.1.2/32
+            destination_port: 80
+          - action: deny
+            protocol: tcp
+            source: 192.168.0.1/32
+            destination: 192.168.1.2/32
+            destination_port: 20
+          - action: deny
+            protocol: tcp
+            source: 192.168.0.1/32
+            destination: 192.168.1.2/32
+            destination_port: 21
+          - action: deny
+            protocol: ip
+            source: 192.168.0.2/32
+            destination: 192.168.1.1/32
+          - action: deny
+            protocol: icmp
+            source: 192.168.0.0/24
+            destination: 10.0.0.2/32
+          - action: permit
+            protocol: ip
+            source: any
+            destination: any
+    services: null
+  - name: Switch0
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+    nat: null
+    ip_routing: false
+    acls: []
+    services: null
+  - name: PC0
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 192.168.0.1/24
+    default_gateway: 192.168.0.254
+    routing: []
+    nat: null
+    ip_routing: false
+    acls: []
+    services: null
+  - name: PC1
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 192.168.0.2/24
+    default_gateway: 192.168.0.254
+    routing: []
+    nat: null
+    ip_routing: false
+    acls: []
+    services: null
+  - name: Switch1
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+    nat: null
+    ip_routing: false
+    acls: []
+    services: null
+  - name: PC2
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 192.168.1.1/24
+    default_gateway: 192.168.1.254
+    routing: []
+    nat: null
+    ip_routing: false
+    acls: []
+    services: null
+  - name: Server0
+    type: server
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 192.168.1.2/24
+    default_gateway: 192.168.1.254
+    routing: []
+    nat: null
+    ip_routing: false
+    acls: []
+    services:
+      http: true
+      ftp: true
+      pages: []
+links:
+  - a:
+      device: R0
+      interface: GigabitEthernet0/1
+    b:
+      device: R1
+      interface: GigabitEthernet0/1
+    dce: null
+  - a:
+      device: Switch0
+      interface: FastEthernet0/3
+    b:
+      device: R0
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: PC0
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: PC1
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/2
+    dce: null
+  - a:
+      device: Switch1
+      interface: FastEthernet0/3
+    b:
+      device: R1
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: PC2
+      interface: FastEthernet0
+    b:
+      device: Switch1
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: Server0
+      interface: FastEthernet0
+    b:
+      device: Switch1
+      interface: FastEthernet0/2
+    dce: null
+vlans: []
+checks:
+  - type: ping
+    source: PC1
+    destination: 192.168.1.1
+    expect: deny
+  - type: ping
+    source: PC0
+    destination: 10.0.0.2
+    expect: deny
+  - type: ping
+    source: PC0
+    destination: 192.168.1.1
+    expect: allow
+variant: router_on_a_stick
+```

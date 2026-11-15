@@ -1,0 +1,11 @@
+{
+  "source_sha256": "ff0324e198ae2657b38c54d1ea7042036ed24dd861246cbf7e4fc0f4574b7120",
+  "validated": true,
+  "command_guard_passed": true,
+  "deployed": false,
+  "files": {
+    "R0.cfg": "507962f6db4844f167ac50f9174f3f1bc0eb2976a3495f9cf91f6a7ebdc770d8",
+    "R1.cfg": "60ee7cda4b49a64139113a203b01934955666cd75cde6218016a6c7e3814a2c1",
+    "R2.cfg": "879aa73ec7aa64c3557df956556313f7fe5fb70e2240ec6daf1c7411dc608cc2"
+  }
+}

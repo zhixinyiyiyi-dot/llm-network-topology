@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router1 (CLI) — 1 command(s): 1 ok\n\n> show ip protocols    [ok]\nRouting Protocol is \"rip\"\nSending updates every 30 seconds, next due in 18 seconds\nInvalid after 180 seconds, hold down 180, flushed after 240\nOutgoing update filter list for all interfaces is not set\nIncoming update filter list for all interfaces is not set\nRedistributing: rip\nDefault version control: send version 2, receive 2\n  Interface             Send  Recv  Triggered RIP  Key-chain\n  Serial0/0/1           22\n  Serial0/0/0           22\nAutomatic network summarization is not in effect\nMaximum path: 4\nRouting for Networks:\n\t10.0.0.0\n\t20.0.0.0\nPassive Interface(s):\nRouting Information Sources:\n\tGateway         Distance      Last Update\n\t20.0.0.2             120      00:00:08\n\t10.0.0.1             120      00:00:12\nDistance: (default is 120)\n\nFinal prompt: R1#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router1 (CLI) — 1 command(s): 1 ok\n\n> show ip protocols    [ok]\nRouting Protocol is \"rip\"\nSending updates every 30 seconds, next due in 18 seconds\nInvalid after 180 seconds, hold down 180, flushed after 240\nOutgoing update filter list for all interfaces is not set\nIncoming update filter list for all interfaces is not set\nRedistributing: rip\nDefault version control: send version 2, receive 2\n  Interface             Send  Recv  Triggered RIP  Key-chain\n  Serial0/0/1           22\n  Serial0/0/0           22\nAutomatic network summarization is not in effect\nMaximum path: 4\nRouting for Networks:\n\t10.0.0.0\n\t20.0.0.0\nPassive Interface(s):\nRouting Information Sources:\n\tGateway         Distance      Last Update\n\t20.0.0.2             120      00:00:08\n\t10.0.0.1             120      00:00:12\nDistance: (default is 120)\n\nFinal prompt: R1#  (mode: enable)"
+  },
+  "isError": false
+}

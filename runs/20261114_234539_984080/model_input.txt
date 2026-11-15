@@ -1,0 +1,147 @@
+需求：
+用例：UC-03 分公司接入与区域规划
+仅在本地Packet Tracer中部署。沿用参考拓扑的R0、R1、R2、PC0、PC1和物理接口/接线/DCE，但重新编址。
+R0 GigabitEthernet0/0：192.168.0.254/24，为总部PC0网关；PC0 FastEthernet0：192.168.0.10/24。
+R2 GigabitEthernet0/0：192.168.1.254/24，为分公司PC1网关；PC1 FastEthernet0：192.168.1.10/24。
+R0 Serial0/0/0：10.0.0.1/30；R1 Serial0/0/0：10.0.0.2/30，此链路属于area 0。
+R1 Serial0/0/1：172.16.0.1/30；R2 Serial0/0/0：172.16.0.2/30，此链路属于area 100。
+扩展链路R0 Serial0/0/1：172.19.0.1/30；R2 Serial0/0/1：172.19.0.2/30，属于area 100。
+总部局域网属于area 0，分公司局域网属于area 100。三台路由器均使用OSPF进程1，目标YAML不含旧RIP或OSPF100。
+所有接口准确使用各自子网地址及反掩码，不新增设备、不改变物理链路。
+checks保留两个ping测试：PC0到192.168.1.10、PC1到192.168.0.10。
+检查R1的路由表和区域边界角色，并在R2检查到总部192.168.0.0/24的O IA跨区域路由。
+说明：R1本身是ABR，两个已连接区域内的LAN路由可显示O，不能为了让R1出现O IA而改变原拓扑或伪造输出。
+
+参考UC-01拓扑：
+case_id: UC-02
+status: ready
+questions: []
+devices:
+- name: R0
+  type: router
+  interfaces:
+  - name: GigabitEthernet0/0
+    ipv4: 192.168.16.126/25
+  - name: Serial0/0/0
+    ipv4: 10.0.0.1/30
+  - name: Serial0/0/1
+    ipv4: 30.0.0.1/30
+  default_gateway: null
+  routing:
+  - protocol: ospf
+    process_id: 100
+    networks:
+    - network: 192.168.16.0
+      wildcard: 0.0.0.127
+      area: 0
+    - network: 10.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+    - network: 30.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+- name: R1
+  type: router
+  interfaces:
+  - name: Serial0/0/0
+    ipv4: 10.0.0.2/30
+  - name: Serial0/0/1
+    ipv4: 20.0.0.1/30
+  default_gateway: null
+  routing:
+  - protocol: ospf
+    process_id: 100
+    networks:
+    - network: 10.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+    - network: 20.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+- name: R2
+  type: router
+  interfaces:
+  - name: Serial0/0/0
+    ipv4: 20.0.0.2/30
+  - name: Serial0/0/1
+    ipv4: 30.0.0.2/30
+  - name: GigabitEthernet0/0
+    ipv4: 192.168.16.190/26
+  default_gateway: null
+  routing:
+  - protocol: ospf
+    process_id: 100
+    networks:
+    - network: 192.168.16.128
+      wildcard: 0.0.0.63
+      area: 0
+    - network: 20.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+    - network: 30.0.0.0
+      wildcard: 0.0.0.3
+      area: 0
+- name: PC0
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.16.10/25
+  default_gateway: 192.168.16.126
+  routing: []
+- name: PC1
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.16.130/26
+  default_gateway: 192.168.16.190
+  routing: []
+links:
+- a:
+    device: PC0
+    interface: FastEthernet0
+  b:
+    device: R0
+    interface: GigabitEthernet0/0
+  dce: null
+- a:
+    device: R0
+    interface: Serial0/0/0
+  b:
+    device: R1
+    interface: Serial0/0/0
+  dce:
+    device: R0
+    interface: Serial0/0/0
+- a:
+    device: R1
+    interface: Serial0/0/1
+  b:
+    device: R2
+    interface: Serial0/0/0
+  dce:
+    device: R1
+    interface: Serial0/0/1
+- a:
+    device: R0
+    interface: Serial0/0/1
+  b:
+    device: R2
+    interface: Serial0/0/1
+  dce:
+    device: R0
+    interface: Serial0/0/1
+- a:
+    device: R2
+    interface: GigabitEthernet0/0
+  b:
+    device: PC1
+    interface: FastEthernet0
+  dce: null
+vlans: []
+checks:
+- type: ping
+  source: PC0
+  destination: 192.168.16.130
+- type: ping
+  source: PC1
+  destination: 192.168.16.10

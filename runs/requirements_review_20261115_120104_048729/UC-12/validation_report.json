@@ -1,0 +1,10 @@
+{
+  "case_id": "UC-12",
+  "status": "PASS",
+  "errors": [],
+  "deployed": false,
+  "model_requests": 1,
+  "device_repair_rounds": null,
+  "scope": "需求澄清/不可行性拒绝；不是拓扑部署或连通性验收",
+  "human_semantic_review": "PENDING"
+}

@@ -1,0 +1,301 @@
+{
+  "case_id": "COURSE-4-10",
+  "phase": "ripv2",
+  "status": "EVIDENCE_COLLECTED",
+  "started": "2026-11-15T09:20:40.619402+00:00",
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_enable",
+      "evidence": "02_Router0_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_interfaces",
+      "evidence": "03_Router0_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip protocols"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_protocols",
+      "evidence": "04_Router0_protocols.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_routes",
+      "evidence": "05_Router0_routes.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router1_enable",
+      "evidence": "06_Router1_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router1_interfaces",
+      "evidence": "07_Router1_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip protocols"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router1_protocols",
+      "evidence": "08_Router1_protocols.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router1_routes",
+      "evidence": "09_Router1_routes.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "enable"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_enable",
+      "evidence": "10_Router2_enable.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_interfaces",
+      "evidence": "11_Router2_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "show ip protocols"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_protocols",
+      "evidence": "12_Router2_protocols.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router2",
+        "commands": [
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router2_routes",
+      "evidence": "13_Router2_routes.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.16.130",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_warmup",
+      "evidence": "14_PC0_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.16.130",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ping",
+      "evidence": "15_PC0_ping.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.16.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_warmup",
+      "evidence": "16_PC1_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.16.10",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ping",
+      "evidence": "17_PC1_ping.txt"
+    }
+  ],
+  "protocols": {
+    "Router0": {
+      "rip_present": true,
+      "send_version": "2",
+      "receive": "2",
+      "phase_matches": true
+    },
+    "Router1": {
+      "rip_present": true,
+      "send_version": "2",
+      "receive": "2",
+      "phase_matches": true
+    },
+    "Router2": {
+      "rip_present": true,
+      "send_version": "2",
+      "receive": "2",
+      "phase_matches": true
+    }
+  },
+  "routes": {
+    "Router0": [
+      "R       20.0.0.0/30 [120/1] via 30.0.0.2, 00:00:07, Serial0/0/1",
+      "R       192.168.16.128/26 [120/1] via 30.0.0.2, 00:00:07, Serial0/0/1"
+    ],
+    "Router1": [
+      "R       30.0.0.0/30 [120/1] via 20.0.0.2, 00:00:08, Serial0/0/1",
+      "R       192.168.16.0/25 [120/1] via 10.0.0.1, 00:00:12, Serial0/0/0",
+      "R       192.168.16.128/26 [120/1] via 20.0.0.2, 00:00:08, Serial0/0/1"
+    ],
+    "Router2": [
+      "R       10.0.0.0/30 [120/1] via 30.0.0.1, 00:00:12, Serial0/0/1",
+      "R       192.168.16.0/25 [120/1] via 30.0.0.1, 00:00:12, Serial0/0/1"
+    ]
+  },
+  "pings": [
+    {
+      "source": "PC0",
+      "destination": "192.168.16.130",
+      "sent": 4,
+      "received": 4,
+      "lost": 0,
+      "echo_replies": 4,
+      "passed": true
+    },
+    {
+      "source": "PC1",
+      "destination": "192.168.16.10",
+      "sent": 4,
+      "received": 4,
+      "lost": 0,
+      "echo_replies": 4,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "configuration_writes": 0,
+  "scope": "Live evidence of requested phase; RIPv1 ping failure is an observation, not automatically an acceptance failure. Name/link checks do not prove every configuration line.",
+  "finished": "2026-11-15T09:21:02.474129+00:00"
+}

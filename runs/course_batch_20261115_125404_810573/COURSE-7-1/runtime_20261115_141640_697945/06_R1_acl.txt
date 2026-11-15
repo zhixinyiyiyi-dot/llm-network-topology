@@ -1,0 +1,7 @@
+Router1 (CLI) — 1 command(s): 1 ERROR
+
+> show access-lists    [ERROR]
+             ^
+% Invalid input detected at '^' marker.
+
+Final prompt: Router>  (mode: user)

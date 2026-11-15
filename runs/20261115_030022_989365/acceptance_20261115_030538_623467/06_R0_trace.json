@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router0 (CLI) — 2 command(s): 2 ok\n\n> enable    [ok]\n\nR0#traceroute 20.0.0.1    [ok]\nType escape sequence to abort.\nTracing the route to 20.0.0.1\n\n  1   10.0.0.2        0 msec    0 msec    0 msec\n\nFinal prompt: R0#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router0 (CLI) — 2 command(s): 2 ok\n\n> enable    [ok]\n\nR0#traceroute 20.0.0.1    [ok]\nType escape sequence to abort.\nTracing the route to 20.0.0.1\n\n  1   10.0.0.2        0 msec    0 msec    0 msec\n\nFinal prompt: R0#  (mode: enable)"
+  },
+  "isError": false
+}

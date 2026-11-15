@@ -1,0 +1,11 @@
+用例：UC-09 与合作伙伴的专线互联（eBGP）
+仅在本地Packet Tracer，设备只有两台路由器R0和R1（type:router），default_gateway:null。不使用PC、VLAN、NAT、ACL、静态路由、OSPF或RIP，不加variant。
+物理链路仅R0 GigabitEthernet0/0—R1 GigabitEthernet0/0，dce:null。
+R0 GigabitEthernet0/0地址10.0.0.1/24；R1 GigabitEthernet0/0地址10.0.0.2/24，保留题目互联链路地址。
+R0另有软件接口Loopback0，地址10.1.0.1/24；R1另有Loopback0，地址20.0.0.1/24。Loopback不连物理线。
+R0 routing只有一项：protocol:bgp、local_as:100、router_id:10.1.0.1、networks:[10.0.0.0/24,10.1.0.0/24]、neighbors:[{address:10.0.0.2,remote_as:200}]。
+R1 routing只有一项：protocol:bgp、local_as:200、router_id:20.0.0.1、networks:[20.0.0.0/24]、neighbors:[{address:10.0.0.1,remote_as:100}]。
+checks精确两项：R0 ping 20.0.0.1，R1 ping 10.1.0.1。destination必须是IPv4地址，不是设备名称。
+验证eBGP邻居建立、BGP表AS_PATH、IP路由表以B安装对端Loopback前缀、双向ping。
+题意补充说明：原要求让AS100宣告10.0.0.0/24，但它同时是两端共有直连网络，因此R1的IP路由表对它会优先显示C；保留该原宣告并额外增加AS100的10.1.0.0/24 Loopback作为可区分的远端前缀。必须在报告记录这一补充，不能声称直连前缀一定在R1的RIB显示B。
+vlans=[]，status正常为ready、questions=[]。

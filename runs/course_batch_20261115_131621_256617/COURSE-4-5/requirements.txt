@@ -1,0 +1,33 @@
+课内来源：实验4-5 IPv4无分类编址。
+本次需求是经用户原拓扑确认后的纠正版。此前助手把主机编号与Switch3端口整理错了。若旧输出与本次需求冲突，以本次需求为准；记录为需求版本修订，非模型自动排障。
+case_id=COURSE-4-5，status=ready，questions=[]，vlans=[]。不使用NAT/VLAN/服务或动态路由。没有ACL/services的设备省略这些字段。
+设备R0，类型router，接口：GigabitEthernet0/0=218.75.230.46/28；GigabitEthernet0/1=218.75.230.30/27；GigabitEthernet0/2=218.75.230.81/30；网关=None。
+静态路由：218.75.230.64/28 经 218.75.230.82；218.75.230.48/28 经 218.75.230.82
+设备R1，类型router，接口：GigabitEthernet0/0=218.75.230.78/28；GigabitEthernet0/1=218.75.230.62/28；GigabitEthernet0/2=218.75.230.82/30；网关=None。
+静态路由：218.75.230.32/28 经 218.75.230.81；218.75.230.0/27 经 218.75.230.81
+设备Switch0，类型switch，接口：FastEthernet0/1=None；FastEthernet0/2=None；FastEthernet0/3=None；网关=None。
+该设备routing=[]。
+设备PC0，类型pc，接口：FastEthernet0=218.75.230.33/28；网关=218.75.230.46。
+该设备routing=[]。
+设备PC2，类型pc，接口：FastEthernet0=218.75.230.34/28；网关=218.75.230.46。
+该设备routing=[]。
+设备Switch1，类型switch，接口：FastEthernet0/1=None；FastEthernet0/2=None；FastEthernet0/3=None；网关=None。
+该设备routing=[]。
+设备PC1，类型pc，接口：FastEthernet0=218.75.230.1/27；网关=218.75.230.30。
+该设备routing=[]。
+设备PC3，类型pc，接口：FastEthernet0=218.75.230.2/27；网关=218.75.230.30。
+该设备routing=[]。
+设备Switch2，类型switch，接口：FastEthernet0/1=None；FastEthernet0/2=None；FastEthernet0/3=None；网关=None。
+该设备routing=[]。
+设备PC4，类型pc，接口：FastEthernet0=218.75.230.65/28；网关=218.75.230.78。
+该设备routing=[]。
+设备PC6，类型pc，接口：FastEthernet0=218.75.230.66/28；网关=218.75.230.78。
+该设备routing=[]。
+设备Switch3，类型switch，接口：FastEthernet0/1=None；FastEthernet0/2=None；FastEthernet0/3=None；网关=None。
+该设备routing=[]。
+设备PC5，类型pc，接口：FastEthernet0=218.75.230.49/28；网关=218.75.230.62。
+该设备routing=[]。
+设备PC7，类型pc，接口：FastEthernet0=218.75.230.50/28；网关=218.75.230.62。
+该设备routing=[]。
+物理接线（所有dce=null）：R0 GigabitEthernet0/2—R1 GigabitEthernet0/2；Switch0 FastEthernet0/3—R0 GigabitEthernet0/0；PC0 FastEthernet0—Switch0 FastEthernet0/1；PC2 FastEthernet0—Switch0 FastEthernet0/2；Switch1 FastEthernet0/3—R0 GigabitEthernet0/1；PC1 FastEthernet0—Switch1 FastEthernet0/1；PC3 FastEthernet0—Switch1 FastEthernet0/2；Switch2 FastEthernet0/3—R1 GigabitEthernet0/0；PC4 FastEthernet0—Switch2 FastEthernet0/1；PC6 FastEthernet0—Switch2 FastEthernet0/2；Switch3 FastEthernet0/1—R1 GigabitEthernet0/1；PC5 FastEthernet0—Switch3 FastEthernet0/2；PC7 FastEthernet0—Switch3 FastEthernet0/3
+checks仅包含以下ping，目标用IPv4，均expect allow：PC0 到 218.75.230.1；PC0 到 218.75.230.65；PC0 到 218.75.230.49；PC5 到 218.75.230.33

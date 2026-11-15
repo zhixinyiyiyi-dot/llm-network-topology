@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "Router1 (CLI) — 1 command(s): 1 ok\n\n> show ip interface GigabitEthernet0/1    [ok]\nGigabitEthernet0/1 is up, line protocol is up (connected)\n  Internet address is 10.0.0.2/30\n  Broadcast address is 255.255.255.255\n  Address determined by setup command\n  MTU is 1500 bytes\n  Helper address is not set\n  Directed broadcast forwarding is disabled\n  Outgoing access list is not set\n  Inbound  access list is COURSE_ACL\n  Proxy ARP is enabled\n  Security level is default\n  Split horizon is enabled\n  ICMP redirects are always sent\n  ICMP unreachables are always sent\n  ICMP mask replies are never sent\n  IP fast switching is disabled\n  IP fast switching on the same interface is disabled\n  IP Flow switching is disabled\n  IP Fast switching turbo vector\n  IP multicast fast switching is disabled\n  IP multicast distributed fast switching is disabled\n  Router Discovery is disabled\n  IP output packet accounting is disabled\n  IP access violation accounting is disabled\n  TCP/IP header compression is disabled\n  RTP/IP header compression is disabled\n  Probe proxy name replies are disabled\n  Policy routing is disabled\n  Network address translation is disabled\n  BGP Policy Mapping is disabled\n  Input features: MCI Check\n  WCCP Redirect outbound is disabled\n  WCCP Redirect inbound is disabled\n  WCCP Redirect exclude is disabled\n\nFinal prompt: Router#  (mode: enable)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "Router1 (CLI) — 1 command(s): 1 ok\n\n> show ip interface GigabitEthernet0/1    [ok]\nGigabitEthernet0/1 is up, line protocol is up (connected)\n  Internet address is 10.0.0.2/30\n  Broadcast address is 255.255.255.255\n  Address determined by setup command\n  MTU is 1500 bytes\n  Helper address is not set\n  Directed broadcast forwarding is disabled\n  Outgoing access list is not set\n  Inbound  access list is COURSE_ACL\n  Proxy ARP is enabled\n  Security level is default\n  Split horizon is enabled\n  ICMP redirects are always sent\n  ICMP unreachables are always sent\n  ICMP mask replies are never sent\n  IP fast switching is disabled\n  IP fast switching on the same interface is disabled\n  IP Flow switching is disabled\n  IP Fast switching turbo vector\n  IP multicast fast switching is disabled\n  IP multicast distributed fast switching is disabled\n  Router Discovery is disabled\n  IP output packet accounting is disabled\n  IP access violation accounting is disabled\n  TCP/IP header compression is disabled\n  RTP/IP header compression is disabled\n  Probe proxy name replies are disabled\n  Policy routing is disabled\n  Network address translation is disabled\n  BGP Policy Mapping is disabled\n  Input features: MCI Check\n  WCCP Redirect outbound is disabled\n  WCCP Redirect inbound is disabled\n  WCCP Redirect exclude is disabled\n\nFinal prompt: Router#  (mode: enable)"
+  },
+  "isError": false
+}

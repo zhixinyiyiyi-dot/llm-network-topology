@@ -1,0 +1,341 @@
+{
+  "case_id": "COURSE-4-5",
+  "mode": "live_read_only",
+  "started": "2026-11-15T05:19:21.848364+00:00",
+  "status": "PASS_NETWORK_CHECKS",
+  "checks": [
+    {
+      "name": "完整物理接线",
+      "passed": true,
+      "detail": "预期13条，实际识别13条；缺失[]；多余[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "name": "R1接口与路由配置",
+      "passed": true,
+      "detail": "不匹配项：[]",
+      "evidence": "03_R1_state.txt"
+    },
+    {
+      "name": "PC0地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "04_PC0_ipconfig.txt"
+    },
+    {
+      "name": "PC2地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "05_PC2_ipconfig.txt"
+    },
+    {
+      "name": "PC1地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "06_PC1_ipconfig.txt"
+    },
+    {
+      "name": "PC3地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "07_PC3_ipconfig.txt"
+    },
+    {
+      "name": "PC4地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "08_PC4_ipconfig.txt"
+    },
+    {
+      "name": "PC6地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "09_PC6_ipconfig.txt"
+    },
+    {
+      "name": "PC5地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "10_PC5_ipconfig.txt"
+    },
+    {
+      "name": "PC7地址/掩码/网关",
+      "passed": true,
+      "detail": "需与本轮YAML一致",
+      "evidence": "11_PC7_ipconfig.txt"
+    },
+    {
+      "name": "PC0到218.75.230.1",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "13_ping_0.txt"
+    },
+    {
+      "name": "PC0到218.75.230.65",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "15_ping_1.txt"
+    },
+    {
+      "name": "PC0到218.75.230.49",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "17_ping_2.txt"
+    },
+    {
+      "name": "PC5到218.75.230.33",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "19_ping_3.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_state",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_state",
+      "evidence": "03_R1_state.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ipconfig",
+      "evidence": "04_PC0_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC2",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC2_ipconfig",
+      "evidence": "05_PC2_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ipconfig",
+      "evidence": "06_PC1_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC3",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC3_ipconfig",
+      "evidence": "07_PC3_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC4",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC4_ipconfig",
+      "evidence": "08_PC4_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC6",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC6_ipconfig",
+      "evidence": "09_PC6_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC5_ipconfig",
+      "evidence": "10_PC5_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC7",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC7_ipconfig",
+      "evidence": "11_PC7_ipconfig.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_0_warmup",
+      "evidence": "12_ping_0_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_0",
+      "evidence": "13_ping_0.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.65",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_1_warmup",
+      "evidence": "14_ping_1_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.65",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_1",
+      "evidence": "15_ping_1.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.49",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_2_warmup",
+      "evidence": "16_ping_2_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 218.75.230.49",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_2",
+      "evidence": "17_ping_2.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 218.75.230.33",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_3_warmup",
+      "evidence": "18_ping_3_warmup.txt"
+    },
+    {
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC5",
+        "command": "ping 218.75.230.33",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "ping_3",
+      "evidence": "19_ping_3.txt"
+    }
+  ],
+  "errors": [],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "application_evidence": "NOT_APPLICABLE",
+  "finished": "2026-11-15T05:20:12.295843+00:00"
+}

@@ -1,0 +1,54 @@
+{
+  "case_id": "COURSE-6-6",
+  "version": "http-browser-v2",
+  "status": "PASS_HTTP_CHECKS",
+  "started": "2026-11-15T09:07:26.644351+00:00",
+  "source": "PC0",
+  "url": "http://192.168.0.2/course_index.html",
+  "expected_marker": "COURSE_HTTP_OK",
+  "checks": [
+    {
+      "name": "Physical links",
+      "passed": true,
+      "detail": "Expected links must match exactly",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "Actual IPv4 and masks",
+      "passed": true,
+      "detail": "Missing/mismatched: []",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "PC0 HTTP page",
+      "passed": true,
+      "detail": "PC0 and URL match; received nonempty page containing COURSE_HTTP_OK; repeated content is allowed, not a proof of fresh server bytes",
+      "evidence": "02_PC0_http.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_web_browser",
+      "arguments": {
+        "device": "PC0",
+        "url": "http://192.168.0.2/course_index.html",
+        "timeout": 30.0,
+        "show": true,
+        "capture": false
+      },
+      "label": "PC0_http",
+      "evidence": "02_PC0_http.txt"
+    }
+  ],
+  "errors": [],
+  "device_configuration_writes": 0,
+  "model_requests": 0,
+  "scope": "Exact physical links and topology IPv4 fields; actual PC0 browser load and received page marker. No server edits, no claim of full page byte equality or deployment history.",
+  "finished": "2026-11-15T09:07:33.274295+00:00"
+}

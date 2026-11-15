@@ -1,0 +1,15 @@
+Routing Protocol is "ospf 100"
+  Outgoing update filter list for all interfaces is not set 
+  Incoming update filter list for all interfaces is not set 
+  Router ID 20.0.0.1
+  Number of areas in this router is 1. 1 normal 0 stub 0 nssa
+  Maximum path: 4
+  Routing for Networks:
+    10.0.0.0 0.0.0.3 area 0
+    20.0.0.0 0.0.0.3 area 0
+  Routing Information Sources:  
+    Gateway         Distance      Last Update 
+    20.0.0.1             110      00:05:12
+    192.168.16.126       110      00:05:12
+    192.168.16.190       110      00:05:07
+  Distance: (default is 110)

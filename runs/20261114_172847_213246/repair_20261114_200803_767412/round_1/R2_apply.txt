@@ -1,0 +1,16 @@
+Router2 (CLI) — 6 command(s): 6 ok
+
+> enable    [ok]
+
+R2#configure terminal    [ok]
+Enter configuration commands, one per line.  End with CNTL/Z.
+
+R2(config)#interface GigabitEthernet0/0    [ok]
+
+R2(config-if)#no shutdown    [ok]
+
+R2(config-if)#exit    [ok]
+
+R2(config)#end    [ok]
+
+Final prompt: R2#  (mode: enable)

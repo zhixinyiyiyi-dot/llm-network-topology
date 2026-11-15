@@ -1,0 +1,17 @@
+用例：UC-05 部门隔离与互通。所有设备均在本地Packet Tracer中。
+定义VLAN10，名称FINANCE；VLAN20，名称MARKETING。
+PC0 FastEthernet0为192.168.1.1/24；PC1为192.168.1.2/24；PC2为192.168.1.3/24，网关均192.168.1.254。
+PC3 FastEthernet0为192.168.2.1/24；PC4为192.168.2.2/24；PC5为192.168.2.3/24，网关均192.168.2.254。
+六台PC分别连接Switch0 FastEthernet0/1至FastEthernet0/6，不调换顺序。
+交换机Fa0/1、Fa0/2、Fa0/3设置access VLAN10，Fa0/4、Fa0/5、Fa0/6设置access VLAN20，接入口ipv4=null。
+每台PC仅一个FastEthernet0接口，字段只有name、ipv4；PC本身不配置VLAN标签。
+所有设备routing=[]，路由仅靠网关直连网络，不运行任何静态或动态路由。所有非终端default_gateway=null，不配置nat。
+所有物理链路dce=null，SVI和子接口不是物理链路端点。
+checks完整列出6台PC的30个有向两两ping测试，不包括自己，不漏项、不重复。
+要求部门间二层隔离，六台PC经三层网关互通，不设置访问阻断ACL。
+方案：单臂路由，variant=router_on_a_stick。
+设备仅R0（router）、Switch0（switch）、PC0至PC5（pc）。
+R0 GigabitEthernet0/0连接Switch0 GigabitEthernet0/1，父接口ipv4=null。
+Switch0 GigabitEthernet0/1配置trunk，仅允许VLAN10、20，ipv4=null，不填写access_vlan。
+R0另列子接口GigabitEthernet0/0.10：ipv4=192.168.1.254/24，encapsulation_vlan=10；GigabitEthernet0/0.20：ipv4=192.168.2.254/24，encapsulation_vlan=20。
+R0只包含上述一个父接口与两个子接口；Switch0只包含六个接入口及一个Trunk。

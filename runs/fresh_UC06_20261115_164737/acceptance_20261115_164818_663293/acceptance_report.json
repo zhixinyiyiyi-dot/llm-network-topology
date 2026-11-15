@@ -1,0 +1,180 @@
+{
+  "case_id": "UC-06",
+  "started": "2026-11-15T08:48:18.667615+00:00",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "设备名称",
+      "passed": true,
+      "detail": "要求PC0、PC1、Switch0存在；名称检查不等于完整拓扑证明。",
+      "evidence": "01_topology.json"
+    },
+    {
+      "name": "默认VLAN1",
+      "passed": true,
+      "detail": "两接入端口应在默认VLAN1的active成员中。",
+      "evidence": "02_Switch0_vlan.json"
+    },
+    {
+      "name": "PC0地址与空网关",
+      "passed": true,
+      "detail": "要求192.168.1.1/24，默认网关为空或0.0.0.0。",
+      "evidence": "03_PC0_ipconfig.json"
+    },
+    {
+      "name": "PC1地址与空网关",
+      "passed": true,
+      "detail": "要求192.168.1.2/24，默认网关为空或0.0.0.0。",
+      "evidence": "04_PC1_ipconfig.json"
+    },
+    {
+      "name": "PC0_to_PC1",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "06_PC0_to_PC1_ping.json"
+    },
+    {
+      "name": "PC1_to_PC0",
+      "passed": true,
+      "detail": "发送 4，收到 4，丢失 0；验收要求 4/4、0 丢包。",
+      "evidence": "08_PC1_to_PC0_ping.json"
+    },
+    {
+      "name": "同网段直接路径",
+      "passed": true,
+      "detail": "实际路径 ['192.168.1.2']；预期 ['192.168.1.2']。",
+      "evidence": "09_PC0_trace.json"
+    }
+  ],
+  "calls": [
+    {
+      "index": 1,
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "status": "RETURNED",
+      "evidence": "01_topology.json"
+    },
+    {
+      "index": 2,
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Switch0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show vlan brief"
+        ],
+        "timeout": 30.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Switch0_vlan",
+      "status": "RETURNED",
+      "evidence": "02_Switch0_vlan.json"
+    },
+    {
+      "index": 3,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_ipconfig",
+      "status": "RETURNED",
+      "evidence": "03_PC0_ipconfig.json"
+    },
+    {
+      "index": 4,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ipconfig",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_ipconfig",
+      "status": "RETURNED",
+      "evidence": "04_PC1_ipconfig.json"
+    },
+    {
+      "index": 5,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC1_warmup",
+      "status": "RETURNED",
+      "evidence": "05_PC0_to_PC1_warmup.json"
+    },
+    {
+      "index": 6,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "ping 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_to_PC1_ping",
+      "status": "RETURNED",
+      "evidence": "06_PC0_to_PC1_ping.json"
+    },
+    {
+      "index": 7,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC0_warmup",
+      "status": "RETURNED",
+      "evidence": "07_PC1_to_PC0_warmup.json"
+    },
+    {
+      "index": 8,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC1",
+        "command": "ping 192.168.1.1",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC1_to_PC0_ping",
+      "status": "RETURNED",
+      "evidence": "08_PC1_to_PC0_ping.json"
+    },
+    {
+      "index": 9,
+      "tool": "pt_host_command",
+      "arguments": {
+        "device": "PC0",
+        "command": "tracert 192.168.1.2",
+        "timeout": 45.0,
+        "show": false,
+        "capture": false
+      },
+      "label": "PC0_trace",
+      "status": "RETURNED",
+      "evidence": "09_PC0_trace.json"
+    }
+  ],
+  "errors": [],
+  "mode": "live_read_only",
+  "routing_assertion": "N/A: same LAN, no router/default gateway required",
+  "finished": "2026-11-15T08:48:34.919547+00:00"
+}

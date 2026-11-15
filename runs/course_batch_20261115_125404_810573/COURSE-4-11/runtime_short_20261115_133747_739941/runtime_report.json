@@ -1,0 +1,72 @@
+{
+  "case_id": "COURSE-4-11",
+  "version": "short-commands-v1",
+  "status": "ERROR_COLLECTION",
+  "started": "2026-11-15T05:37:47.740539+00:00",
+  "checks": [
+    {
+      "name": "完整接线",
+      "passed": true,
+      "detail": "必须匹配全部5条物理链路",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "Router0实际接口地址/掩码",
+      "passed": true,
+      "detail": "拓扑实际字段不匹配：[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "Router0接口up/up",
+      "passed": true,
+      "detail": "未up/up接口=[]",
+      "evidence": "02_Router0_interfaces.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show ip interface brief"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_interfaces",
+      "evidence": "02_Router0_interfaces.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show ip protocols"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "Router0_protocols",
+      "evidence": "03_Router0_protocols.txt"
+    }
+  ],
+  "errors": [
+    "ValueError: 采集失败，不作为网络配置FAIL：03_Router0_protocols.txt"
+  ],
+  "scope": "精确接线、接口IPv4/掩码/up、实际OSPF进程/网络声明及双向ping；不读取running-config，不声称完整配置文本逐行核对",
+  "deployment_mode": "read_only_existing_state_comparison",
+  "finished": "2026-11-15T05:37:49.293655+00:00"
+}

@@ -1,0 +1,15 @@
+Router0 (CLI) — 2 command(s): 2 ok
+
+> enable    [ok]
+
+R0#show access-lists    [ok]
+Standard IP access list 1
+    10 permit 192.168.30.0 0.0.0.255 (28 match(es))
+    20 permit 192.168.40.0 0.0.0.255 (28 match(es))
+Extended IP access list GUEST_IN
+    10 permit icmp 192.168.30.0 0.0.0.255 192.168.40.0 0.0.0.255 echo-reply (8 match(es))
+    20 permit tcp 192.168.30.0 0.0.0.255 192.168.40.0 0.0.0.255 established
+    30 deny ip 192.168.30.0 0.0.0.255 192.168.40.0 0.0.0.255 (4 match(es))
+    40 permit ip any any (25 match(es))
+
+Final prompt: R0#  (mode: enable)

@@ -1,0 +1,11 @@
+PC0 (Command Prompt) — 1 command(s): 1 ok
+
+> tracert 192.168.2.1    [ok]
+Tracing route to 192.168.2.1 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      192.168.1.254
+  2   0 ms      0 ms      0 ms      192.168.2.1
+
+Trace complete.
+
+Final prompt: C:\>  (mode: user)

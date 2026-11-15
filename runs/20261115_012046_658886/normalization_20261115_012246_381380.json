@@ -1,0 +1,350 @@
+{
+  "timestamp": "2026-11-14T17:22:46.381380+00:00",
+  "method": "deterministic_name_to_single_ipv4",
+  "source": "C:\\Users\\admin\\Documents\\计网拓展\\runs\\20261115_012046_658886\\topology.yaml",
+  "source_sha256": "a23f7454f1853fa9d631445f8928407c4cab9a28494ba560839e4293895092d2",
+  "first_model_output_passed": false,
+  "original_errors": [
+    {
+      "code": "UC05_MATRIX",
+      "path": "checks",
+      "message": "必须包含6台PC的30个有向两两ping，且无重复。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/0",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/1",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/2",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/3",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/4",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/5",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/6",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/7",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/8",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/9",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/10",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/11",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/12",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/13",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/14",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/15",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/16",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/17",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/18",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/19",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/20",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/21",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/22",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/23",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/24",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/25",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/26",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/27",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/28",
+      "message": "测试目标不是合法 IPv4。"
+    },
+    {
+      "code": "CHECK_DESTINATION",
+      "path": "checks/29",
+      "message": "测试目标不是合法 IPv4。"
+    }
+  ],
+  "status": "PASS",
+  "changes": [
+    {
+      "path": "checks/0/destination",
+      "before": "PC1",
+      "after": "192.168.1.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/1/destination",
+      "before": "PC2",
+      "after": "192.168.1.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/2/destination",
+      "before": "PC3",
+      "after": "192.168.2.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/3/destination",
+      "before": "PC4",
+      "after": "192.168.2.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/4/destination",
+      "before": "PC5",
+      "after": "192.168.2.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/5/destination",
+      "before": "PC0",
+      "after": "192.168.1.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/6/destination",
+      "before": "PC2",
+      "after": "192.168.1.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/7/destination",
+      "before": "PC3",
+      "after": "192.168.2.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/8/destination",
+      "before": "PC4",
+      "after": "192.168.2.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/9/destination",
+      "before": "PC5",
+      "after": "192.168.2.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/10/destination",
+      "before": "PC0",
+      "after": "192.168.1.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/11/destination",
+      "before": "PC1",
+      "after": "192.168.1.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/12/destination",
+      "before": "PC3",
+      "after": "192.168.2.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/13/destination",
+      "before": "PC4",
+      "after": "192.168.2.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/14/destination",
+      "before": "PC5",
+      "after": "192.168.2.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/15/destination",
+      "before": "PC0",
+      "after": "192.168.1.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/16/destination",
+      "before": "PC1",
+      "after": "192.168.1.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/17/destination",
+      "before": "PC2",
+      "after": "192.168.1.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/18/destination",
+      "before": "PC4",
+      "after": "192.168.2.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/19/destination",
+      "before": "PC5",
+      "after": "192.168.2.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/20/destination",
+      "before": "PC0",
+      "after": "192.168.1.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/21/destination",
+      "before": "PC1",
+      "after": "192.168.1.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/22/destination",
+      "before": "PC2",
+      "after": "192.168.1.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/23/destination",
+      "before": "PC3",
+      "after": "192.168.2.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/24/destination",
+      "before": "PC5",
+      "after": "192.168.2.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/25/destination",
+      "before": "PC0",
+      "after": "192.168.1.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/26/destination",
+      "before": "PC1",
+      "after": "192.168.1.2",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/27/destination",
+      "before": "PC2",
+      "after": "192.168.1.3",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/28/destination",
+      "before": "PC3",
+      "after": "192.168.2.1",
+      "reason": "exact device name with one IPv4 interface"
+    },
+    {
+      "path": "checks/29/destination",
+      "before": "PC4",
+      "after": "192.168.2.2",
+      "reason": "exact device name with one IPv4 interface"
+    }
+  ],
+  "validation_errors_after": [],
+  "output": "C:\\Users\\admin\\Documents\\计网拓展\\runs\\20261115_012046_658886\\topology.fixed.yaml",
+  "output_sha256": "3e334739fbd517765e046c4878b178875585c96bed43a85dd24378608cd7461c"
+}

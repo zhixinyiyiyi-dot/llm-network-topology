@@ -1,0 +1,24 @@
+课内来源：实验7-1 扩展ACL
+范围说明：对应用户原课内报告的两router两switch三PC一Server；按实际Gigabit接口规划。保留Web80、FTP20/21、PC1到PC2全部IP、部门A到R1 ICMP四类限制；HTTP/FTP需生成服务指南人工配置。
+请生成最终目标DSL，case_id=COURSE-7-1，status=ready、questions=[]、vlans=[]。
+按以下明确接口/接线与业务策略规划。不要自行增加默认路由、NAT、VLAN或其他服务。
+设备R0，类型router；接口：GigabitEthernet0/0=192.168.0.254/24，GigabitEthernet0/1=10.0.0.1/30；终端网关：None。
+使用静态路由，远端目的和下一跳：192.168.1.0/24 经 10.0.0.2
+设备R1，类型router；接口：GigabitEthernet0/0=192.168.1.254/24，GigabitEthernet0/1=10.0.0.2/30；终端网关：None。
+使用静态路由，远端目的和下一跳：192.168.0.0/24 经 10.0.0.1
+扩展ACL名COURSE_ACL，绑定GigabitEthernet0/1 in；规则必须保持以下顺序：
+deny tcp，源192.168.0.0/24，目的192.168.1.2/32，目的端口80
+deny tcp，源192.168.0.1/32，目的192.168.1.2/32，目的端口20
+deny tcp，源192.168.0.1/32，目的192.168.1.2/32，目的端口21
+deny ip，源192.168.0.2/32，目的192.168.1.1/32
+deny icmp，源192.168.0.0/24，目的10.0.0.2/32
+permit ip，源any，目的any
+设备Switch0，类型switch；接口：FastEthernet0/1=None，FastEthernet0/2=None，FastEthernet0/3=None；终端网关：None。
+设备PC0，类型pc；接口：FastEthernet0=192.168.0.1/24；终端网关：192.168.0.254。
+设备PC1，类型pc；接口：FastEthernet0=192.168.0.2/24；终端网关：192.168.0.254。
+设备Switch1，类型switch；接口：FastEthernet0/1=None，FastEthernet0/2=None，FastEthernet0/3=None；终端网关：None。
+设备PC2，类型pc；接口：FastEthernet0=192.168.1.1/24；终端网关：192.168.1.254。
+设备Server0，类型server；接口：FastEthernet0=192.168.1.2/24；终端网关：192.168.1.254。
+服务：HTTP=True、FTP=True；pages空列表表示保留默认页面。
+物理接线：R0 GigabitEthernet0/1—R1 GigabitEthernet0/1；DCE=None；Switch0 FastEthernet0/3—R0 GigabitEthernet0/0；DCE=None；PC0 FastEthernet0—Switch0 FastEthernet0/1；DCE=None；PC1 FastEthernet0—Switch0 FastEthernet0/2；DCE=None；Switch1 FastEthernet0/3—R1 GigabitEthernet0/0；DCE=None；PC2 FastEthernet0—Switch1 FastEthernet0/1；DCE=None；Server0 FastEthernet0—Switch1 FastEthernet0/2；DCE=None
+验证条目精确如下（type=ping，destination填IP）：PC1 到 192.168.1.1，预期deny；PC0 到 10.0.0.2，预期deny；PC0 到 192.168.1.1，预期allow

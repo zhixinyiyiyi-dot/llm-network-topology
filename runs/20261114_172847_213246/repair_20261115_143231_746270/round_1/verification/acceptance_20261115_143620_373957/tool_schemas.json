@@ -1,0 +1,193 @@
+[
+  {
+    "name": "pt_query_topology",
+    "title": null,
+    "description": "Query current devices in Packet Tracer.\nReturns name, model, and port/IP info for each device in the active topology,\nthen every link with its real cable type (read from the link itself).\nRequires bridge connected (use pt_bridge_status to verify).",
+    "inputSchema": {
+      "properties": {},
+      "title": "pt_query_topologyArguments",
+      "type": "object"
+    },
+    "outputSchema": {
+      "properties": {
+        "result": {
+          "title": "Result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result"
+      ],
+      "title": "pt_query_topologyOutput",
+      "type": "object"
+    },
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "pt_cli",
+    "title": null,
+    "description": "Types commands into a router/switch console (CLI tab) and returns each\none's output. Same as typing in the IOS CLI: enable, configure\nterminal, interface..., show ip route, ping, copy run start...\n\nWithout taking the screen: it goes through PT's API, and what is typed\nshows up in the device's real CLI tab.\n\nParameters:\n- device: exact name (pt_query_topology).\n- commands: a list of commands, or a block of text with one per line.\n  Typed in order, waiting for the prompt between them.\n- timeout: maximum seconds per command, up to 300 (ping/traceroute take a while).\n  When it runs out the command is aborted with Ctrl+Shift+6.\n- auto_confirm: presses Enter on \"[confirm]\" and \"Destination filename [..]?\".\n  [yes/no] and Password: questions are NOT answered automatically: put\n  the answer as the next command (e.g. [\"reload\", \"no\", \"\"]).\n- show: True/False opens (or not) the device's window on the CLI tab.\n  None = per pt_ui_mode.\n- capture: saves a PNG of the window when done (implies show).\n\nEach command comes back marked: ok, ERROR (% Invalid input...), UNKNOWN\nCOMMAND (IOS took it as a hostname: the DNS lookup is aborted), WAITING\nFOR ANSWER or TIMEOUT. A freshly created router is primed automatically\n(answers 'no' to the initial dialog).",
+    "inputSchema": {
+      "properties": {
+        "device": {
+          "title": "Device",
+          "type": "string"
+        },
+        "commands": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Commands"
+        },
+        "timeout": {
+          "default": 30.0,
+          "title": "Timeout",
+          "type": "number"
+        },
+        "auto_confirm": {
+          "default": true,
+          "title": "Auto Confirm",
+          "type": "boolean"
+        },
+        "show": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Show"
+        },
+        "capture": {
+          "default": false,
+          "title": "Capture",
+          "type": "boolean"
+        },
+        "output_dir": {
+          "default": "screenshots",
+          "title": "Output Dir",
+          "type": "string"
+        }
+      },
+      "required": [
+        "device",
+        "commands"
+      ],
+      "title": "pt_cliArguments",
+      "type": "object"
+    },
+    "outputSchema": {
+      "properties": {
+        "result": {
+          "title": "Result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result"
+      ],
+      "title": "pt_cliOutput",
+      "type": "object"
+    },
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "pt_host_command",
+    "title": null,
+    "description": "Runs a command in a PC/Laptop/Server's Desktop > Command Prompt\n(ping, ipconfig, ipconfig /all, ipconfig /renew, tracert, arp -a,\nnslookup, netstat, telnet, ssh -l user ip, ftp...) and returns the output.\n\nParameters:\n- device: the host's name.\n- command: the line to run (e.g. \"ping 192.168.1.1\").\n- inputs: answers to whatever the command asks afterwards, in order\n  (e.g. a telnet/ssh password, then commands for the remote device).\n- timeout: maximum seconds per line, up to 300 (a failing ping takes ~15 s).\n- show / capture / output_dir: as in pt_cli; opens Desktop > Command Prompt.",
+    "inputSchema": {
+      "properties": {
+        "device": {
+          "title": "Device",
+          "type": "string"
+        },
+        "command": {
+          "title": "Command",
+          "type": "string"
+        },
+        "inputs": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inputs"
+        },
+        "timeout": {
+          "default": 30.0,
+          "title": "Timeout",
+          "type": "number"
+        },
+        "show": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Show"
+        },
+        "capture": {
+          "default": false,
+          "title": "Capture",
+          "type": "boolean"
+        },
+        "output_dir": {
+          "default": "screenshots",
+          "title": "Output Dir",
+          "type": "string"
+        }
+      },
+      "required": [
+        "device",
+        "command"
+      ],
+      "title": "pt_host_commandArguments",
+      "type": "object"
+    },
+    "outputSchema": {
+      "properties": {
+        "result": {
+          "title": "Result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "result"
+      ],
+      "title": "pt_host_commandOutput",
+      "type": "object"
+    },
+    "icons": null,
+    "annotations": null,
+    "meta": null,
+    "execution": null
+  }
+]

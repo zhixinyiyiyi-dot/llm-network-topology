@@ -1,0 +1,47 @@
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\admin\Documents\计网拓展\repair_uc01.py", line 195, in main_run
+  |     async with streamablehttp_client('http://127.0.0.1:39400/mcp') as streams:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "D:\python3\Lib\contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\mcp\client\streamable_http.py", line 742, in streamablehttp_client
+  |     async with streamable_http_client(
+  |                ^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "D:\python3\Lib\contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\mcp\client\streamable_http.py", line 672, in streamable_http_client
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 871, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\mcp\client\streamable_http.py", line 695, in streamable_http_client
+    |     yield (
+    |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\mcp\client\streamable_http.py", line 747, in streamablehttp_client
+    |     yield streams
+    |   File "C:\Users\admin\Documents\计网拓展\repair_uc01.py", line 196, in main_run
+    |     async with ClientSession(streams[0],streams[1]) as session:
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\mcp\shared\session.py", line 238, in __aexit__
+    |     return await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\admin\Documents\计网拓展\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 871, in __aexit__
+    |     raise BaseExceptionGroup(
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "C:\Users\admin\Documents\计网拓展\repair_uc01.py", line 226, in main_run
+      |     plan=json.loads(text)
+      |          ^^^^^^^^^^^^^^^^
+      |   File "D:\python3\Lib\json\__init__.py", line 346, in loads
+      |     return _default_decoder.decode(s)
+      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "D:\python3\Lib\json\decoder.py", line 338, in decode
+      |     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+      |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "D:\python3\Lib\json\decoder.py", line 356, in raw_decode
+      |     raise JSONDecodeError("Expecting value", s, err.value) from None
+      | json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+      +------------------------------------

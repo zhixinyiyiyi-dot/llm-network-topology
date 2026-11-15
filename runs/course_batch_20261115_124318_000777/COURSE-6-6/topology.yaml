@@ -1,0 +1,46 @@
+case_id: COURSE-6-6
+status: ready
+questions: []
+devices:
+- name: PC0
+  type: pc
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.0.1/24
+  default_gateway: null
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+- name: Server0
+  type: server
+  interfaces:
+  - name: FastEthernet0
+    ipv4: 192.168.0.2/24
+  default_gateway: null
+  routing: []
+  nat: null
+  ip_routing: false
+  acls: []
+  services:
+    http: true
+    ftp: false
+    pages:
+    - filename: course_index.html
+      content: <!DOCTYPE html><html><head><title>Course Page</title></head><body><h1>HTTP
+        Service Test</h1><p>COURSE_HTTP_OK</p></body></html>
+links:
+- a:
+    device: PC0
+    interface: FastEthernet0
+  b:
+    device: Server0
+    interface: FastEthernet0
+  dce: null
+vlans: []
+checks:
+- type: ping
+  source: PC0
+  destination: 192.168.0.2
+  expect: allow
+variant: router_on_a_stick

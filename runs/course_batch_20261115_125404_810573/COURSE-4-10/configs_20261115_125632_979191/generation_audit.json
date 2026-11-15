@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-11-15T04:56:32.988763+00:00",
+  "source": "C:\\Users\\admin\\Documents\\计网拓展\\runs\\course_batch_20261115_125404_810573\\COURSE-4-10\\topology.yaml",
+  "source_sha256": "8957a5dfb7c2d3c08141142514800c23471bf7933302e10881418483bd883544",
+  "validation_passed": true,
+  "command_guard_passed": true,
+  "deployed": false,
+  "migrate_from_rip": false,
+  "replace_ospf_process": null,
+  "omit_nat": false,
+  "from_uc04": false,
+  "files": {
+    "R0.cfg": "363127ccc97b4b9836a7715b3b57a6b5795727e641dbda233dcab6acacb80caa",
+    "R1.cfg": "2219eadbe82c0a9e13a3cfc2f58c41420559ed7a4488842ceea890ee644d0430",
+    "R2.cfg": "16120acba9f7e7589ad6afa09ed299814301f5c97306196f5520c9044bd7c360",
+    "R0_phase1_RIPv1.cfg": "10c6283e65340c348b5702deb413ee410e41f9237d63a7226b036c77446b96ae",
+    "R1_phase1_RIPv1.cfg": "1701ee21553d45fe7738e16ca5a834db19035a5a638b1027656058fd7ded94e1",
+    "R2_phase1_RIPv1.cfg": "446e52640a8b1633617e6b6284c19fc8d7f2c44624981c55a9295f927507ed1d",
+    "PT_GUIDE.txt": "002c203aa5ad7d83905e6377e8dc6d94ed3b3ee7a9f72bc6c7f9fd2238b5748d"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC3 (Command Prompt) — 1 command(s): 1 TIMEOUT\n\n> tracert 192.168.1.1    [TIMEOUT]\nTracing route to 192.168.1.1 over a maximum of 30 hops: \n\n  1   *         *         *         Request timed out.\n  2   *         *         *         Request timed out.\n  3   *         *         \nControl-C\n^C\n  ↳ aborted after 45s without the prompt coming back\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC3 (Command Prompt) — 1 command(s): 1 TIMEOUT\n\n> tracert 192.168.1.1    [TIMEOUT]\nTracing route to 192.168.1.1 over a maximum of 30 hops: \n\n  1   *         *         *         Request timed out.\n  2   *         *         *         Request timed out.\n  3   *         *         \nControl-C\n^C\n  ↳ aborted after 45s without the prompt coming back\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

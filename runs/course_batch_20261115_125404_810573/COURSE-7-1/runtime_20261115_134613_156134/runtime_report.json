@@ -1,0 +1,72 @@
+{
+  "case_id": "COURSE-7-1",
+  "mode": "live_read_only",
+  "started": "2026-11-15T05:46:13.156134+00:00",
+  "status": "ERROR",
+  "checks": [
+    {
+      "name": "完整物理接线",
+      "passed": true,
+      "detail": "预期7条，实际识别7条；缺失[]；多余[]",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "name": "R0接口与路由配置",
+      "passed": false,
+      "detail": "不匹配项：['GigabitEthernet0/0地址/掩码', 'GigabitEthernet0/0up/up', 'GigabitEthernet0/1地址/掩码', 'GigabitEthernet0/1up/up', 'ip route 192.168.1.0 255.255.255.0 10.0.0.2']",
+      "evidence": "02_R0_state.txt"
+    }
+  ],
+  "calls": [
+    {
+      "tool": "pt_query_topology",
+      "arguments": {},
+      "label": "topology",
+      "evidence": "01_topology.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router0",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R0_state",
+      "evidence": "02_R0_state.txt"
+    },
+    {
+      "tool": "pt_cli",
+      "arguments": {
+        "device": "Router1",
+        "commands": [
+          "enable",
+          "show running-config",
+          "show ip interface brief",
+          "show ip protocols",
+          "show ip route"
+        ],
+        "timeout": 45.0,
+        "auto_confirm": false,
+        "show": false,
+        "capture": false
+      },
+      "label": "R1_state",
+      "evidence": "03_R1_state.txt"
+    }
+  ],
+  "errors": [
+    "ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)"
+  ],
+  "deployed_by_this_script": false,
+  "first_runtime_pass_claim": "PENDING_HUMAN_DEPLOYMENT_HISTORY",
+  "finished": "2026-11-15T05:47:46.318910+00:00"
+}

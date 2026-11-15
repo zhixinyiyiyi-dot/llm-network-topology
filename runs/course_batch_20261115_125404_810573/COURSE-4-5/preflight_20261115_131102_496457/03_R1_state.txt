@@ -1,0 +1,122 @@
+Router1 (CLI) — 5 command(s): 5 ok
+(console primed: answered the initial dialog / Press RETURN)
+
+> enable    [ok]
+
+Router#show running-config    [ok]
+Building configuration...
+
+Current configuration : 847 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX15245KND-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 218.75.230.78 255.255.255.240
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 218.75.230.62 255.255.255.240
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ ip address 218.75.230.82 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 218.75.230.0 255.255.255.224 218.75.230.81 
+ip route 218.75.230.32 255.255.255.240 218.75.230.81 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
+Router#show ip interface brief    [ok]
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0     218.75.230.78   YES manual up                    up 
+GigabitEthernet0/1     218.75.230.62   YES manual up                    up 
+GigabitEthernet0/2     218.75.230.82   YES manual up                    up 
+Vlan1                  unassigned      YES unset  administratively down down
+
+Router#show ip protocols    [ok]
+
+Router#show ip route    [ok]
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+     218.75.230.0/24 is variably subnetted, 8 subnets, 4 masks
+S       218.75.230.0/27 [1/0] via 218.75.230.81
+S       218.75.230.32/28 [1/0] via 218.75.230.81
+C       218.75.230.48/28 is directly connected, GigabitEthernet0/1
+L       218.75.230.62/32 is directly connected, GigabitEthernet0/1
+C       218.75.230.64/28 is directly connected, GigabitEthernet0/0
+L       218.75.230.78/32 is directly connected, GigabitEthernet0/0
+C       218.75.230.80/30 is directly connected, GigabitEthernet0/2
+L       218.75.230.82/32 is directly connected, GigabitEthernet0/2
+
+Final prompt: Router#  (mode: enable)

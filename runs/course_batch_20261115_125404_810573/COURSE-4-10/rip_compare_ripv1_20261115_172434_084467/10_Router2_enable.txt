@@ -1,0 +1,5 @@
+Router2 (CLI) — 1 command(s): 1 ok
+
+> enable    [ok]
+
+Final prompt: R2#  (mode: enable)

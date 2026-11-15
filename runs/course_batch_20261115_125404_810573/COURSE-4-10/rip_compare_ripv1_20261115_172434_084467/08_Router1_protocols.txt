@@ -1,0 +1,26 @@
+Router1 (CLI) — 1 command(s): 1 ok
+
+> show ip protocols    [ok]
+Routing Protocol is "rip"
+Sending updates every 30 seconds, next due in 21 seconds
+Invalid after 180 seconds, hold down 180, flushed after 240
+Outgoing update filter list for all interfaces is not set
+Incoming update filter list for all interfaces is not set
+Redistributing: rip
+Default version control: send version 1, receive 1
+  Interface             Send  Recv  Triggered RIP  Key-chain
+  Serial0/0/1           11
+  Serial0/0/0           11
+Automatic network summarization is in effect
+Maximum path: 4
+Routing for Networks:
+	10.0.0.0
+	20.0.0.0
+Passive Interface(s):
+Routing Information Sources:
+	Gateway         Distance      Last Update
+	10.0.0.1             120      00:00:00
+	20.0.0.2             120      00:00:04
+Distance: (default is 120)
+
+Final prompt: R1#  (mode: enable)

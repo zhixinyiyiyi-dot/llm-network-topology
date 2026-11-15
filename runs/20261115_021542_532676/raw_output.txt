@@ -1,0 +1,212 @@
+case_id: UC-08
+status: ready
+questions: []
+devices:
+  - name: R0
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 10.1.0.254/16
+      - name: GigabitEthernet0/1
+        ipv4: 10.0.1.1/30
+      - name: GigabitEthernet0/2
+        ipv4: 10.0.2.1/30
+    default_gateway: null
+    routing:
+      - protocol: ospf
+        process_id: 100
+        networks:
+          - network: 10.1.0.0
+            wildcard: 0.0.255.255
+            area: 0
+          - network: 10.0.1.0
+            wildcard: 0.0.0.3
+            area: 0
+          - network: 10.0.2.0
+            wildcard: 0.0.0.3
+            area: 0
+        passive_interfaces:
+          - GigabitEthernet0/0
+      - protocol: static
+        routes:
+          - prefix: 0.0.0.0/0
+            next_hop: 198.51.100.2
+            distance: 1
+            recursive: true
+          - prefix: 0.0.0.0/0
+            next_hop: 198.51.100.6
+            distance: 10
+            recursive: true
+  - name: R1
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 10.0.1.2/30
+      - name: GigabitEthernet0/1
+        ipv4: 198.51.100.1/30
+    default_gateway: null
+    routing:
+      - protocol: ospf
+        process_id: 100
+        networks:
+          - network: 10.0.1.0
+            wildcard: 0.0.0.3
+            area: 0
+          - network: 198.51.100.0
+            wildcard: 0.0.0.3
+            area: 0
+        passive_interfaces:
+          - GigabitEthernet0/1
+      - protocol: static
+        routes:
+          - prefix: 0.0.0.0/0
+            next_hop: 198.51.100.2
+            distance: 1
+  - name: R2
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 10.0.2.2/30
+      - name: GigabitEthernet0/1
+        ipv4: 198.51.100.5/30
+    default_gateway: null
+    routing:
+      - protocol: ospf
+        process_id: 100
+        networks:
+          - network: 10.0.2.0
+            wildcard: 0.0.0.3
+            area: 0
+          - network: 198.51.100.4
+            wildcard: 0.0.0.3
+            area: 0
+        passive_interfaces:
+          - GigabitEthernet0/1
+      - protocol: static
+        routes:
+          - prefix: 0.0.0.0/0
+            next_hop: 198.51.100.6
+            distance: 1
+  - name: R3
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 198.51.100.2/30
+      - name: GigabitEthernet0/1
+        ipv4: 203.0.113.1/24
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 10.1.0.0/16
+            next_hop: 198.51.100.1
+            distance: 1
+          - prefix: 10.1.0.0/16
+            next_hop: 203.0.113.2
+            distance: 10
+  - name: R4
+    type: router
+    interfaces:
+      - name: GigabitEthernet0/0
+        ipv4: 198.51.100.6/30
+      - name: GigabitEthernet0/1
+        ipv4: 203.0.113.2/24
+    default_gateway: null
+    routing:
+      - protocol: static
+        routes:
+          - prefix: 10.1.0.0/16
+            next_hop: 198.51.100.5
+            distance: 1
+  - name: Switch0
+    type: switch
+    interfaces:
+      - name: FastEthernet0/1
+        ipv4: null
+      - name: FastEthernet0/2
+        ipv4: null
+      - name: FastEthernet0/3
+        ipv4: null
+    default_gateway: null
+    routing: []
+  - name: PC0
+    type: pc
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 10.1.0.10/16
+    default_gateway: 10.1.0.254
+    routing: []
+  - name: Server0
+    type: server
+    interfaces:
+      - name: FastEthernet0
+        ipv4: 203.0.113.100/24
+    default_gateway: 203.0.113.1
+    routing: []
+links:
+  - a:
+      device: PC0
+      interface: FastEthernet0
+    b:
+      device: R0
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R0
+      interface: GigabitEthernet0/1
+    b:
+      device: R1
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R0
+      interface: GigabitEthernet0/2
+    b:
+      device: R2
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R1
+      interface: GigabitEthernet0/1
+    b:
+      device: R3
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R2
+      interface: GigabitEthernet0/1
+    b:
+      device: R4
+      interface: GigabitEthernet0/0
+    dce: null
+  - a:
+      device: R3
+      interface: GigabitEthernet0/1
+    b:
+      device: Switch0
+      interface: FastEthernet0/1
+    dce: null
+  - a:
+      device: R4
+      interface: GigabitEthernet0/1
+    b:
+      device: Switch0
+      interface: FastEthernet0/2
+    dce: null
+  - a:
+      device: Server0
+      interface: FastEthernet0
+    b:
+      device: Switch0
+      interface: FastEthernet0/3
+    dce: null
+vlans: []
+checks:
+  - type: ping
+    source: PC0
+    destination: 203.0.113.100
+    expect: allow
+  - type: ping
+    source: Server0
+    destination: 10.1.0.10
+    expect: allow

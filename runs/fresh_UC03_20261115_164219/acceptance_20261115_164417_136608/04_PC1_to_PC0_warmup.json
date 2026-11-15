@@ -1,0 +1,15 @@
+{
+  "meta": null,
+  "content": [
+    {
+      "type": "text",
+      "text": "PC1 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.0.10    [ok]\nPinging 192.168.0.10 with 32 bytes of data:\n\nReply from 192.168.0.10: bytes=32 time=21ms TTL=126\nReply from 192.168.0.10: bytes=32 time=20ms TTL=126\nReply from 192.168.0.10: bytes=32 time=27ms TTL=126\nReply from 192.168.0.10: bytes=32 time=21ms TTL=126\n\nPing statistics for 192.168.0.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 20ms, Maximum = 27ms, Average = 22ms\n\nFinal prompt: C:\\>  (mode: user)",
+      "annotations": null,
+      "meta": null
+    }
+  ],
+  "structuredContent": {
+    "result": "PC1 (Command Prompt) — 1 command(s): 1 ok\n\n> ping 192.168.0.10    [ok]\nPinging 192.168.0.10 with 32 bytes of data:\n\nReply from 192.168.0.10: bytes=32 time=21ms TTL=126\nReply from 192.168.0.10: bytes=32 time=20ms TTL=126\nReply from 192.168.0.10: bytes=32 time=27ms TTL=126\nReply from 192.168.0.10: bytes=32 time=21ms TTL=126\n\nPing statistics for 192.168.0.10:\n    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = 20ms, Maximum = 27ms, Average = 22ms\n\nFinal prompt: C:\\>  (mode: user)"
+  },
+  "isError": false
+}

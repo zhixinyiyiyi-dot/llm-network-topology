@@ -1,0 +1,6 @@
+Router0 (CLI) — 1 command(s): 1 ok
+(console primed: answered the initial dialog / Press RETURN)
+
+> enable    [ok]
+
+Final prompt: R0#  (mode: enable)

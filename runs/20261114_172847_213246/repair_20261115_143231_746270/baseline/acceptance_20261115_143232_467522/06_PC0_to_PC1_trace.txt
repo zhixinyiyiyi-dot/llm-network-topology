@@ -1,0 +1,18 @@
+PC0 (Command Prompt) — 1 command(s): 1 TIMEOUT
+
+> tracert 192.168.16.130    [TIMEOUT]
+Tracing route to 192.168.16.130 over a maximum of 30 hops: 
+
+  1   0 ms      0 ms      0 ms      192.168.16.126
+  2   1 ms      0 ms      0 ms      30.0.0.2
+  3   1 ms      *         1 ms      30.0.0.2
+  4   *         1 ms      *         Request timed out.
+  5   7 ms      *         0 ms      30.0.0.2
+  6   *         2 ms      *         Request timed out.
+  7   4 ms      *         1 ms      30.0.0.2
+  8   *         1 ms      
+Control-C
+^C
+  ↳ aborted after 45s without the prompt coming back
+
+Final prompt: C:\>  (mode: user)
