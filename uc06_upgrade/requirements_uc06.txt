@@ -1,0 +1,10 @@
+用例：UC-06 家庭工作室
+仅在本地Packet Tracer仿真中，搭建两台PC通过一台二层交换机互联的网络。
+设备只有PC0（pc）、PC1（pc）、Switch0（switch）。不使用路由器。
+PC0 FastEthernet0连接Switch0 FastEthernet0/1；PC1 FastEthernet0连接Switch0 FastEthernet0/2。
+PC0 FastEthernet0的IPv4为192.168.1.1/24，PC1为192.168.1.2/24。
+两台PC都不设置默认网关（default_gateway:null），无DNS要求。
+Switch0两个指定接口ipv4:null，默认网关null，不配置管理IP或VLAN字段；使用默认VLAN1，vlans=[]。
+所有设备routing=[]，不配置nat或ip_routing，不增加设备或接口。
+checks精确为PC0到IPv4地址192.168.1.2、PC1到IPv4地址192.168.1.1两个ping。destination绝不能写成PC0/PC1名称。
+所有links的dce:null。要求验证两台PC直接互通，无需三层路由。
